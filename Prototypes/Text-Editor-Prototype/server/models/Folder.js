@@ -1,6 +1,6 @@
-const { Schema, model } = require('mongoose')
+const { Schema, model } = require('mongoose');
 
-const Folder = new Schema({
+const Folder = Schema({
     _id: String,
 
     title: {
@@ -12,6 +12,6 @@ const Folder = new Schema({
         type: [Schema.Types.ObjectId],
         ref: "Document"
     }
-})
+});
 
 module.exports = model("Folder", Folder)

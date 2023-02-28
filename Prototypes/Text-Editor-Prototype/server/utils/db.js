@@ -8,7 +8,7 @@ const connect = async () => {
             useUnifiedTopology: true
         });
 
-        console.log("Connected sucessfully to db");
+        console.log("Connected sucessfully to DB");
         db = mongoose.connection;
     }
     catch (error) {
