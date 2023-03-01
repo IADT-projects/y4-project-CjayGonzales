@@ -14,6 +14,7 @@ function App() {
 
         {/* generates to a random document when in the home page */}
         <Route path="/" element={<Navigate to={`/documents/${uuidV4()}`} />} />
+        {/* <Route path="/" element={<Navigate to={`/documents/`} />} /> */}
 
         {/* gets the same document with an ID */}
         <Route path="/documents/:id" element={<TextEditor />} />

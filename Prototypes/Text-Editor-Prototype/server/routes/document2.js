@@ -3,9 +3,6 @@ const router = express.Router();
 
 // import document_controller. curly braces is where you specify what ur importing
 const {
-    CreateDocument,
-    findDocument,
-
     readData,
     readOne,
     createData,
@@ -14,8 +11,6 @@ const {
 } = require('../controllers/document_controller2');
 
 // takes the function from the controller in the document_controller files
-router.post('/', CreateDocument);
-router.get('/', findDocument);
 
 router.get('/', readData);
 router.get('/:id', readOne);

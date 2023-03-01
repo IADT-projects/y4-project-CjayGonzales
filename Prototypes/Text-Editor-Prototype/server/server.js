@@ -1,18 +1,29 @@
 const mongoose = require('mongoose')
 const express = require('express');
+const { Server } = require('socket.io');
+
+
 const app = express();
 
-// what i had to do was use this cors part to make it work to use port 3000
+const http = require("http");
 
 const port = 3001;
-
+const server = http.createServer(app);
 const cors = require("cors");
 const corsOptions = {
     origin: '*',
-    credentials: true,            //access-control-allow-credentials:true
+    credentials: true,              //access-control-allow-credentials:true
     optionSuccessStatus: 200,
 }
+const io = new Server(server, {     // creates the server location. need to then use cors
+    cors: {                         // cors allows for the client-server connections
+        methods: ['GET', 'POST'],
+        origin: '*',
+        credentials: true,
+        optionSuccessStatus: 200
 
+    },
+})
 app.use(cors(corsOptions))
 
 
@@ -25,11 +36,13 @@ app.set('view engine', 'html');
 app.use(express.static(__dirname + '/public/'));
 
 // paths
-app.use('/api/document', require('./routes/document'));
-// app.use('/api/document', require('./routes/document2'));
+// app.use('/api/document', require('./routes/document'));
+app.use('/api/document', require('./routes/document2'));
 
 app.use('/api/folder', require('./routes/folder'));
 
-app.listen(port, () => {
+require('./services/document_service')(io);
+
+server.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
 });

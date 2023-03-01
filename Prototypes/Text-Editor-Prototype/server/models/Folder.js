@@ -1,7 +1,6 @@
 const { Schema, model } = require('mongoose');
 
 const Folder = Schema({
-    _id: String,
 
     title: {
         type: String,
