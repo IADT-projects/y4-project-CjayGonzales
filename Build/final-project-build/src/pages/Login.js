@@ -1,11 +1,21 @@
-import React from 'react';
+import LoginForm from "../components/LoginForm";
 
-const Login = () => {
+const Login = (props) => {
     return (
-        <div>
-            <h1>Login Page</h1>
-        </div>
+        <>
+
+            <h1>Login</h1>
+
+
+            {(!props.authenticated) ? (
+                // Passing onAuthenticated to Login Form 
+                < LoginForm onAuthenticated={props.onAuthenticated} />
+            ) : (
+                <p>You are logged in</p>
+
+            )}
+        </>
     );
-}
+};
 
 export default Login;
