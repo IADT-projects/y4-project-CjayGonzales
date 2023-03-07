@@ -7,10 +7,14 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import PageNotFound from './pages/PageNotFound';
 
+//importing components
+import NavBar from './components/NavBar'
+
 const App = () => {
   return (
     <div>
       <Router>
+        <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
