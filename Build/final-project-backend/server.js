@@ -18,7 +18,6 @@ const io = new Server(server, {     // creates the server location. need to then
         origin: '*',
         credentials: true,
         optionSuccessStatus: 200
-
     },
 })
 app.use(cors(corsOptions))
@@ -32,7 +31,7 @@ app.set('view engine', 'html');
 app.use(express.static(__dirname + '/public/'));
 
 
-// ---------------------USER------------------------
+// ---------------------USER AUTH------------------------
 app.use((req, res, next) => {
     if (req.headers?.authorization?.split(' ')[0] === 'Bearer') {
         jwt.verify(req.headers.authorization.split(' ')[1], process.env.APP_KEY, (err, decoded) => {
