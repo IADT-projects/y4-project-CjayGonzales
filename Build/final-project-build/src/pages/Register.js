@@ -1,10 +1,17 @@
 import React from 'react';
+import RegisterForm from "../components/RegisterForm";
 
-const Register = () => {
+const Register = (props) => {
     return (
-        <div>
+        <>
             <h1>Register Page</h1>
-        </div>
+            {(!props.authenticated) ? (
+                // Passing onAuthenticated to Login Form 
+                < RegisterForm onAuthenticated={props.onAuthenticated} />
+            ) : (
+                <p>You are logged in</p>
+            )}
+        </>
     );
 }
 
