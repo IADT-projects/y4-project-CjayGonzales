@@ -38,7 +38,7 @@ const App = () => {
   return (
     <div>
       <Router>
-        <NavBar />
+        <NavBar onAuthenticated={onAuthenticated} authenticated={authenticated} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />

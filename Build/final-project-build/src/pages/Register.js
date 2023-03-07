@@ -2,6 +2,7 @@ import React from 'react';
 import RegisterForm from "../components/RegisterForm";
 
 const Register = (props) => {
+
     return (
         <>
             <h1>Register Page</h1>
