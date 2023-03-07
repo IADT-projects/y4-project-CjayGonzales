@@ -17,7 +17,9 @@ const Navbar = (props) => {
             <Link to='/'>
                 Home
             </Link>
-
+            <Link to='/ocr'>
+                OcrPrototype
+            </Link>
             <Link to='/register'>
                 Register
             </Link>

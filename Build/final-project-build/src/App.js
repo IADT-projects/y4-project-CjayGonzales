@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import PageNotFound from './pages/PageNotFound';
+import OcrReaderPage from './pages/OcrReaderPage';
 
 //importing components
 import NavBar from './components/NavBar'
@@ -41,6 +42,7 @@ const App = () => {
         <NavBar onAuthenticated={onAuthenticated} authenticated={authenticated} />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/ocr" element={<OcrReaderPage />} />
           <Route path="/login" element={<Login onAuthenticated={onAuthenticated} authenticated={authenticated} />} />
           <Route path="/register" element={<Register onAuthenticated={onAuthenticated} authenticated={authenticated} />} />
           <Route path="*" element={<PageNotFound />} />
