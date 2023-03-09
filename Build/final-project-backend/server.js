@@ -5,7 +5,6 @@ const app = express();
 const http = require("http");
 const port = 3001;
 const server = http.createServer(app);
-
 const cors = require("cors");
 const corsOptions = {
     origin: '*',
@@ -27,7 +26,6 @@ require('./utils/db.js')();
 
 app.use(express.json());
 app.set('view engine', 'html');
-// app.use(express.static('public'));   
 app.use(express.static(__dirname + '/public/'));
 
 
@@ -50,9 +48,8 @@ app.use((req, res, next) => {
 app.use('/api/users', require('./routes/users'));
 app.use('/api/document', require('./routes/document'));
 app.use('/api/folder', require('./routes/folder'));
-
 require('./services/document_service')(io);
 
-app.listen(port, () => {
+server.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
 });

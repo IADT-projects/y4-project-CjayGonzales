@@ -8,16 +8,12 @@ async function CreateDocument(id) {
     return await Document.create({ _id: id, data: defaultValue })   // creates a new ID and sets the default value to empty if there is none
 }
 
-async function findDocument(id) {
-    if (id == null) return                              // checks to see if its null
-    const document = await Document.findById(id)        // finds by id
-    if (document) return document                       // returns document if its available
-}
-
 module.exports = function (io) {
     io.on("connection", socket => {
+        console.log("Connection established ")
         socket.on('get-document', async documentId => {
             const document = await CreateDocument(documentId)
+
             socket.join(documentId)             //sets up the rooms to allow people to comunicate with eachother / file share
             socket.emit('load-document', document.data)
 

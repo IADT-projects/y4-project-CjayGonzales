@@ -1,10 +1,7 @@
-// this will connect to the database (mongodb atlas)
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'); // this will connect to the database (mongodb atlas)
+const connect = async () => {         // link is taken from the server (mongodb atlas)
 
-// link is taken from the server (mongodb atlas)
-const connect = async () => {
     let db = null;
-
     try {
         await mongoose.connect(process.env.DB_ATLAS_URL, {
             useNewUrlParser: true,
