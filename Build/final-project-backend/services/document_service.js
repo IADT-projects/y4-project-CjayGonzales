@@ -1,7 +1,7 @@
 const Document = require('../models/Document');
 
 const defaultValue = "";
-async function CreateDocument(id) {
+async function CreateDocument(id) {                     // this function finds or creates a document
     if (id == null) return                              // checks to see if its null
     const document = await Document.findById(id)        // finds by id
     if (document) return document                       // returns document if its available

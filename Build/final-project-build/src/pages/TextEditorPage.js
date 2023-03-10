@@ -3,8 +3,9 @@ import { useEffect, useState } from 'react';
 import axios from '../config/index';
 
 const TextEditorPage = (props) => {
-    const [document, setDocument] = useState(null);
 
+    // gets all documents
+    const [document, setDocument] = useState(null);
     useEffect(() => {
         axios.get('/document')
             .then((response) => {
@@ -16,17 +17,13 @@ const TextEditorPage = (props) => {
             });
     }, []);
 
-    const initial_value = ""
     return (
 
         <>
             <h1>Text Editor Create</h1>
-            <Link to={`/documents/${initial_value}`}>
+            <Link to={`/documents`}>
                 TextEditor
             </Link>
-
-
-
 
         </>
     );

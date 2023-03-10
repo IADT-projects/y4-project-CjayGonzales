@@ -46,10 +46,10 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/ocr" element={<OcrReaderPage />} />
-          <Route path="/documents" element={<Navigate to={`/documents/${uuidV4()}`} />} />
-          <Route path="/documents/:id" element={<TextEditor />} />
 
           <Route path="/select-document" element={<TextEditorPage />} />
+          <Route path="/documents" element={<Navigate to={`/documents/${uuidV4()}`} />} />
+          <Route path="/documents/:id" element={<TextEditor />} />
 
           <Route path="/login" element={<Login onAuthenticated={onAuthenticated} authenticated={authenticated} />} />
           <Route path="/register" element={<Register onAuthenticated={onAuthenticated} authenticated={authenticated} />} />
