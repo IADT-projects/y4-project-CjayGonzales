@@ -67,8 +67,6 @@ const LoginForm = (props) => {
 
     return (
         <>
-
-
             <textarea
                 id="outlined-basic"
                 label="Email"

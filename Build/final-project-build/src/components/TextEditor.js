@@ -84,6 +84,7 @@ export default function TextEditor() {
         }
     }, [socket, quill])
 
+    // when a new document is created or loaded
     const wrapperRef = useCallback((wrapper) => {       // use callback as we only want one instance, to prevent it from rendering multiple toolbars
         if (wrapper == null) return                     // checks to see if wrapper is null
         wrapper.innerHTML = ""                          // sets inner HTML to an empty string

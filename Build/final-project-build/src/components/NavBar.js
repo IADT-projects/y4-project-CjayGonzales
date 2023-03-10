@@ -17,17 +17,21 @@ const Navbar = (props) => {
             <Link to='/'>
                 Home
             </Link>
+            |
             <Link to='/ocr'>
                 OcrPrototype
             </Link>
+            |
             <Link to='/register'>
                 Register
             </Link>
+            |
             <Link to='/login'>
                 Login
             </Link>
-            <Link to='/documents'>
-                TextEditor
+            |
+            <Link to='/select-document'>
+                Select-document
             </Link>
 
             {(props.authenticated) ? (
