@@ -26,6 +26,9 @@ const Navbar = (props) => {
             <Link to='/login'>
                 Login
             </Link>
+            <Link to='/documents'>
+                TextEditor
+            </Link>
 
             {(props.authenticated) ? (
                 <button onClick={logout}>Logout</button>

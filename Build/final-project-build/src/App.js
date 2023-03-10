@@ -1,5 +1,6 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { v4 as uuidV4 } from 'uuid'
 
 // importing pages
 import Home from './pages/Home';
@@ -7,6 +8,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import PageNotFound from './pages/PageNotFound';
 import OcrReaderPage from './pages/OcrReaderPage';
+import TextEditor from './components/TextEditor';
 
 //importing components
 import NavBar from './components/NavBar'
@@ -43,8 +45,12 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/ocr" element={<OcrReaderPage />} />
+          <Route path="/documents" element={<Navigate to={`/documents/${uuidV4()}`} />} />
+          <Route path="/documents/:id" element={<TextEditor />} />
+
           <Route path="/login" element={<Login onAuthenticated={onAuthenticated} authenticated={authenticated} />} />
           <Route path="/register" element={<Register onAuthenticated={onAuthenticated} authenticated={authenticated} />} />
+
           <Route path="*" element={<PageNotFound />} />
         </Routes>
 
