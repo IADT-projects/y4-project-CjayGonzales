@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from '../config/index';
+import DocumentCard from '../components/document_card';
 
 const TextEditorPage = (props) => {
 
     // gets all documents
-    const [document, setDocument] = useState(null);
+    const [documents, setDocument] = useState(null);
     useEffect(() => {
         axios.get('/document')
             .then((response) => {
@@ -17,6 +18,18 @@ const TextEditorPage = (props) => {
             });
     }, []);
 
+    /*
+    const deleteCallback = (id) => {
+        let documentsNew = documents.filter(document => {
+            return document._id !== id;
+        })
+        setDocument(documentsNew);
+    };
+
+    const documentsList = documents.map((document) => {
+        return <DocumentCard key={document._id} document={document} callback={deleteCallback} />;
+    });
+    */
     return (
 
         <>
@@ -24,6 +37,10 @@ const TextEditorPage = (props) => {
             <Link to={`/documents`}>
                 TextEditor
             </Link>
+
+            <h1>Display Documents</h1>
+            <DocumentCard />
+            {/* <DocumentCard>{documentsList}</DocumentCard> */}
 
         </>
     );
