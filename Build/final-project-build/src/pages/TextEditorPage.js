@@ -18,7 +18,8 @@ const TextEditorPage = (props) => {
             });
     }, []);
 
-    /*
+    if (!documents) return 'Loading...';
+
     const deleteCallback = (id) => {
         let documentsNew = documents.filter(document => {
             return document._id !== id;
@@ -29,7 +30,7 @@ const TextEditorPage = (props) => {
     const documentsList = documents.map((document) => {
         return <DocumentCard key={document._id} document={document} callback={deleteCallback} />;
     });
-    */
+
     return (
 
         <>
@@ -39,8 +40,8 @@ const TextEditorPage = (props) => {
             </Link>
 
             <h1>Display Documents</h1>
-            <DocumentCard />
-            {/* <DocumentCard>{documentsList}</DocumentCard> */}
+            <DocumentCard ></DocumentCard>
+            {documentsList}
 
         </>
     );
