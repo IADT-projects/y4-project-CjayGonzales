@@ -53,10 +53,69 @@ const login = (req, res) => {
         })
 };
 
+const readData = (req, res) => {
+    User.find()
+        .then((data) => {
+            console.log(data);
+            if (data.length > 0) {
+                res.status(200).json(data);
+            }
+            else {
+                res.status(404).json("None found")
+            }
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500);
+        });
+};
+
+const updateUser = (req, res) => {
+
+    let id = req.params.id;
+    let body = req.body;
+
+    User.findByIdAndUpdate(id, body, {
+        new: true
+    })
+        .then((data) => {
+
+            if (data) {
+                res.status(201).json(data);
+            }
+            else {
+                res.status(404).json({
+                    "message": `Bad Request. ${id} is not a valid ID`
+                });
+            }
+        })
+        .catch((err) => {
+            if (err.name === 'ValidationError') {
+                console.error('Validation Error!', err);
+                res.status(422).json({
+                    "msg": "Validation Error",
+                    "error": err.message
+                });
+            }
+            else if (err.name === 'CastError') {
+                res.status(404).json({
+                    "message": `Bad Request. ${id} is not a valid ID`
+                });
+            }
+            else {
+                console.error(err);
+                res.status(500);
+            }
+        });
+
+};
+
 
 
 module.exports = {
     register,
-    login
+    login,
+    updateUser,
+    readData
 };
 
