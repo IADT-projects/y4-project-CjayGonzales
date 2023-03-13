@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from '../config/index';
 import DocumentCard from '../components/document_card';
+import ErrorBoundry from "../components/ErrorBoundry"
 
 const TextEditorPage = (props) => {
 
@@ -40,9 +41,11 @@ const TextEditorPage = (props) => {
             </Link>
 
             <h1>Display Documents</h1>
-            <DocumentCard ></DocumentCard>
-            {documentsList}
-
+            <ErrorBoundry>
+                <DocumentCard >
+                    {documentsList}
+                </DocumentCard>
+            </ErrorBoundry>
         </>
     );
 };
