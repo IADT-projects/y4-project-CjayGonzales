@@ -42,7 +42,7 @@ const App = () => {
   if (authenticated) {
     protectedPaths = (
       <>
-        <Route path="/select-document" element={<TextEditorPage />} />
+        <Route path="/select-document/" element={<TextEditorPage />} />
         <Route path="/documents" element={<Navigate to={`/documents/${uuidV4()}`} />} />
         <Route path="/documents/:id" element={<TextEditor />} />
       </>

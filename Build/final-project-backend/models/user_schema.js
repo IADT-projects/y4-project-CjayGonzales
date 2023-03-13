@@ -17,6 +17,12 @@ const userSchema = Schema(
         password: {
             type: String,
             required: [true, 'Password Field is Required'],
+        },
+
+        documents: {
+            // type: [Schema.Types.ObjectId],
+            type: [Schema.Types.String],
+            ref: "Document"
         }
     },
     { timestamps: true }

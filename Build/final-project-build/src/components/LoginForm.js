@@ -10,7 +10,6 @@ const LoginForm = (props) => {
         password: "",
     });
 
-    const styles = { color: "red", backgroundColor: "white" };
     const [errorMessage, setErrorMessage] = useState("");
 
     const handleForm = (e) => {
