@@ -12,7 +12,7 @@ const {
 router
     .post('/register', register)
     .post('/login', login)
-    .post('/:id', updateUser)
+    .put('/:id', updateUser)
     .get('/', readData)
 
 module.exports = router;
