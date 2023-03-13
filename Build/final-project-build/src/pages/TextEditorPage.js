@@ -19,6 +19,7 @@ const TextEditorPage = (props) => {
             });
     }, []);
 
+
     if (!documents) return 'Loading...';
 
     const deleteCallback = (id) => {
@@ -32,6 +33,8 @@ const TextEditorPage = (props) => {
         return <DocumentCard key={document._id} document={document} callback={deleteCallback} />;
     });
 
+    console.log(documentsList)
+
     return (
 
         <>
@@ -42,9 +45,9 @@ const TextEditorPage = (props) => {
 
             <h1>Display Documents</h1>
             <ErrorBoundry>
-                <DocumentCard >
-                    {documentsList}
-                </DocumentCard>
+
+                {documentsList}
+
             </ErrorBoundry>
         </>
     );
