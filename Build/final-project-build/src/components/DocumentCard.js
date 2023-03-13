@@ -1,11 +1,12 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 function DocumentCard(props) {
 
     // COMMENT THE BELOW OUT TO FIX
     console.log("card props " + props)
 
-    let ID = <p><b>ID: </b>{props.document._id}</p>
+    let ID = <p><b></b><Link to={`/documents/${props.document._id}`}>{props.document._id}</Link></p>
     let title = <p><b>Title: </b>{props.document.title}</p>
 
 
