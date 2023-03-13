@@ -39,6 +39,16 @@ const App = () => {
     }
   };
 
+  if (authenticated) {
+    protectedPaths = (
+      <>
+        <Route path="/select-document" element={<TextEditorPage />} />
+        <Route path="/documents" element={<Navigate to={`/documents/${uuidV4()}`} />} />
+        <Route path="/documents/:id" element={<TextEditor />} />
+      </>
+    )
+  }
+
   return (
     <div>
       <Router>
@@ -46,11 +56,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/ocr" element={<OcrReaderPage />} />
-
-          <Route path="/select-document" element={<TextEditorPage />} />
-          <Route path="/documents" element={<Navigate to={`/documents/${uuidV4()}`} />} />
-          <Route path="/documents/:id" element={<TextEditor />} />
-
+          {protectedPaths}
           <Route path="/login" element={<Login onAuthenticated={onAuthenticated} authenticated={authenticated} />} />
           <Route path="/register" element={<Register onAuthenticated={onAuthenticated} authenticated={authenticated} />} />
 

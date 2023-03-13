@@ -2,9 +2,7 @@ const { Schema, model } = require('mongoose');
 const bcrypt = require('bcryptjs');
 
 const userSchema = Schema(
-    // will need to look up mongoose documentation for this part
     {
-        //Snake case for database properties
         name: {
             type: String,
             required: [true, 'Name is Required'],
@@ -12,9 +10,9 @@ const userSchema = Schema(
         email: {
             type: String,
             required: [true, 'Email Field is Required'],
-            unique: true, // ensure that the email is unique. It's a mongoose schema (mongoose model)
+            unique: true,
             lowercase: true,
-            trim: true      //removes spaces in beginning and end of input
+            trim: true
         },
         password: {
             type: String,
@@ -31,5 +29,4 @@ userSchema.methods.comparePassword = function (password) {
     });
 }
 
-// all of our models will be singular and capitilized what gets exported is a mongoose model and we use the festival schema
 module.exports = model('User', userSchema);
