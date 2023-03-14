@@ -1,5 +1,5 @@
 const Document = require('../models/Document')
-
+const User = require('../models/user_schema')
 
 const createData = (req, res) => {
     let documentData = req.body;
@@ -41,8 +41,8 @@ const readData = (req, res) => {
         });
 };
 
-const readOne = (req, res) => {
 
+const readOne = (req, res) => {
     // to get the ID you need to access the id from the request. to do this create a variable and put it in there
     let id = req.params.id;
 
@@ -70,6 +70,7 @@ const readOne = (req, res) => {
             }
         })
 };
+
 
 const updateData = (req, res) => {
 
