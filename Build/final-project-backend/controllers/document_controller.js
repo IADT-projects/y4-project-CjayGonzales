@@ -1,3 +1,4 @@
+/*
 const Document = require('../models/Document')
 const User = require('../models/user_schema')
 
@@ -154,9 +155,10 @@ module.exports = {
     deleteData
 
 };
+*/
 
 // attempting to fix users
-/*
+
 const Document = require('../models/Document')
 const User = require('../models/user_schema')
 
@@ -303,5 +305,3 @@ module.exports = {
     deleteData
 
 };
-
-*/

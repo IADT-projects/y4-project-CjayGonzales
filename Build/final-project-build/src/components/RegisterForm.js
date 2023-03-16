@@ -68,6 +68,7 @@ const RegisterForm = (props) => {
 
     return (
         <>
+            <p>name</p>
             <textarea
                 id="outlined-basic"
                 label="Name"
@@ -79,7 +80,7 @@ const RegisterForm = (props) => {
                 value={form.name}
                 fullWidth
             />
-
+            <p>email</p>
             <textarea
                 id="outlined-basic"
                 label="Email"
@@ -91,7 +92,7 @@ const RegisterForm = (props) => {
                 value={form.email}
                 fullWidth
             />
-
+            <p>password</p>
             <textarea
                 id="outlined-basic"
                 type="password"

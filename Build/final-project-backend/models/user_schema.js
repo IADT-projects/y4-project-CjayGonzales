@@ -1,3 +1,5 @@
+/*
+
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcryptjs');
 
@@ -34,11 +36,12 @@ userSchema.methods.comparePassword = function (password) {
         return result
     });
 }
+module.exports = model('User', userSchema);
+*/
 
 // attempting a fix
-/*
 
-module.exports = model('User', userSchema);
+
 
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcryptjs');
@@ -86,4 +89,3 @@ userSchema.methods.comparePassword = function (password) {
 }
 
 module.exports = model('User', userSchema);
-*/

@@ -30,14 +30,14 @@ const Navbar = (props) => {
                 Login
             </Link>
             |
-            <Link to='/select-document'>
-                Select-document
-            </Link>
-
-            {/* 
-            <Link to={`/select-document/${props.userId}`}>
+            {/* <Link to='/select-document'>
                 Select-document
             </Link> */}
+
+
+            <Link to={`/select-document/${props.userId}`}>
+                Select-document
+            </Link>
 
             {(props.authenticated) ? (
                 <button onClick={logout}>Logout</button>

@@ -66,6 +66,7 @@ const LoginForm = (props) => {
 
     return (
         <>
+            <p>email</p>
             <textarea
                 id="outlined-basic"
                 label="Email"
@@ -78,6 +79,7 @@ const LoginForm = (props) => {
                 value={form.email}
                 fullWidth
             />
+            <p>password</p>
             <textarea
                 id="outlined-basic"
                 type="password"
