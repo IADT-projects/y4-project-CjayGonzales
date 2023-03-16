@@ -9,10 +9,11 @@ const TextEditorPage = (props) => {
     // gets all documents
 
     const [documents, setDocument] = useState(null);
-    const userID = "63fe0bbbf438f4b261054339";
+    const userID = "63ee39e083d1e24019bdcac0";
+    const userID2 = "63fe0bbbf438f4b261054339";
 
     useEffect(() => {
-        axios.get(`/document/${userID}`)
+        axios.get(`/document/${userID2}`)
             // axios.get('/document')
             .then((response) => {
                 console.log(response.data);
