@@ -17,4 +17,12 @@ router.post('/', createData);
 router.put('/:id', updateData);
 router.delete('/:id', deleteData);
 
+/*
+router.get('/:userId', readData);
+router.get('/:id', readOne);
+router.post('/:userId', createData);
+router.put('/:id', updateData);
+router.delete('/:id', deleteData);
+*/
+
 module.exports = router;

@@ -7,8 +7,12 @@ import ErrorBoundry from "../components/ErrorBoundry"
 const TextEditorPage = (props) => {
 
     // gets all documents
+
     const [documents, setDocument] = useState(null);
+    // const userID = "63fe0bbbf438f4b261054339";
+
     useEffect(() => {
+        // axios.get(`/document/${userID}`)
         axios.get('/document')
             .then((response) => {
                 console.log(response.data);
