@@ -26,23 +26,28 @@ const App = () => {
   }, []);
 
   //Used to change the state from true or false / Also stores my token
-  const onAuthenticated = (auth, token) => {
+  const onAuthenticated = (auth, token, userID) => {
     setAuthenticated(auth);
 
     // if statement to check to set a token to local storage when logging in
     if (auth) {
       localStorage.setItem('token', token);
+      localStorage.setItem('userID', userID);
+
     }
     else {
       localStorage.removeItem('token');
+      localStorage.removeItem('userID')
 
     }
   };
 
+  const userID = localStorage.getItem('userID');
+
   if (authenticated) {
     protectedPaths = (
       <>
-        <Route path="/select-document/:id" element={<TextEditorPage />} />
+        <Route path={`/select-document/${userID}`} element={<TextEditorPage userID={userID} />} />
         <Route path="/documents" element={<Navigate to={`/documents/${uuidV4()}`} />} />
         <Route path="/documents/:id" element={<TextEditor />} />
       </>
@@ -52,7 +57,7 @@ const App = () => {
   return (
     <div>
       <Router>
-        <NavBar onAuthenticated={onAuthenticated} authenticated={authenticated} />
+        <NavBar onAuthenticated={onAuthenticated} authenticated={authenticated} userID={userID} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/ocr" element={<OcrReaderPage />} />

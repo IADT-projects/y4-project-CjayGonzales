@@ -13,7 +13,7 @@ const TextEditorPage = (props) => {
     const userID2 = "63fe0bbbf438f4b261054339";
 
     useEffect(() => {
-        axios.get(`/document/${userID2}`)
+        axios.get(`/document/${props.userID}`)
             // axios.get('/document')
             .then((response) => {
                 console.log(response.data);

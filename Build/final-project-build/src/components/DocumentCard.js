@@ -7,8 +7,6 @@ function DocumentCard(props) {
     let ID = <p><b></b><Link to={`/documents/${props.document._id}`}>{props.document._id}</Link></p>
     let title = <p><b>Title: </b>{props.document.title}</p>
 
-
-
     return (
         <div className="card">
             <div className="card-body">

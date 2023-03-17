@@ -35,7 +35,7 @@ const Navbar = (props) => {
             </Link> */}
 
 
-            <Link to={`/select-document/${props.userId}`}>
+            <Link to={`/select-document/${props.userID}`}>
                 Select-document
             </Link>
 
