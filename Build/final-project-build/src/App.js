@@ -13,6 +13,7 @@ import TextEditorPage from './pages/TextEditorPage';
 //importing components
 import NavBar from './components/NavBar'
 import TextEditor from './components/TextEditor';
+import CreateDocument from './components/modals/documentModals/createDocument';
 
 const App = () => {
 
@@ -49,6 +50,7 @@ const App = () => {
       <>
         <Route path={`/select-document/${userID}`} element={<TextEditorPage userID={userID} />} />
         <Route path="/documents" element={<Navigate to={`/documents/${uuidV4()}`} />} />
+        <Route path="/create-document" element={<CreateDocument />} />
         <Route path="/documents/:id" element={<TextEditor />} />
       </>
     )

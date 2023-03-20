@@ -7,10 +7,7 @@ import ErrorBoundry from "../components/ErrorBoundry"
 const TextEditorPage = (props) => {
 
     // gets all documents
-
     const [documents, setDocument] = useState(null);
-    const userID = "63ee39e083d1e24019bdcac0";
-    const userID2 = "63fe0bbbf438f4b261054339";
 
     useEffect(() => {
         axios.get(`/document/${props.userID}`)
@@ -38,15 +35,20 @@ const TextEditorPage = (props) => {
         return <DocumentCard key={document._id} document={document} callback={deleteCallback} />;
     });
 
-    console.log(documentsList)
 
     return (
 
         <>
             <h1>Text Editor Create</h1>
             <Link to={`/documents`}>
-                TextEditor
+                TextEditor |
             </Link>
+
+            <Link to={`/create-document`}>
+                Create
+            </Link>
+
+            <button>Create New Document</button>
 
             <h1>Display Documents</h1>
             <ErrorBoundry>

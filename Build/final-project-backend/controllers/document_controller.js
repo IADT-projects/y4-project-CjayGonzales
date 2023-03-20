@@ -195,33 +195,23 @@ const readData = (req, res) => {
 
 
 const readOne = (req, res) => {
-    // to get the ID you need to access the id from the request. to do this create a variable and put it in there
-    let id = req.params.id;
+    var mongoose = require('mongoose')
 
-    // connect to db and retrieve document with :id
-    Document.findById(id)
+    let id = mongoose.Types.ObjectId(req.params.id);
+    let userId = mongoose.Types.ObjectId(req.params.userId);
+
+    User.findOne({ _id: userId }, { 'documents': { $elemMatch: { '_id': id } } })
         .then((data) => {
             if (data) {
-                res.status(200).json(data);
+                res.status(200).json(data.documents)
             } else {
-                res.status(404).json({
-                    "message": `Document with ID: ${id} was not found`
-                });
+                res.status(404).json('Document doesnt exist')
             }
+        }).catch((err) => {
+            console.error(err)
+            res.status(500).json(err)
         })
-
-        // error handling 
-        .catch((err) => {
-            if (err.name === 'CastError') {
-                res.status(404).json({
-                    "message": `Bad Request. ${id} is not a valid ID`
-                });
-            }
-            else {
-                res.status(500).json(err)
-            }
-        })
-};
+}
 
 const updateData = (req, res) => {
 
