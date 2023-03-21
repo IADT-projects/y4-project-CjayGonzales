@@ -88,7 +88,6 @@ const LoginForm = (props) => {
                 onChange={handleForm}
                 variant="outlined"
                 error={errors.password}
-
                 helperText={errors.password?.message}
                 value={form.password}
                 fullWidth
