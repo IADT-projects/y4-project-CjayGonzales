@@ -23,6 +23,6 @@ router.get('/:userId', readData);
 router.get('/:userId/:id', readOne);
 router.post('/:userId', createData);
 router.put('/:id', updateData);
-router.delete('/:id', deleteData);
+router.delete('/:userId/:id', deleteData);
 
 module.exports = router;

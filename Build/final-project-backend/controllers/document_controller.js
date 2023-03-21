@@ -255,9 +255,8 @@ const updateData = (req, res) => {
 */
 
 const updateData = (req, res) => {
-    var mongoose = require('mongoose')
 
-    let id = mongoose.Types.ObjectId(req.params.id);
+    let id = req.params.id;
 
     User.findOneAndUpdate({ 'documents._id': id }, {
         $set: {
@@ -299,10 +298,14 @@ const deleteData = (req, res) => {
 
     // to get the ID you need to access the id from the request. to do this create a variable and put it in there
     let id = req.params.id;
+    let userId = req.params.userId;
 
-    Document.deleteOne({ _id: id })
+    User.updateOne(
+        { '_id': userId },
+        { $pull: { documents: { _id: id } } }
+    )
         .then((data) => {
-            if (data.deletedCount) {
+            if (data) {
                 res.status(200).json({
                     "message": `Document with ID: ${id} was deleted sucessfully`
                 });
