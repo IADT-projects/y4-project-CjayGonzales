@@ -40,15 +40,10 @@ const TextEditorPage = (props) => {
 
         <>
             <h1>Text Editor Create</h1>
-            <Link to={`/documents`}>
-                TextEditor |
-            </Link>
 
             <Link to={`/create-document`}>
                 Create
             </Link>
-
-            <button>Create New Document</button>
 
             <h1>Display Documents</h1>
             <ErrorBoundry>

@@ -40,7 +40,6 @@ const CreateDocument = (props) => {
 
     const submitForm = () => {
 
-
         let token = localStorage.getItem('token');
         let userID = localStorage.getItem('userID')
 
@@ -62,7 +61,7 @@ const CreateDocument = (props) => {
 
     return (
         <>
-            <h1>Create Document Edit</h1>
+            <h1>Create Document</h1>
             <textarea
                 label="Title"
                 name="title"

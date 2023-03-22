@@ -1,17 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from 'react-router-dom';
+import EditDocument from "./modals/documentModals/editDocument";
 
 function DocumentCard(props) {
-
+    const documentID = props.document._id
     // creating an ID and returning it as html. the user is able to access the file through an ID link
     // let ID = <p><b></b><Link to={`/documents/${props.document._id}`}>{props.document._id}</Link></p>
-    let title = <p><b>Title: </b><Link to={`/documents/${props.document._id}`}>{props.document.title}</Link></p>
+    let title = <p><b>Title: </b><Link to={`/documents/${documentID}`}>{props.document.title}</Link></p>
+
+    const [show, setShow] = useState(false)
 
     return (
         <div className="card">
             <div className="card-body">
                 {/* <h5 >{ID}</h5> */}
                 <h5 >{title}</h5>
+
+                <button onClick={() => setShow(true)}>Edit</button>
+                <EditDocument show={show} documentID={documentID} />
+                <p>delete</p>
 
             </div>
         </div>
