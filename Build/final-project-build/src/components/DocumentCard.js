@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
-import EditDocument from "./modals/documentModals/editDocument";
+import EditDocument from "./modals/documentModals/EditDocument";
+import DeleteBtn from "./modals/documentModals/DeleteDocument";
 
 function DocumentCard(props) {
     const documentID = props.document._id
@@ -18,7 +19,7 @@ function DocumentCard(props) {
 
                 <button onClick={() => setShow(true)}>Edit</button>
                 <EditDocument show={show} documentID={documentID} />
-                <p>delete</p>
+                <DeleteBtn id={props.document._id} resource={`document/`} callback={props.callback} />
 
             </div>
         </div>

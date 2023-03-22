@@ -13,7 +13,7 @@ import TextEditorPage from './pages/TextEditorPage';
 //importing components
 import NavBar from './components/NavBar'
 import TextEditor from './components/TextEditor';
-import CreateDocument from './components/modals/documentModals/createDocument';
+import CreateDocument from './components/modals/documentModals/CreateDocument';
 
 const App = () => {
 
