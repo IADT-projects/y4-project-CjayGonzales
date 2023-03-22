@@ -102,6 +102,8 @@ const EditDocument = (props) => {
         return null
     }
 
+    const refresh = () => window.location.reload(true)
+
     return (
         <>
             <div className='modal' style={modal}>
@@ -120,7 +122,10 @@ const EditDocument = (props) => {
                             fullWidth
                         />
                         <div className='modal-footer' style={modalFooter}>
-                            <button onClick={submitForm}>Submit</button>
+                            <button onClick={() => {
+                                submitForm();
+                                refresh();
+                            }}>Submit</button>
                         </div>
                     </div>
                 </div>
