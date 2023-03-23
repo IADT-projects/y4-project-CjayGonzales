@@ -21,7 +21,6 @@ const DeleteBtn = (props) => {
             });
     };
 
-
     return (
         <button
             variant='outlined'
