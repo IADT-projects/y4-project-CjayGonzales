@@ -6,9 +6,11 @@ const CreateDocument = (props) => {
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
     const [form, setForm] = useState({
-        title: ""
+        title: "",
     });
-
+    const [newImg, setImg] = useState({
+        imgPath: ""
+    });
 
     const handleForm = (e) => {
         let name = e.target.name
@@ -19,6 +21,10 @@ const CreateDocument = (props) => {
             [name]: value
         }));
     };
+
+    const handleImg = (e) => {
+        setImg({ ...newImg, imgPath: e.target.files[0] });
+    }
 
     const isRequired = (fields) => {
         let error = false;
@@ -38,14 +44,24 @@ const CreateDocument = (props) => {
         return error;
     };
 
-    const submitForm = () => {
+    const submitForm = (e) => {
 
         let token = localStorage.getItem('token');
-        let userID = localStorage.getItem('userID')
+        let userID = localStorage.getItem('userID');
 
-        axios.post(`/document/${userID}`, form, {
+        // creates a multipart request
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append('imgPath', newImg.imgPath);
+        formData.append('title', form.title)
+
+        // console.log()
+        console.log(formData)
+
+        axios.post(`/document/${userID}`, formData, {
             headers: {
-                "Authorization": `Bearer ${token}`
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "multipart/form-data"
             }
         })
             .then(response => {
@@ -61,18 +77,31 @@ const CreateDocument = (props) => {
 
     return (
         <>
-            <h1>Create Document</h1>
-            <textarea
-                label="Title"
-                name="title"
-                onChange={handleForm}
-                error={errors.title}
-                helperText={errors.title?.message}
-                value={form.title}
-                fullWidth
-            />
+            <form encType='multipart/form-data'>
+                <h1>Create Document</h1>
+                <textarea
+                    label="Title"
+                    name="title"
+                    onChange={handleForm}
+                    error={errors.title}
+                    helperText={errors.title?.message}
+                    value={form.title}
+                    fullWidth
+                />
 
-            <button onClick={submitForm}>Submit</button>
+                <input
+                    type="file"
+                    name="imgPath"
+                    onChange={handleImg}
+                    error={errors.imgPath}
+                    // value={form.imgPath}
+                    helperText={errors.imgPath?.message}
+                    fullWidth
+                />
+
+                <button onClick={submitForm}>Submit</button>
+            </form>
+
         </>
     );
 

@@ -203,9 +203,11 @@ const deleteImage = async (filename) => {
 
 const createData = (req, res) => {
     let documentData = req.body;
+    console.log(req.body)
 
     // allows for image upload
     if (req.file) {
+        console.log("hello")
         documentData.imgPath = process.env.STORAGE_ENGINE === 'S3' ? req.file.key : req.file.filename;
     }
     // include this else, if image required
@@ -214,7 +216,6 @@ const createData = (req, res) => {
             message: req.imageError || "Image not uploaded!"
         });
     }
-
     User.findByIdAndUpdate(req.params.userId, { $push: { documents: documentData } })
         .then((data) => {
             if (data) {
@@ -268,7 +269,7 @@ const updateData = (req, res) => {
     let file = req.file;
 
     if (file) {
-        body.image_path = file.filename;
+        body.imgPath = file.filename;
     }
     // include this else, if image required
     else {
@@ -288,7 +289,7 @@ const updateData = (req, res) => {
             if (data) {
 
                 // removes the old image
-                deleteImage(data.image_path);
+                deleteImage(data.imgPath);
                 res.status(200).json(data)
             } else {
                 res.status(404).json({
@@ -322,7 +323,6 @@ const deleteData = (req, res) => {
     // to get the ID you need to access the id from the request. to do this create a variable and put it in there
     let id = req.params.id;
     let userId = req.params.userId;
-    let imagePath = '';
 
     User.updateOne(
         { '_id': userId },

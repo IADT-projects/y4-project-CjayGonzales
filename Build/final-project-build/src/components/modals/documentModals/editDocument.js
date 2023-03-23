@@ -127,7 +127,7 @@ const EditDocument = (props) => {
                             {/* https://upmostly.com/tutorials/adding-multiple-functions-inside-a-single-onclick-event-handler#:~:text=The%20first%20solution%20to%20perform,function%20greeting()%20%7B%20console. */}
                             <button onClick={() => {
                                 submitForm();
-                                refresh();
+                                // refresh();
                             }}>Submit</button>
                         </div>
                     </div>

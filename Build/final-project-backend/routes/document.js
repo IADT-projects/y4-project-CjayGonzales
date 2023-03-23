@@ -16,7 +16,7 @@ const {
 router.get('/:userId', readData);
 router.get('/:userId/:id', readOne);
 router.post('/:userId', imageUpload.single('image'), createData);
-router.put('/:id', updateData);
+router.put('/:id', imageUpload.single('image'), updateData);
 router.delete('/:userId/:id', deleteData);
 
 module.exports = router;

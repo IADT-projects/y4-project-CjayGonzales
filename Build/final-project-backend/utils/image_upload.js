@@ -36,6 +36,7 @@ if (process.env.STORAGE_ENGINE === 'S3') {
     });
 }
 else {
+    //stores it in the disk storage if s3 is unavailable
     storage = multer.diskStorage({
         destination: (req, file, cb) => {
             cb(null, 'public' + process.env.STATIC_FILES_URL);
@@ -51,8 +52,6 @@ else {
 
 
 // from multer s-3. We pass in details (region, credentials etc.) in an object
-
-
 const fileFilter = (req, file, cb) => {
 
     if (!file) {
@@ -66,8 +65,5 @@ const fileFilter = (req, file, cb) => {
 
     cb(null, true);
 };
-
-
-
 
 module.exports = multer({ fileFilter, storage });
