@@ -158,9 +158,48 @@ module.exports = {
 */
 
 // attempting to fix users
-
 const Document = require('../models/Document')
 const User = require('../models/user_schema')
+//file systems
+const fs = require('fs');
+
+const deleteImage = async (filename) => {
+
+    if (process.env.STORAGE_ENGINE === 'S3') {
+        const { S3Client, DeleteObjectCommand } = require('@aws-sdk/client-s3')
+
+        const s3 = new S3Client({
+            region: process.env.AWS_REGION,
+            credentials: {
+                accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+                secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+            }
+        });
+
+        try {
+            const data = await s3.send(new DeleteObjectCommand({ Bucket: process.env.AWS_BUCKET, Key: filename }));
+            console.log("Success. Object deleted.", data)
+        }
+        catch (err) {
+            console.log(err)
+        }
+
+    }
+    else {
+        let path = `public${process.env.STATIC_FILES_URL}${filename}`;
+        fs.access(path, fs.F_OK, (err) => {
+            if (err) {
+                console.error(err);
+                return;
+            }
+
+            fs.unlink(path, (err) => {
+                if (err) throw err;
+                console.log(`${filename} was deleted`);
+            });
+        });
+    }
+};
 
 const createData = (req, res) => {
     let documentData = req.body;
@@ -204,14 +243,14 @@ const readData = (req, res) => {
 };
 
 const readOne = (req, res) => {
-    var mongoose = require('mongoose')
-
-    let id = mongoose.Types.ObjectId(req.params.id);
-    let userId = mongoose.Types.ObjectId(req.params.userId);
+    let id = req.params.id;
+    let userId = req.params.userId;
 
     User.findOne({ _id: userId }, { 'documents': { $elemMatch: { '_id': id } } })
         .then((data) => {
             if (data) {
+                let img = `${process.env.STATIC_FILES_URL}${data.imgPath}`;
+                data.imgPath = img;
                 res.status(200).json(data.documents)
             } else {
                 res.status(404).json('Document doesnt exist')
@@ -225,15 +264,31 @@ const readOne = (req, res) => {
 const updateData = (req, res) => {
 
     let id = req.params.id;
+    let body = req.body;
+    let file = req.file;
+
+    if (file) {
+        body.image_path = file.filename;
+    }
+    // include this else, if image required
+    else {
+        return res.status(422).json({
+            message: req.imageError || "Image not uploaded!"
+        });
+    }
 
     User.findOneAndUpdate({ 'documents._id': id }, {
         $set: {
-            'documents.$.title': req.body.title
+            'documents.$.title': req.body.title,
+            'documents.$.imgPath': req.body.imgPath
         }
     })
         .then((data) => {
 
             if (data) {
+
+                // removes the old image
+                deleteImage(data.image_path);
                 res.status(200).json(data)
             } else {
                 res.status(404).json({
@@ -267,6 +322,7 @@ const deleteData = (req, res) => {
     // to get the ID you need to access the id from the request. to do this create a variable and put it in there
     let id = req.params.id;
     let userId = req.params.userId;
+    let imagePath = '';
 
     User.updateOne(
         { '_id': userId },
