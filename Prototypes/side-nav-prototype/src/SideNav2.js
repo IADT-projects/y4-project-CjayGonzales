@@ -1,49 +1,42 @@
 import React from "react";
+import { useState, useCallback } from 'react';
 import Sidebar from "react-sidebar";
 
-class NavBar2 extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            sidebarOpen: false
-        };
-        this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
-    }
+const NavBar2 = (props) => {
+    const [sidebarOpen, setSidebarOpen] = useState(false);
 
-    onSetSidebarOpen(open) {
-        this.setState({ sidebarOpen: open });
-    }
+    const onSetSidebarOpen = useCallback((open) => {
+        setSidebarOpen(open);
+    }, []);
 
-    render() {
-        return (
-            <Sidebar
-                sidebar={
-                    <>
-                        <b>Sidebar content</b>
-                        <br />
-                        <a href="https://www.youtube.com/">Hello</a>
-                        <h1>
-                            Hello
-                        </h1>
-                        <button onClick={() => this.onSetSidebarOpen(false)}> Close sidebar</button>
-                    </>
+    return (
+        <Sidebar
+            sidebar={
+                <>
+                    <b>Sidebar content</b>
+                    <br />
+                    <a href="https://www.youtube.com/">Hello</a>
+                    <h1>
+                        Hello
+                    </h1>
+                    <button onClick={() => onSetSidebarOpen(false)}> Close sidebar</button>
+                </>
+            }
+            open={sidebarOpen}
+            onSetOpen={onSetSidebarOpen}
+            styles={{
+                sidebar: {
+                    background: "white",
+                    color: "black",
+                    width: "300px"
                 }
-                open={this.state.sidebarOpen}
-                onSetOpen={this.onSetSidebarOpen}
-                styles={{
-                    sidebar: {
-                        background: "black",
-                        color: "white",
-                        width: "300px"
-                    }
-                }}
-            >
-                <button onClick={() => this.onSetSidebarOpen(true)}>
-                    Open sidebar
-                </button>
-            </Sidebar>
-        );
-    }
+            }}
+        >
+            <button onClick={() => onSetSidebarOpen(true)}>
+                Open sidebar
+            </button>
+        </Sidebar>
+    );
 }
 
 export default NavBar2;

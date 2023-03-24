@@ -39,12 +39,10 @@ const EditDocument = (props) => {
         borderBottom: "1px solid #eee"
     }
 
-    const [document, setDocument] = useState(null);
     const [form, setForm] = useState({});
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
-    const { id } = useParams();
-    const documentID = props.documentID
+    const documentID = props.documentID;
 
     const handleForm = (e) => {
         let name = e.target.name;

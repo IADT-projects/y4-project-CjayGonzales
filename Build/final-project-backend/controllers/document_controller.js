@@ -265,18 +265,20 @@ const readOne = (req, res) => {
 const updateData = (req, res) => {
 
     let id = req.params.id;
-    let body = req.body;
-    let file = req.file;
 
-    if (file) {
-        body.imgPath = file.filename;
-    }
-    // include this else, if image required
-    else {
-        return res.status(422).json({
-            message: req.imageError || "Image not uploaded!"
-        });
-    }
+    // will attempt to fix image edit at another point
+    // let body = req.body;
+    // let file = req.file;
+
+    // if (file) {
+    //     body.imgPath = file.filename;
+    // }
+    // // include this else, if image required
+    // else {
+    //     return res.status(422).json({
+    //         message: req.imageError || "Image not uploaded!"
+    //     });
+    // }
 
     User.findOneAndUpdate({ 'documents._id': id }, {
         $set: {
