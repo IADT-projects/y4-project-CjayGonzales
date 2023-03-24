@@ -54,7 +54,6 @@ const CreateDocument = (props) => {
         let userID = localStorage.getItem('userID');
 
 
-
         e.preventDefault();
         const formData = new FormData();
         formData.append('image', newImg);
