@@ -13,13 +13,13 @@ const TextEditorPage = (props) => {
         axios.get(`/document/${props.userID}`)
             // axios.get('/document')
             .then((response) => {
-                // console.log(response.data);
+                console.log(response.data);
                 setDocument(response.data);
             })
             .catch((err) => {
                 console.error(err);
             });
-    });
+    }, [props.userID]);
 
 
     if (!documents) return 'Loading...';
