@@ -42,7 +42,6 @@ const LoginForm = (props) => {
 
 
     const submitForm = () => {
-
         if (!isRequired(['email', 'password'])) {
             axios.post('/users/login', {
                 email: form.email,

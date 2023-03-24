@@ -75,6 +75,7 @@ const updateUser = (req, res) => {
 
     let id = req.params.id;
     let body = req.body;
+    body.password = bcrypt.hashSync(req.body.password, 10)
 
     User.findByIdAndUpdate(id, body, {
         new: true

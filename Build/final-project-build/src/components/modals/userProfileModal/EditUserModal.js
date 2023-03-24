@@ -132,6 +132,16 @@ const EditUser = (props) => {
                             value={form.name}
                             fullWidth
                         />
+                        <h3>Enter New Password</h3>
+                        <textarea
+                            label="password"
+                            name="password"
+                            onChange={handleForm}
+                            error={errors.password}
+                            helperText={errors.password?.message}
+                            value={form.password}
+                            fullWidth
+                        />
                         <div className='modal-footer' style={modalFooter}>
 
                             {/* resource recieved from here */}
