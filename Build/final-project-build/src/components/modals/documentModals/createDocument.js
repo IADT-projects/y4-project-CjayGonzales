@@ -8,9 +8,7 @@ const CreateDocument = (props) => {
     const [form, setForm] = useState({
         title: "",
     });
-    const [newImg, setImg] = useState({
-        imgPath: ""
-    });
+    const [newImg, setNewImg] = useState(null);
 
     const handleForm = (e) => {
         let name = e.target.name
@@ -23,7 +21,9 @@ const CreateDocument = (props) => {
     };
 
     const handleImg = (e) => {
-        setImg({ ...newImg, imgPath: e.target.files[0] });
+        // takes the image file and sets it to "imgPath"
+        setNewImg(e.target.files[0]);
+        console.log("Image: " + e.target.files[0])
     }
 
     const isRequired = (fields) => {
@@ -55,16 +55,15 @@ const CreateDocument = (props) => {
 
         e.preventDefault();
         const formData = new FormData();
-        formData.append('imgPath', newImg.imgPath);
+        formData.append('image', newImg);
         formData.append('title', form.title)
 
-        // console.log()
-        console.log(formData)
+        console.log("console logged" + newImg);
 
         axios.post(`/document/${userID}`, formData, {
             headers: {
-                "Authorization": `Bearer ${token}`,
-                "Content-Type": "multipart/form-data"
+                "Content-Type": "multipart/form-data",
+                "Authorization": `Bearer ${token}`
             }
         })
             .then(response => {
@@ -97,7 +96,7 @@ const CreateDocument = (props) => {
                     name="imgPath"
                     onChange={handleImg}
                     error={errors.imgPath}
-                    // value={form.imgPath}
+                    // value={newImg.imgPath}
                     helperText={errors.imgPath?.message}
                     fullWidth
                 />
