@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import EditUser from './modals/userProfileModal/EditUserModal'
 
 const Navbar = (props) => {
 
+    const [show, setShow] = useState(false)
     const navigate = useNavigate;
+    const userID = props.userID;
 
     const logout = () => {
         props.onAuthenticated(false);
@@ -11,7 +14,6 @@ const Navbar = (props) => {
     };
 
     return (
-
         <div>
 
             <Link to='/'>
@@ -30,14 +32,12 @@ const Navbar = (props) => {
                 Login
             </Link>
             |
-            {/* <Link to='/select-document'>
-                Select-document
-            </Link> */}
-
-
-            <Link to={`/select-document/${props.userID}`}>
+            <Link to={`/select-document/${userID}`}>
                 Select-document
             </Link>
+
+            <button onClick={() => setShow(true)}>Edit User</button>
+            <EditUser show={show} userID={userID} />
 
             {(props.authenticated) ? (
                 <button onClick={logout}>Logout</button>
@@ -50,7 +50,6 @@ const Navbar = (props) => {
                         Login
                     </button>
                 </>
-
             )}
 
 

@@ -49,7 +49,10 @@ const CreateDocument = (props) => {
         let token = localStorage.getItem('token');
         let userID = localStorage.getItem('userID');
 
-        // creates a multipart request
+        // creates a multipart request : https://arosh-segar.medium.com/how-to-upload-images-using-multer-in-the-mern-stack-1c6bf691947e
+        // https://maximorlov.com/fix-unexpected-field-error-multer/#:~:text=When%20you%20configure%20multer%20to,('photos%5B%5D')%20.
+        // https://stackoverflow.com/questions/31530200/node-multer-unexpected-field
+
         e.preventDefault();
         const formData = new FormData();
         formData.append('imgPath', newImg.imgPath);

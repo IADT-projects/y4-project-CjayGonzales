@@ -50,7 +50,6 @@ else {
     });
 };
 
-
 // from multer s-3. We pass in details (region, credentials etc.) in an object
 const fileFilter = (req, file, cb) => {
 
