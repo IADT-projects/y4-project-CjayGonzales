@@ -16,106 +16,87 @@ import MailIcon from '@mui/icons-material/Mail';
 
 const Navbar = (props) => {
 
-    const [show, setShow] = useState(false)
-    const navigate = useNavigate;
-    const userID = props.userID;
+   const [show, setShow] = useState(false)
+   const navigate = useNavigate;
+   const userID = props.userID;
 
-    const logout = () => {
-        props.onAuthenticated(false);
-        navigate('/');
-    };
+   const logout = () => {
+      props.onAuthenticated(false);
+      navigate('/');
+   };
 
-    // MUI navbar drawer
-    const [state, setState] = React.useState({
-        top: false,
-        left: false,
-        bottom: false,
-        right: false,
-    });
+   // MUI navbar drawer
+   const [state, setState] = React.useState({
+      top: false,
+      left: false,
+      bottom: false,
+      right: false,
+   });
 
-    const toggleDrawer = (anchor, open) => (event) => {
-        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-            return;
-        }
+   const toggleDrawer = (anchor, open) => (event) => {
+      if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+         return;
+      }
+      setState({ ...state, [anchor]: open });
+   };
 
-        setState({ ...state, [anchor]: open });
-    };
+   const list = (anchor) => (
+      <Box
+         sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+         role="presentation"
+         onClick={toggleDrawer(anchor, false)}
+         onKeyDown={toggleDrawer(anchor, false)}
+      >
+         <List>
+            {[<Link to='/'>Home</Link>,
+            <Link to='/ocr'>OcrPrototype</Link>,
+            <Link to={`/select-document/${userID}`}>Select-document</Link>,
+            <button onClick={() => setShow(true)}>Edit User</button>,
+            (props.authenticated) ? (
+               <button onClick={logout}>Logout</button>
+            ) : (
+               <>
+                  <Link to='/register'>Register</Link>,
+                  <br></br>
+                  <Link to='/login'>Login</Link>,
+               </>
+            )
+            ].map((text, index) => (
+               <ListItem key={text} disablePadding>
+                  <ListItemButton>
+                     <ListItemIcon>
+                        {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                     </ListItemIcon>
+                     <ListItemText primary={text} />
+                  </ListItemButton>
+               </ListItem>
+            ))}
+         </List>
+         <Divider />
 
-    const list = (anchor) => (
-        <Box
-            sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
-            role="presentation"
-            onClick={toggleDrawer(anchor, false)}
-            onKeyDown={toggleDrawer(anchor, false)}
-        >
-            <List>
-                {[<Link to='/'>
-                    Home
-                </Link>,
-                <Link to='/ocr'>
-                    OcrPrototype
-                </Link>,
-                <Link to='/register'>
-                    Register
-                </Link>,
+      </Box>
+   );
 
-                <Link to='/login'>
-                    Login
-                </Link>,
+   return (
+      <div>
+         <div>
+            {['left'].map((anchor) => (
+               <React.Fragment key={anchor}>
+                  <Button onClick={toggleDrawer(anchor, true)}>LOGO</Button>
+                  <Drawer
+                     anchor={anchor}
+                     open={state[anchor]}
+                     onClose={toggleDrawer(anchor, false)}
+                  >
+                     {list(anchor)}
+                  </Drawer>
+               </React.Fragment>
+            ))}
+            <EditUser show={show} userID={userID} />
+         </div>
 
-                <Link to={`/select-document/${userID}`}>
-                    Select-document
-                </Link>,
-                <button onClick={() => setShow(true)}>Edit User</button>,
-
-                (props.authenticated) ? (
-                    <button onClick={logout}>Logout</button>
-                ) : (
-                    <>
-
-                    </>
-                )
-
-
-                ].map((text, index) => (
-                    <ListItem key={text} disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItemButton>
-                    </ListItem>
-                ))}
-            </List>
-            <Divider />
-
-        </Box>
-    );
-
-    return (
-        <div>
-            <div>
-                {['left'].map((anchor) => (
-                    <React.Fragment key={anchor}>
-                        <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
-                        <Drawer
-                            anchor={anchor}
-                            open={state[anchor]}
-                            onClose={toggleDrawer(anchor, false)}
-                        >
-                            {list(anchor)}
-                        </Drawer>
-                    </React.Fragment>
-                ))}
-                <EditUser show={show} userID={userID} />
-            </div>
-
-
-
-
-        </div>
-    );
+      </div>
+   );
 };
 
 export default Navbar;

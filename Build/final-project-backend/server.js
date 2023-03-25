@@ -47,6 +47,7 @@ app.use((req, res, next) => {
 // ----------------PATHS------------------
 app.use('/api/users', require('./routes/users'));
 app.use('/api/document', require('./routes/document'));
+app.use('/api/ocr', require('./routes/ocr'));
 app.use('/api/folder', require('./routes/folder'));
 require('./services/document_service')(io);
 

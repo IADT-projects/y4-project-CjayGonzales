@@ -2,18 +2,24 @@ const { Schema, model } = require('mongoose');
 const bcrypt = require('bcryptjs');
 
 const Document = new Schema({
-
     title: {
-        type: String,
+        type: String
     },
-
     imgPath: {
         type: String
     },
-
     data: Object
-})
+});
 
+const Ocr = new Schema({
+    result: {
+        type: String
+    },
+    imgPath: {
+        type: String
+    },
+    data: Object
+});
 
 const userSchema = Schema(
     {
@@ -35,6 +41,10 @@ const userSchema = Schema(
 
         documents: [
             Document
+        ],
+
+        ocrs: [
+            Ocr
         ]
     },
     { timestamps: true }
