@@ -68,7 +68,7 @@ export default NavBar2;
 
 // V2
 
-import "./App.css";
+import "./NavStyles.css";
 
 const NavBar2 = () => {
     const [showNav, setShowNav] = useState(false);
@@ -78,27 +78,23 @@ const NavBar2 = () => {
     };
 
     return (
-        <div className="App">
-            <button className="open-nav-button" onClick={toggleNav}>
+        <div className="side-nav-app">
+            <button className="open-side-nav-button" onClick={toggleNav}>
                 Open Nav
             </button>
-            <div className={`nav-overlay ${showNav ? "show" : ""}`} onClick={toggleNav}></div>
-            <div className={`nav-wrapper ${showNav ? "show" : ""}`}>
-                <button className="close-nav-button" onClick={toggleNav}>
+            <div className={`side-nav-overlay ${showNav ? "show" : ""}`} onClick={toggleNav}></div>
+            <div className={`side-nav-wrapper ${showNav ? "show" : ""}`}>
+                <button className="close-side-nav-button" onClick={toggleNav}>
                     Close Nav
                 </button>
-                <nav>
-                    <ul>
-                        <li>Item 1</li>
-                        <li>Item 2</li>
-                        <li>Item 3</li>
+                <nav className='side-nav'>
+                    <ul className="side-nav-ul">
+                        <li className='side-nav-li'>Item 1</li>
+                        <li className='side-nav-li'>Item 2</li>
+                        <li className='side-nav-li'>Item 3</li>
                     </ul>
                 </nav>
             </div>
-            <main>
-                <h1>Main Content</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod arcu sed velit finibus, id vestibulum odio iaculis.</p>
-            </main>
         </div>
     );
 }

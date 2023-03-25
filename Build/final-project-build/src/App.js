@@ -17,6 +17,7 @@ import CreateDocument from './components/modals/documentModals/CreateDocument';
 
 const App = () => {
 
+  const [showNav, setShowNav] = useState(false);
   const [authenticated, setAuthenticated] = useState(false);
   let protectedPaths;
 
@@ -25,6 +26,10 @@ const App = () => {
       setAuthenticated(true);
     }
   }, []);
+
+  const toggleNav = () => {
+    setShowNav(!showNav);
+  };
 
   //Used to change the state from true or false / Also stores my token
   const onAuthenticated = (auth, token, userID) => {

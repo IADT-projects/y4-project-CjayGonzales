@@ -1,17 +1,17 @@
-.App {
+.side-nav-app {
   position: relative;
   height: 100vh;
   overflow-x: hidden;
 }
 
-.open-nav-button {
+.open-side-nav-button {
   position: absolute;
   top: 20px;
   left: 20px;
   z-index: 9999;
 }
 
-.nav-overlay {
+.side-nav-overlay {
   position: fixed;
   left: 0;
   top: 0;
@@ -28,7 +28,7 @@
   pointer-events: auto;
 }
 
-.nav-wrapper {
+.side-nav-wrapper {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -39,33 +39,33 @@
   transition: transform 0.3s ease-in-out;
 }
 
-.nav-wrapper.show {
+.side-nav-wrapper.show {
   transform: translateX(250px);
 }
 
-.close-nav-button {
+.close-side-nav-button {
   position: absolute;
   top: 20px;
   right: 20px;
   z-index: 9999;
 }
 
-nav {
+.side-nav {
   margin-top: 50px;
 }
 
-nav ul {
+.side-nav-ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-nav li {
+.side-nav-li {
   padding: 10px;
   border-bottom: 1px solid #ccc;
 }
 
-main {
+.my-main {
   padding: 20px;
   margin-left: 250px;
 }

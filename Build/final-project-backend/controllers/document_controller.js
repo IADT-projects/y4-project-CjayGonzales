@@ -267,6 +267,7 @@ const updateData = (req, res) => {
     let id = req.params.id;
 
     // will attempt to fix image edit at another point
+
     // let body = req.body;
     // let file = req.file;
 
