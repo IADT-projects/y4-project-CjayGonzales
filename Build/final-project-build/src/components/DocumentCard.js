@@ -18,7 +18,7 @@ const DocumentCard = (props) => {
             <div className="card-body">
                 {/* <h5 >{ID}</h5> */}
                 <h5 >{title}</h5>
-                <img src={`${STATIC_FILES_URL}${imgPath}`} width="150" height="200"></img>
+                <img src={`${STATIC_FILES_URL}${imgPath}`} alt="Document" width="150" height="200"></img>
 
                 <button onClick={() => setShow(true)}>Edit</button>
                 <EditDocument show={show} documentID={documentID} />

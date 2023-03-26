@@ -14,7 +14,7 @@ const OcrCard = (props) => {
             <div className="card-body">
                 {/* <h5 >{ID}</h5> */}
                 <h5 >{result}</h5>
-                <img src={`${STATIC_FILES_URL}${imgPath}`} width="500" height="600"></img>
+                <img src={`${STATIC_FILES_URL}${imgPath}`} alt="Ocr" width="500" height="600"></img>
             </div>
         </div>
     );
