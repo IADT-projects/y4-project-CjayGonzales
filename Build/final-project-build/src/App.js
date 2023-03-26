@@ -10,12 +10,14 @@ import PageNotFound from './pages/PageNotFound';
 import OcrReaderPage from './pages/ocrPages/OcrReaderPage';
 import ViewAllOcrPage from './pages/ocrPages/ViewAllOcrPage';
 import TextEditorPage from './pages/TextEditorPage';
-import CreateFolderComponent from './components/foldersComponent/createFolderComponent'
+import FoldersIndex from './pages/folderPages/folderIndex';
+import ViewSingleFolder from './components/foldersComponent/viewSingleFolder'
+
 //importing components
 import NavBar from './components/NavBar'
 import TextEditor from './components/TextEditor';
 import CreateDocument from './components/modals/documentModals/CreateDocument';
-import FoldersIndex from './pages/folderPages/folderIndex';
+import CreateFolderComponent from './components/foldersComponent/createFolderComponent'
 
 const App = () => {
 
@@ -60,6 +62,7 @@ const App = () => {
 
         <Route path={`/folder/${userID}`} element={<FoldersIndex userID={userID} />} />
         <Route path={`/create_folder`} element={<CreateFolderComponent userID={userID} />} />
+        <Route path={`/view_folder/:userId/:folderId`} element={<ViewSingleFolder userID={userID} />} />
 
         <Route path="/documents" element={<Navigate to={`/documents/${uuidV4()}`} />} />
         <Route path="/create-document" element={<CreateDocument />} />

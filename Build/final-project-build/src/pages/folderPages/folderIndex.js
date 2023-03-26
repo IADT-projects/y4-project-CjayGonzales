@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from '../../config/index';
 import ErrorBoundry from "../../components/ErrorBoundry"
+import FolderCard from '../../components/foldersComponent/viewFoldersCard';
 
 const FolderIndexPage = (props) => {
 
@@ -29,9 +30,9 @@ const FolderIndexPage = (props) => {
         setFolders(foldersNew);
     };
 
-    // const foldersList = folders.map((folder) => {
-    //     return <FolderCard key={folder._id} folder={folder} callback={deleteCallback} />;
-    // });
+    const foldersList = folders.map((folder) => {
+        return <FolderCard key={folder._id} folder={folder} callback={deleteCallback} />;
+    });
 
 
     return (
@@ -46,7 +47,7 @@ const FolderIndexPage = (props) => {
             <h1>Display Folders</h1>
             <ErrorBoundry>
 
-                {/* {foldersList} */}
+                {foldersList}
 
             </ErrorBoundry>
         </>
