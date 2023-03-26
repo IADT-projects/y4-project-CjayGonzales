@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import EditDocument from "./modals/documentModals/EditDocument";
 import DeleteBtn from "./modals/documentModals/DeleteDocument";
 
-function DocumentCard(props) {
+const DocumentCard = (props) => {
     const documentID = props.document._id
     // creating an ID and returning it as html. the user is able to access the file through an ID link
     // let ID = <p><b></b><Link to={`/documents/${props.document._id}`}>{props.document._id}</Link></p>

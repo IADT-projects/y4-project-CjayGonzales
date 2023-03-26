@@ -1,12 +1,21 @@
 import { useEffect, useRef, useState } from "react";
 import { Box, Button, CircularProgress, Grid, TextField, Typography } from "@mui/material";
 import { createWorker } from "tesseract.js";
+import axios from '../../config/index';
+import { useNavigate } from 'react-router-dom';
 
 const OcrReader = () => {
    const [imageData, setImageData] = useState(null);
+   const [imgPath, setImagePath] = useState(null);
+
+   const navigate = useNavigate();
 
    // storing a string and encoding a file to put into that string
    const loadFile = (file) => {
+
+      // img path is set to store the image itself in the backend
+      setImagePath(file);
+
       const reader = new FileReader();
       reader.onloadend = () => {
          const imageDataUri = reader.result;
@@ -37,6 +46,7 @@ const OcrReader = () => {
       };
    }, []);
 
+   // extracts the ocr files
    const handleExtract = async () => {
       setProgress(0);
       setProgressLabel("starting");
@@ -51,22 +61,59 @@ const OcrReader = () => {
       console.log(response.data);
    };
 
+   const submitForm = (e) => {
+      let token = localStorage.getItem('token');
+      let userID = localStorage.getItem('userID');
+
+      e.preventDefault();
+
+      console.log(imgPath);
+      console.log(ocrResult);
+
+      const formData = new FormData();
+      formData.append('image', imgPath);
+      formData.append('result', ocrResult);
+
+      axios.post(`/ocr/${userID}`, formData, {
+         headers: {
+            "Content-Type": "multipart/form-data",
+            "Authorization": `Bearer ${token}`
+         }
+      })
+         .then(response => {
+            console.log(response.data);
+            navigate(`/saved_ocr_files/${userID}`);
+         })
+         .catch(err => {
+            console.error(err);
+            console.log(err.response.data);
+         });
+   };
+
+
+
    return (
       <Box sx={{ padding: "10px" }}>
          <Grid container spacing={2}>
+
+            {/* Image Posting */}
             <Grid item xs={12}>
                <input type="file" accept="image/*" onChange={(e) => loadFile(e.target.files[0])} />
                {!!imageData && <img src={imageData} style={{ width: "100%" }} alt="Selected Image" />}
             </Grid>
 
+            {/* Extraction*/}
             <Grid item xs={12}>
                <Button disabled={!imageData || !workerRef.current} onClick={handleExtract} variant="contained">
                   Extract
                </Button>
+
+               {/* Setting Progress */}
                <Typography sx={{ marginTop: "10px", textTransform: "uppercase" }}>{progressLabel}</Typography>
                <CircularProgress variant="determinate" value={progress * 100} />
             </Grid>
 
+            {/* Checking if there is a result and returning if one is available */}
             {!!ocrResult && (
                <Grid item xs={12}>
                   <Typography variant="h6">RESULT</Typography>
@@ -82,6 +129,7 @@ const OcrReader = () => {
                   </Typography>
                </Grid>
             )}
+            <button onClick={submitForm}>Save Result</button>
          </Grid>
       </Box>
    );

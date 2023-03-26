@@ -7,9 +7,9 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import PageNotFound from './pages/PageNotFound';
-import OcrReaderPage from './pages/OcrReaderPage';
+import OcrReaderPage from './pages/ocrPages/OcrReaderPage';
+import ViewAllOcrPage from './pages/ocrPages/ViewAllOcrPage';
 import TextEditorPage from './pages/TextEditorPage';
-
 //importing components
 import NavBar from './components/NavBar'
 import TextEditor from './components/TextEditor';
@@ -54,6 +54,7 @@ const App = () => {
     protectedPaths = (
       <>
         <Route path={`/select-document/${userID}`} element={<TextEditorPage userID={userID} />} />
+        <Route path={`/saved_ocr_files/${userID}`} element={<ViewAllOcrPage userID={userID} />} />
         <Route path="/documents" element={<Navigate to={`/documents/${uuidV4()}`} />} />
         <Route path="/create-document" element={<CreateDocument />} />
         <Route path="/documents/:id" element={<TextEditor />} />
