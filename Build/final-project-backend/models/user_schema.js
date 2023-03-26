@@ -11,6 +11,20 @@ const Document = new Schema({
     data: Object
 });
 
+const Folder = new Schema({
+
+    folderTitle: {
+        type: String
+    },
+    imgPath: {
+        type: String
+    },
+    documents: [
+        Document
+    ],
+
+});
+
 const Ocr = new Schema({
     result: {
         type: String
@@ -38,11 +52,9 @@ const userSchema = Schema(
             type: String,
             required: [true, 'Password Field is Required'],
         },
-
-        documents: [
-            Document
+        folders: [
+            Folder
         ],
-
         ocrs: [
             Ocr
         ]

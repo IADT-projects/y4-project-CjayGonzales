@@ -13,10 +13,10 @@ const {
 
 // takes the function from the controller in the document_controller files
 
-router.get('/:userId', readData);
-router.get('/:userId/:id', readOne);
-router.post('/:userId', imageUpload.single('image'), createData);
-router.put('/:id', imageUpload.single('image'), updateData);
-router.delete('/:userId/:id', deleteData);
+router.get('/:userId/:folderId', readData);
+router.get('/:userId/:folderId/:documentId', readOne);
+router.post('/:userId/:folderId', imageUpload.single('image'), createData);
+router.put('/:userId/:folderId/:documentId', imageUpload.single('image'), updateData);
+router.delete('/:userId/:folderId/:documentId', deleteData);
 
 module.exports = router;
