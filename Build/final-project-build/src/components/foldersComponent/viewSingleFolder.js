@@ -7,14 +7,15 @@ import DocumentCard from '../DocumentCard';
 const ViewSingleFolder = (props) => {
 
     console.log(props.userID)
+    console.log("folder Id here: " + props.folderId)
     // console.log("single folder ID: " + props.folderId)
 
-    const folderId = '642067f1df76a4968b3542fe';
+    // const folderId = '642067f1df76a4968b3542fe';
 
     const [documents, setDocument] = useState(null);
 
     useEffect(() => {
-        axios.get(`/folder/${props.userID}/${folderId}`)
+        axios.get(`/folder/${props.userID}/${props.folderId}`)
             // axios.get('/document')
             .then((response) => {
                 console.log(response.data[0].documents);
