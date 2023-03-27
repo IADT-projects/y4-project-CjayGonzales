@@ -30,8 +30,10 @@ const FolderIndexPage = (props) => {
         setFolders(foldersNew);
     };
 
+    // maps the folders list for each folder card
     const foldersList = folders.map((folder) => {
         return <FolderCard key={folder._id} folder={folder} callback={deleteCallback} />;
+
     });
 
 

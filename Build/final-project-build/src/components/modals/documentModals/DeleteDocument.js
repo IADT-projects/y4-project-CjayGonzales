@@ -4,9 +4,12 @@ import axios from "../../../config/index";
 const DeleteBtn = (props) => {
     const userID = localStorage.getItem('userID')
 
+    // temporary folder id
+    const folderId = '642067f1df76a4968b3542fe'
+
     const onDelete = () => {
         let token = localStorage.getItem('token');
-        axios.delete(`/${props.resource}/${userID}/${props.id}`, {
+        axios.delete(`/${props.resource}/${userID}/${folderId}/${props.id}`, {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
