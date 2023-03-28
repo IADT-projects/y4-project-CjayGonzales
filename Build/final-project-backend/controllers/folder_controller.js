@@ -41,6 +41,10 @@ const deleteImage = async (filename) => {
 };
 
 const readData = (req, res) => {
+
+    // console.log(req.user);
+
+
     User.findById(req.params.userId)
         .then((data) => {
             if (data) {

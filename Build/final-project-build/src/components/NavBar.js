@@ -51,7 +51,7 @@ const Navbar = (props) => {
                 {[<Link to='/'>Home</Link>,
                 <Link to='/ocr'>Ocr Reader</Link>,
                 <Link to={`/saved_ocr_files/${userID}`}>View Ocr Files</Link>,
-                <Link to={`/select-document/${userID}`}>Select-document</Link>,
+                // <Link to={`/select-document/${userID}`}>Select-document</Link>,
                 <Link to={`/folder/${userID}`}>Select Folder</Link>,
                 <button onClick={() => setShow(true)}>Edit User</button>,
                 (props.authenticated) ? (

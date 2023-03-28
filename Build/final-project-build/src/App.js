@@ -60,7 +60,7 @@ const App = () => {
         <Route path={`/select-document/${userID}`} element={<TextEditorPage userID={userID} />} />
         <Route path={`/saved_ocr_files/${userID}`} element={<ViewAllOcrPage userID={userID} />} />
 
-        <Route path={`/folder/${userID}`} element={<FoldersIndex userID={userID} />} />
+        <Route path={`/folder/:userId`} element={<FoldersIndex userID={userID} />} />
         <Route path={`/create_folder`} element={<CreateFolderComponent userID={userID} />} />
         <Route path={`/view_folder/:userId/:folderId`} element={<ViewSingleFolder userID={userID} />} />
 

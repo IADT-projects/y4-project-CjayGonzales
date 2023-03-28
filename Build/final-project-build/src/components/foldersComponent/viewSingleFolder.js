@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from '../../config/index';
 import ErrorBoundry from "../../components/ErrorBoundry"
@@ -6,16 +6,21 @@ import DocumentCard from '../DocumentCard';
 
 const ViewSingleFolder = (props) => {
 
-    console.log(props.userID)
-    // console.log("folder Id here: " + props.folder._id)
-    console.log("single folder ID: " + props.folderId)
+    // to pick up parameters from the links => useParams
+    const { userId, folderId } = useParams();
 
-    const folderID = '642067f1df76a4968b3542fe';
+
+
+    console.log(userId)
+    // console.log("folder Id here: " + props.folder._id)
+    console.log("single folder ID: " + folderId)
+
+    // const folderID = '642067f1df76a4968b3542fe';
 
     const [documents, setDocument] = useState(null);
 
     useEffect(() => {
-        axios.get(`/folder/${props.userID}/${folderID}`)
+        axios.get(`/folder/${userId}/${folderId}`)
             // axios.get('/document')
             .then((response) => {
                 console.log(response.data[0].documents);
@@ -24,7 +29,7 @@ const ViewSingleFolder = (props) => {
             .catch((err) => {
                 console.error(err);
             });
-    }, [props.userID]);
+    }, [userId, folderId]);
 
 
     if (!documents) return 'Loading...';

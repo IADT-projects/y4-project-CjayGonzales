@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from '../../config/index';
 import ErrorBoundry from "../../components/ErrorBoundry"
@@ -6,11 +6,13 @@ import FolderCard from '../../components/foldersComponent/viewFoldersCard';
 
 const FolderIndexPage = (props) => {
 
+    const { userId } = useParams();
+
     // gets all folders
     const [folders, setFolders] = useState(null);
 
     useEffect(() => {
-        axios.get(`/folder/${props.userID}`)
+        axios.get(`/folder/${userId}`)
             // axios.get('/document')
             .then((response) => {
                 setFolders(response.data);
@@ -18,7 +20,7 @@ const FolderIndexPage = (props) => {
             .catch((err) => {
                 console.error(err);
             });
-    }, [props.userID]);
+    }, [userId]);
 
 
     if (!folders) return 'Loading...';
