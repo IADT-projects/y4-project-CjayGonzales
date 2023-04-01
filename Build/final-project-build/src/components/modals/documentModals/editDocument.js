@@ -43,6 +43,8 @@ const EditDocument = (props) => {
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
     const documentID = props.documentID;
+    const { folderId } = useParams();
+
 
     const handleForm = (e) => {
         let name = e.target.name;
@@ -76,17 +78,18 @@ const EditDocument = (props) => {
         if (!isRequired(['title'])) {
             let token = localStorage.getItem('token');
             let userID = localStorage.getItem('userID');
+            console.log("Document ID: " + documentID)
 
             // first {} is data second {} is config, this is what is being past through first after we send the post
             // Req body, headers, endpoit are being passed through
-            axios.put(`/document/${documentID}`, form, {
+            axios.put(`/document/${userID}/${folderId}/${documentID}`, form, {
                 headers: {
                     "Authorization": `Bearer ${token}`
                 }
             })
                 .then(response => {
                     console.log(response.data);
-                    navigate(`/select-document/${userID}`);
+                    navigate(`/view_folder/${userID}/${folderId}`);
                 })
                 .catch(err => {
                     console.error(err);
