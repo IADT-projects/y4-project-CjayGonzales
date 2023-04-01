@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 // import EditDocument from "./modals/documentModals/EditDocument";
 // import DeleteBtn from "./modals/documentModals/DeleteDocument";
-import ViewSingleFolder from "./viewSingleFolder";
+import EditFolder from "./editFolderComponent";
 
 const ViewFolderCard = (props) => {
 
@@ -26,6 +26,11 @@ const ViewFolderCard = (props) => {
                 {/* <h5 >{ID}</h5> */}
                 <h5>{title}</h5>
                 <img src={`${STATIC_FILES_URL}${imgPath}`} alt="Document" width="150" height="200"></img>
+
+
+                <button onClick={() => setShow(true)}>Edit</button>
+                <EditFolder show={show} folderId={folderId} />
+
 
             </div>
         </div>
