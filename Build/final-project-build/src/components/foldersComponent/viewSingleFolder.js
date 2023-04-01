@@ -9,12 +9,6 @@ const ViewSingleFolder = (props) => {
     // to pick up parameters from the links => useParams
     const { userId, folderId } = useParams();
 
-
-
-    console.log(userId)
-    // console.log("folder Id here: " + props.folder._id)
-    console.log("single folder ID: " + folderId)
-
     // const folderID = '642067f1df76a4968b3542fe';
 
     const [documents, setDocument] = useState(null);
@@ -48,6 +42,9 @@ const ViewSingleFolder = (props) => {
     return (
 
         <>
+            <h1>Create Document</h1>
+            <Link to={`/create-document/${folderId}`}>Create Document</Link>
+
             <h1>View All Documents</h1>
             <ErrorBoundry>
                 {documentsList}

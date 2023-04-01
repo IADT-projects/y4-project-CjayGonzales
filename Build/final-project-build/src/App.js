@@ -65,7 +65,7 @@ const App = () => {
         <Route path={`/view_folder/:userId/:folderId`} element={<ViewSingleFolder userID={userID} />} />
 
         <Route path="/documents" element={<Navigate to={`/documents/${uuidV4()}`} />} />
-        <Route path="/create-document" element={<CreateDocument />} />
+        <Route path="/create-document/:folderId" element={<CreateDocument />} />
         <Route path="/documents/:id" element={<TextEditor />} />
       </>
     )

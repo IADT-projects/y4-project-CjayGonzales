@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import axios from '../../../config';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+
 
 const CreateDocument = (props) => {
     const [errors, setErrors] = useState({});
+    const { userId, folderId } = useParams();
+
     const navigate = useNavigate();
     const [form, setForm] = useState({
         title: "",
@@ -60,7 +63,7 @@ const CreateDocument = (props) => {
 
         console.log("console logged" + newImg);
 
-        axios.post(`/document/${userID}`, formData, {
+        axios.post(`/document/${userID}/${folderId}`, formData, {
             headers: {
                 "Content-Type": "multipart/form-data",
                 "Authorization": `Bearer ${token}`
@@ -68,7 +71,7 @@ const CreateDocument = (props) => {
         })
             .then(response => {
                 console.log(response.data);
-                navigate(`/select-document/${userID}`);
+                navigate(`/view_folder/${userID}/${folderId}`);
             })
             .catch(err => {
                 console.error(err);
