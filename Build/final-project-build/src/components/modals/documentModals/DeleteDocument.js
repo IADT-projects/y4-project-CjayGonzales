@@ -1,11 +1,11 @@
 
 // importing the url and axios from config/index file
 import axios from "../../../config/index";
+import { useParams } from 'react-router-dom'
+
 const DeleteBtn = (props) => {
     const userID = localStorage.getItem('userID')
-
-    // temporary folder id
-    const folderId = '642067f1df76a4968b3542fe'
+    const { folderId } = useParams();
 
     const onDelete = () => {
         let token = localStorage.getItem('token');

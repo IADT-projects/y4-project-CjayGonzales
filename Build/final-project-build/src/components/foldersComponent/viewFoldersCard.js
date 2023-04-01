@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 // import EditDocument from "./modals/documentModals/EditDocument";
 // import DeleteBtn from "./modals/documentModals/DeleteDocument";
 import EditFolder from "./editFolderComponent";
-
+import DeleteFolder from "./deleteFolderComponent";
 const ViewFolderCard = (props) => {
 
     const folderId = props.folder._id;
@@ -30,7 +30,7 @@ const ViewFolderCard = (props) => {
 
                 <button onClick={() => setShow(true)}>Edit</button>
                 <EditFolder show={show} folderId={folderId} />
-
+                <DeleteFolder id={props.folder._id} callback={props.callback} />
 
             </div>
         </div>
