@@ -13,8 +13,7 @@ const OcrReader = () => {
    // storing a string and encoding a file to put into that string
    const loadFile = (file) => {
 
-      // img path is set to store the image itself in the backend
-      setImagePath(file);
+      setImagePath(file); // img path is set to store the image itself in the backend
 
       const reader = new FileReader();
       reader.onloadend = () => {
@@ -30,6 +29,7 @@ const OcrReader = () => {
    const [ocrResult, setOcrResult] = useState("");
 
    const workerRef = useRef(null);
+
    useEffect(() => {
       // creates worker from tesseract.js
       workerRef.current = createWorker({
