@@ -5,13 +5,11 @@ import ErrorBoundry from "../../components/ErrorBoundry"
 import DocumentCard from '../DocumentCard';
 
 const ViewSingleFolder = (props) => {
-
+    const STATIC_FILES_URL = 'https://final-project-bucket-v2.s3.eu-west-1.amazonaws.com/'
     // to pick up parameters from the links => useParams
     const { userId, folderId } = useParams();
-
-    // const folderID = '642067f1df76a4968b3542fe';
-
     const [documents, setDocument] = useState(null);
+    const [folderData, setFolderData] = useState(null);
 
     useEffect(() => {
         axios.get(`/folder/${userId}/${folderId}`)
@@ -19,12 +17,13 @@ const ViewSingleFolder = (props) => {
             .then((response) => {
                 console.log(response.data[0].documents);
                 setDocument(response.data[0].documents);
+                console.log(response.data[0]);
+                setFolderData(response.data[0]);
             })
             .catch((err) => {
                 console.error(err);
             });
     }, [userId, folderId]);
-
 
     if (!documents) return 'Loading...';
 
@@ -39,13 +38,16 @@ const ViewSingleFolder = (props) => {
         return <DocumentCard key={document._id} document={document} callback={deleteCallback} />;
     });
 
-    return (
+    const folderTitle = folderData.folderTitle;
+    const imgPath = folderData.imgPath;
 
+    return (
         <>
+            <img src={`${STATIC_FILES_URL}${imgPath}`} alt="Folder" width="150" height="200"></img>
+
             <h1>Create Document</h1>
             <Link to={`/create-document/${folderId}`}>Create Document</Link>
-
-            <h1>View All Documents</h1>
+            <h1>View {folderTitle}</h1>
             <ErrorBoundry>
                 {documentsList}
             </ErrorBoundry>

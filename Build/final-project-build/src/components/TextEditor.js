@@ -3,6 +3,8 @@ import Quill from "quill";                        // import quill
 import "quill/dist/quill.snow.css"                // import quill stylesheet
 import { io } from 'socket.io-client'             // import the client version of socket.io
 import { useParams } from 'react-router-dom';
+import axios from '../config/index';
+
 
 // These are all from Quill. It is the options for the text editor
 const SAVE_INTERVAL_MS = 2000;
@@ -19,10 +21,26 @@ const TOOLBAR_OPTIONS = [
 ]
 
 
-export default function TextEditor() {
+export default function TextEditor(props) {
     const { id: documentId } = useParams()            //renaming to document ID and accessing it from URL
     const [socket, setSocket] = useState()
     const [quill, setQuill] = useState()
+    const userID = localStorage.getItem('userID');
+    const { folderId } = useParams();
+    const [documentData, setDocument] = useState(null);
+
+    useEffect(() => {
+        axios.get(`/document/${userID}/${folderId}/${documentId}`)
+            // axios.get('/document')
+            .then((response) => {
+                console.log(response.data[0].folders.documents);
+                setDocument(response.data[0].folders.documents);
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+    }, [userID]);
+
 
 
     useEffect(() => {
@@ -35,7 +53,6 @@ export default function TextEditor() {
 
     // load document use effect
     useEffect(() => {
-
         if (socket == null || quill == null) return     // checks to see if socket or quill is null
         socket.once("load-document", document => {      // loads the document
             quill.setContents(document)                 // sets content to loaded document
@@ -90,15 +107,25 @@ export default function TextEditor() {
         wrapper.innerHTML = ""                          // sets inner HTML to an empty string
         const editor = document.createElement('div')    // creates "div"
         wrapper.append(editor)
-        const q = new Quill(editor, { theme: 'snow', modules: { toolbar: TOOLBAR_OPTIONS } })            // quill takes in an ID and a theme, and modules for the toolbar
+        const q = new Quill(editor, { theme: 'snow', modules: { toolbar: TOOLBAR_OPTIONS } })    // quill takes in an ID and a theme, and modules for the toolbar
         q.disable()
         q.setText("Loading...")
         setQuill(q)
     }, [])
 
-    return (
-        <div className="container" ref={wrapperRef} >
+    const imgPath = documentData.imgPath;
+    const documentTitle = documentData.title;
+    const STATIC_FILES_URL = 'https://final-project-bucket-v2.s3.eu-west-1.amazonaws.com/';
 
-        </div >
+    return (
+        <>
+            <img src={`${STATIC_FILES_URL}${imgPath}`} alt="Folder" width="150" height="200"></img>
+
+            <h1>{documentTitle}</h1>
+            <div className="container" ref={wrapperRef} >
+
+            </div >
+        </>
+
     )
 }

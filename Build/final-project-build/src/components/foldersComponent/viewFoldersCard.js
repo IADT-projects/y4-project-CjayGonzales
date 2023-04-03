@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
-// import EditDocument from "./modals/documentModals/EditDocument";
-// import DeleteBtn from "./modals/documentModals/DeleteDocument";
 import EditFolder from "./editFolderComponent";
 import DeleteFolder from "./deleteFolderComponent";
 const ViewFolderCard = (props) => {
@@ -11,12 +9,11 @@ const ViewFolderCard = (props) => {
 
     console.log("FOLDER ID : " + folderId)
     console.log("USER ID: " + userId)
+    let imgPath = props.folder.imgPath
 
     const STATIC_FILES_URL = 'https://final-project-bucket-v2.s3.eu-west-1.amazonaws.com/'
     // creating an ID and returning it as html. the user is able to access the file through an ID link
-    // let ID = <p><b></b><Link to={`/folders/${props.document._id}`}>{props.document._id}</Link></p>
     let title = <p><b>Folder Name: </b><Link to={`/view_folder/${userId}/${folderId}`}>{props.folder.folderTitle}</Link></p>
-    let imgPath = props.folder.imgPath
 
     const [show, setShow] = useState(false)
 
@@ -25,7 +22,7 @@ const ViewFolderCard = (props) => {
             <div className="card-body">
                 {/* <h5 >{ID}</h5> */}
                 <h5>{title}</h5>
-                <img src={`${STATIC_FILES_URL}${imgPath}`} alt="Document" width="150" height="200"></img>
+                <img src={`${STATIC_FILES_URL}${imgPath}`} alt="Folder" width="150" height="200"></img>
 
 
                 <button onClick={() => setShow(true)}>Edit</button>

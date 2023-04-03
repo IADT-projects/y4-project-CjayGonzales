@@ -66,7 +66,7 @@ const App = () => {
 
         <Route path="/documents" element={<Navigate to={`/documents/${uuidV4()}`} />} />
         <Route path="/create-document/:folderId" element={<CreateDocument />} />
-        <Route path="/documents/:id" element={<TextEditor />} />
+        <Route path="/documents/:folderId/:id" element={<TextEditor />} />
       </>
     )
   }
