@@ -29,6 +29,7 @@ export default function TextEditor(props) {
     const { folderId } = useParams();
     const [documentData, setDocument] = useState(null);
 
+    const STATIC_FILES_URL = 'https://final-project-bucket-v2.s3.eu-west-1.amazonaws.com/';
     useEffect(() => {
         axios.get(`/document/${userID}/${folderId}/${documentId}`)
             // axios.get('/document')
@@ -113,9 +114,10 @@ export default function TextEditor(props) {
         setQuill(q)
     }, [])
 
+
+    if (!documentData) return 'Loading...';
     const imgPath = documentData.imgPath;
     const documentTitle = documentData.title;
-    const STATIC_FILES_URL = 'https://final-project-bucket-v2.s3.eu-west-1.amazonaws.com/';
 
     return (
         <>
