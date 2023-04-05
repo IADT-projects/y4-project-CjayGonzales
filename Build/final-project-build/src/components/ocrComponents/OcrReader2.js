@@ -14,6 +14,8 @@ const OcrReader2 = () => {
     }
 
     const handleClick = () => {
+
+        // taking the canvas and applying the preprocessed image before running it through the OCR reader
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
 
