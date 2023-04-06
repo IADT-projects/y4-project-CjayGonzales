@@ -1,4 +1,5 @@
-import OcrReader from "../../components/ocrComponents/OcrReader2";
+// import OcrReader from "../../components/ocrComponents/OcrReader2";
+import OcrReader from "../../components/ocrComponents/OcrReader";
 
 const OcrReaderPage = (props) => {
     return (
