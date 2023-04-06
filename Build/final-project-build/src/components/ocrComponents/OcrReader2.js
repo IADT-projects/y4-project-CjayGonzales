@@ -3,6 +3,15 @@ import { useState, useRef } from 'react';
 import Tesseract from 'tesseract.js';
 import preprocessImage from './preprocess';
 
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////// THIS PAGE IS TO SIMPLY TEST THE OCR READER, NOT ACTUALLY USED IN FINAL CODE //////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
 const OcrReader2 = () => {
     const [image, setImage] = useState("");
     const [text, setText] = useState("");
@@ -15,10 +24,13 @@ const OcrReader2 = () => {
 
     const handleClick = () => {
 
-        // taking the canvas and applying the preprocessed image before running it through the OCR reader
+        // taking the canvas 
         const canvas = canvasRef.current;
+
+        console.log(canvasRef)
         const ctx = canvas.getContext('2d');
 
+        // applying the preprocessed image before running it through the OCR reader
         ctx.drawImage(imageRef.current, 0, 0);
         ctx.putImageData(preprocessImage(canvas), 0, 0);
         const dataUrl = canvas.toDataURL("image/jpeg");
@@ -52,7 +64,7 @@ const OcrReader2 = () => {
                     ref={imageRef}
                 />
                 <h3>Canvas</h3>
-                <canvas ref={canvasRef} width={700} height={250}></canvas>
+                <canvas ref={canvasRef} width={700} height={500}></canvas>
                 <h3>Extracted text</h3>
                 <div className="pin-box">
                     <p> {text} </p>
