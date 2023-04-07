@@ -75,9 +75,6 @@ input[type="reset"] {
     object-fit: cover;
 }
 
-
-
-
 .button-important {
     background: #FF5757;
     color: #FFFAED;
@@ -114,4 +111,23 @@ input[type="reset"] {
     border-color: #D9D9D9;
     border: 1px solid #D9D9D9;
     border-radius: 5px;
+}
+
+/* FOLDERS AND DOCUMENTS PAGE */
+
+.folder-card {
+    background: #FFFFFF;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.25);
+    width: 327px;
+    height: 228px;
+}
+
+.card-image {
+    width: 327px;
+    height: 193px;
+    object-fit: cover;
+}
+
+.card-title {
+    color: #323232;
 }

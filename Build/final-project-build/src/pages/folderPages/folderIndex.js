@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import axios from '../../config/index';
 import ErrorBoundry from "../../components/ErrorBoundry"
 import FolderCard from '../../components/foldersComponent/viewFoldersCard';
+import { Grid } from "@mui/material";
 
 const FolderIndexPage = (props) => {
 
@@ -50,8 +51,13 @@ const FolderIndexPage = (props) => {
 
             <h1>Display Folders</h1>
             <ErrorBoundry>
-
-                {foldersList}
+                <Grid
+                    container
+                    direction="row"
+                    justifyContent="flex-start"
+                    alignItems="center">
+                    {foldersList}
+                </Grid>
 
             </ErrorBoundry>
         </>
