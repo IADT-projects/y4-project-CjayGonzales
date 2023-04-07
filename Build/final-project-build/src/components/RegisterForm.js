@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import axios from '../config';
+import { Grid } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const RegisterForm = (props) => {
-
-
     const [errors, setErrors] = useState({});
     const [form, setForm] = useState({
         name: "",
@@ -67,47 +67,76 @@ const RegisterForm = (props) => {
 
     return (
         <>
-            <p>name</p>
-            <textarea
-                id="outlined-basic"
-                label="Name"
-                name="name"
-                onChange={handleForm}
-                variant="outlined"
-                error={errors.name}
-                helperText={errors.name?.message}
-                value={form.name}
-                fullWidth
-            />
-            <p>email</p>
-            <textarea
-                id="outlined-basic"
-                label="Email"
-                name="email"
-                onChange={handleForm}
-                variant="outlined"
-                error={errors.email}
-                helperText={errors.email?.message}
-                value={form.email}
-                fullWidth
-            />
-            <p>password</p>
-            <textarea
-                id="outlined-basic"
-                type="password"
-                label="Password"
-                name="password"
-                onChange={handleForm}
-                variant="outlined"
-                error={errors.password}
-                helperText={errors.password?.message}
-                value={form.password}
-                fullWidth
-            />
+            <Grid container md={12} justifyContent="center">
+
+                <div className='register-background' md={8}>
+                    <Grid>
+                        <h1>Sign Up</h1>
+                        <p>Already have an account?</p>
+                        <Link to='/login'>Log In</Link>
+                    </Grid>
+
+                    <Grid>
+                        <p>Name</p>
+                        <textarea
+                            id="outlined-basic"
+                            label="Name"
+                            name="name"
+                            onChange={handleForm}
+                            variant="outlined"
+                            error={errors.name}
+                            helperText={errors.name?.message}
+                            value={form.name}
+                            fullWidth
+                        />
+
+                    </Grid>
 
 
-            <button variant="outlined" onClick={submitForm}>Submit</button>
-            <p>{errorMessage}</p>
+
+                    <Grid>
+
+                        <p>Email</p>
+                        <textarea
+                            id="outlined-basic"
+                            label="Email"
+                            name="email"
+                            onChange={handleForm}
+                            variant="outlined"
+                            error={errors.email}
+                            helperText={errors.email?.message}
+                            value={form.email}
+                            fullWidth
+                        />
+
+                    </Grid>
+
+
+                    <Grid>
+                        <p>Password</p>
+                        <textarea
+                            id="outlined-basic"
+                            type="password"
+                            label="Password"
+                            name="password"
+                            onChange={handleForm}
+                            variant="outlined"
+                            error={errors.password}
+                            helperText={errors.password?.message}
+                            value={form.password}
+                            fullWidth
+                        />
+
+                    </Grid>
+
+
+
+                    <button variant="outlined" onClick={submitForm}>Submit</button>
+                    <p>{errorMessage}</p>
+                </div>
+
+            </Grid>
+
 
         </>
     );

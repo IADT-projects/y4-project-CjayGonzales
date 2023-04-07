@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import axios from '../config';
 import { Link } from 'react-router-dom';
+import { Grid } from '@mui/material';
 
 const LoginForm = (props) => {
 
@@ -65,41 +66,55 @@ const LoginForm = (props) => {
 
     return (
         <>
-            <p>email</p>
-            <textarea
-                id="outlined-basic"
-                label="Email"
-                name="email"
-                onChange={handleForm}
-                variant="outlined"
-                error={errors.email}
-                // ternary operator
-                helperText={errors.email?.message}
-                value={form.email}
-                fullWidth
-            />
-            <p>password</p>
-            <textarea
-                id="outlined-basic"
-                type="password"
-                label="Password"
-                name="password"
-                onChange={handleForm}
-                variant="outlined"
-                error={errors.password}
-                helperText={errors.password?.message}
-                value={form.password}
-                fullWidth
-            />
-            <button variant="outlined" onClick={submitForm}>Submit</button>
+            <Grid container md={12} justifyContent="center">
+                <div className='register-background' md={8}>
 
+                    <Grid>
+                        <h1>Log In</h1>
+                        <p>Don't have an account?</p>
+                        <Link to='/register'>Sign Up</Link>
+                    </Grid>
 
-            <button component={Link} to='/register'>
-                Register
-            </button>
-            <br />
+                    <Grid>
+                        <p>Email</p>
+                        <input type="text"
+                            className='textarea-width'
+                            id="outlined-basic"
+                            label="Email"
+                            name="email"
+                            onChange={handleForm}
+                            variant="outlined"
+                            error={errors.email}
+                            // ternary operator
+                            helperText={errors.email?.message}
+                            value={form.email}
+                            fullWidth
+                        />
+                    </Grid>
 
-            <p >{errorMessage}</p>
+                    <Grid>
+                        <p>Password</p>
+                        <input type="text"
+                            className='textarea-width'
+                            id="outlined-basic"
+                            label="Password"
+                            name="password"
+                            onChange={handleForm}
+                            variant="outlined"
+                            error={errors.password}
+                            helperText={errors.password?.message}
+                            value={form.password}
+                            fullWidth
+                        />
+                    </Grid>
+
+                    <button variant="outlined" onClick={submitForm}>Submit</button>
+
+                    <br />
+
+                    <p >{errorMessage}</p>
+                </div>
+            </Grid>
         </>
     );
 

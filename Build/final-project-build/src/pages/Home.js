@@ -1,7 +1,7 @@
 import React from 'react';
-import '../styles.css'
+import '../styles.css';
 import { Grid } from '@mui/material';
-import homepageImage from './homepageImage.jpg'
+import homepageImage from './homepageImage.jpg';
 
 const Home = () => {
     return (
