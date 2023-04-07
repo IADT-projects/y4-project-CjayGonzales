@@ -119,7 +119,7 @@ input[type="reset"] {
     background: #FFFFFF;
     box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.25);
     width: 327px;
-    height: 228px;
+    height: 248px;
 }
 
 .card-image {
@@ -130,4 +130,9 @@ input[type="reset"] {
 
 .card-title {
     color: #323232;
+}
+
+.single-folder-img {
+    width: 100vw;
+    height: 500px;
 }

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useParams } from 'react-router-dom';
 import EditDocument from "./modals/documentModals/EditDocument";
 import DeleteBtn from "./modals/documentModals/DeleteDocument";
-
+import { Grid } from "@mui/material";
 const DocumentCard = (props) => {
     const documentID = props.document._id
     const { userId, folderId } = useParams();
@@ -16,18 +16,21 @@ const DocumentCard = (props) => {
     const [show, setShow] = useState(false)
 
     return (
-        <div className="card">
-            <div className="card-body">
-                {/* <h5 >{ID}</h5> */}
-                <h5 >{title}</h5>
-                <img src={`${STATIC_FILES_URL}${imgPath}`} alt="Document" width="150" height="200"></img>
+        <>
+            <Grid md={3}>
+                <div className="folder-card">
+                    {/* <h5 >{ID}</h5> */}
+                    <img className="card-image" src={`${STATIC_FILES_URL}${imgPath}`} alt="Document" width="150" height="200"></img>
+                    <h5 >{title}</h5>
 
-                <button onClick={() => setShow(true)}>Edit</button>
-                <EditDocument show={show} documentID={documentID} />
-                <DeleteBtn id={props.document._id} resource={`document/`} callback={props.callback} />
+                    <button onClick={() => setShow(true)}>Edit</button>
+                    <EditDocument show={show} documentID={documentID} />
+                    <DeleteBtn id={props.document._id} resource={`document/`} callback={props.callback} />
 
-            </div>
-        </div>
+                </div>
+            </Grid>
+        </>
+
     );
 }
 

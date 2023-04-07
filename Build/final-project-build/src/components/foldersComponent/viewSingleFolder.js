@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import axios from '../../config/index';
 import ErrorBoundry from "../../components/ErrorBoundry"
 import DocumentCard from '../DocumentCard';
+import { Grid } from "@mui/material";
 
 const ViewSingleFolder = (props) => {
     const STATIC_FILES_URL = 'https://final-project-bucket-v2.s3.eu-west-1.amazonaws.com/'
@@ -43,13 +44,19 @@ const ViewSingleFolder = (props) => {
 
     return (
         <>
-            <img src={`${STATIC_FILES_URL}${imgPath}`} alt="Folder" width="150" height="200"></img>
+            <img className='img-cover single-folder-img' src={`${STATIC_FILES_URL}${imgPath}`} alt="Folder"></img>
 
             <h1>Create Document</h1>
             <Link to={`/create-document/${folderId}`}>Create Document</Link>
             <h1>View {folderTitle}</h1>
             <ErrorBoundry>
-                {documentsList}
+                <Grid
+                    container
+                    direction="row"
+                    justifyContent="flex-start"
+                    alignItems="center">
+                    {documentsList}
+                </Grid>
             </ErrorBoundry>
 
         </>
