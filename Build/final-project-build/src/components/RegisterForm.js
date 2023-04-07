@@ -78,7 +78,8 @@ const RegisterForm = (props) => {
 
                     <Grid>
                         <p>Name</p>
-                        <textarea
+                        <input type="text"
+                            className="textarea-width"
                             id="outlined-basic"
                             label="Name"
                             name="name"
@@ -97,7 +98,8 @@ const RegisterForm = (props) => {
                     <Grid>
 
                         <p>Email</p>
-                        <textarea
+                        <input type="text"
+                            className="textarea-width"
                             id="outlined-basic"
                             label="Email"
                             name="email"
@@ -114,9 +116,9 @@ const RegisterForm = (props) => {
 
                     <Grid>
                         <p>Password</p>
-                        <textarea
+                        <input type="password"
+                            className="textarea-width"
                             id="outlined-basic"
-                            type="password"
                             label="Password"
                             name="password"
                             onChange={handleForm}
@@ -131,7 +133,7 @@ const RegisterForm = (props) => {
 
 
 
-                    <button variant="outlined" onClick={submitForm}>Submit</button>
+                    <button className="button-important" variant="outlined" onClick={submitForm}>Submit</button>
                     <p>{errorMessage}</p>
                 </div>
 

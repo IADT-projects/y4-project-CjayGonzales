@@ -69,10 +69,15 @@ const LoginForm = (props) => {
             <Grid container md={12} justifyContent="center">
                 <div className='register-background' md={8}>
 
-                    <Grid>
-                        <h1>Log In</h1>
-                        <p>Don't have an account?</p>
-                        <Link to='/register'>Sign Up</Link>
+                    <Grid container justifyContent="center">
+
+                        <div justifyContent="center">
+                            <h1 justifyContent="center">Log In</h1>
+                            <p justifyContent="center">Don't have an account?</p>
+                            <Link justifyContent="center" to='/register'>Sign Up</Link>
+                        </div>
+
+
                     </Grid>
 
                     <Grid>
@@ -94,7 +99,7 @@ const LoginForm = (props) => {
 
                     <Grid>
                         <p>Password</p>
-                        <input type="text"
+                        <input type="password"
                             className='textarea-width'
                             id="outlined-basic"
                             label="Password"
@@ -108,7 +113,7 @@ const LoginForm = (props) => {
                         />
                     </Grid>
 
-                    <button variant="outlined" onClick={submitForm}>Submit</button>
+                    <button className="button-important" variant="outlined" onClick={submitForm}>Submit</button>
 
                     <br />
 
