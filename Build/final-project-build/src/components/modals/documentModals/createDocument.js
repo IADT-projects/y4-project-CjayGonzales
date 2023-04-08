@@ -84,8 +84,26 @@ const CreateDocument = (props) => {
         <>
             <form encType='multipart/form-data'>
                 <h1>Create Document</h1>
-                <textarea
-                    label="Title"
+
+
+                {newImg ? (
+                    <img className="label-file-upload" src={URL.createObjectURL(newImg)} alt="Selected" />
+                ) : (
+                    <>
+                        <input type="file" id="input-file-upload" multiple={true} onChange={handleImg} />
+                        <label className="label-file-upload" htmlFor="input-file-upload">
+                            <div>
+                                <p>ICON</p>
+                                <p>Click to add an image</p>
+                            </div>
+                        </label>
+                    </>
+                )}
+
+                <p>Insert Document Name</p>
+
+                <input type="text"
+                    className="textarea-width"
                     name="title"
                     onChange={handleForm}
                     error={errors.title}
@@ -93,17 +111,7 @@ const CreateDocument = (props) => {
                     value={form.title}
                     fullWidth
                 />
-
-                <input
-                    type="file"
-                    name="imgPath"
-                    onChange={handleImg}
-                    error={errors.imgPath}
-                    // value={newImg.imgPath}
-                    helperText={errors.imgPath?.message}
-                    fullWidth
-                />
-
+                <br />
                 <button onClick={submitForm}>Submit</button>
             </form>
 

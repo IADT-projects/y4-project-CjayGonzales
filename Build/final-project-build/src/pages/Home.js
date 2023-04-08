@@ -2,6 +2,7 @@ import React from 'react';
 import '../styles.css';
 import { Grid } from '@mui/material';
 import homepageImage from './homepageImage.jpg';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
     return (
@@ -19,7 +20,7 @@ const Home = () => {
                         The aim is to develop a web application that can effectively
                         allow users to take notes with the use of OCR for added spice.
                     </p>
-                    <button>Get Started</button>
+                    <Link to='/register' className="button-important">Get Started</Link>
 
                 </Grid>
 

@@ -136,3 +136,23 @@ input[type="reset"] {
     width: 100vw;
     height: 500px;
 }
+
+
+/* INPUT FILE */
+
+#input-file-upload {
+    display: none;
+}
+
+.label-file-upload {
+    width: 912px;
+    height: 438px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-width: 2px;
+    background: #FFFFFF;
+    box-shadow: -3px 4px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    object-fit: cover;
+}

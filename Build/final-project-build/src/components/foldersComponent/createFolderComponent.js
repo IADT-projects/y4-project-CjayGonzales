@@ -1,3 +1,120 @@
+import { useState, useRef } from 'react';
+import axios from '../../config/index';
+import { useNavigate } from 'react-router-dom';
+
+const CreateFolderComponent = (props) => {
+    const [errors, setErrors] = useState({});
+    const [dragActive, setDragActive] = useState(false);
+    const inputRef = useRef(null);
+    const navigate = useNavigate();
+    const [form, setForm] = useState({
+        folderTitle: "",
+    });
+    const [newImg, setNewImg] = useState(null);
+
+    const handleForm = (e) => {
+        let name = e.target.name
+        let value = e.target.value
+
+        setForm(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
+
+    const handleImg = (e) => {
+        // takes the image file and sets it to "imgPath"
+        setNewImg(e.target.files[0]);
+    }
+
+    const isRequired = (fields) => {
+        let error = false;
+
+        fields.forEach(field => {
+            if (!form[field]) {
+                error = true;
+                setErrors(prevState => ({
+                    ...prevState,
+                    [field]: {
+                        message: `${field} is Required!!!`
+                    }
+                }));
+            }
+        });
+
+        return error;
+    };
+
+    const submitForm = (e) => {
+        let token = localStorage.getItem('token');
+        let userID = localStorage.getItem('userID');
+
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append('folderTitle', form.folderTitle)
+        formData.append('image', newImg);
+
+        axios.post(`/folder/${userID}`, formData, {
+            headers: {
+                "Content-Type": "multipart/form-data",
+                "Authorization": `Bearer ${token}`
+            }
+        })
+            .then(response => {
+                console.log(response.data);
+                navigate(`/folder/${userID}`);
+            })
+            .catch(err => {
+                console.error(err);
+                console.log(err.response.data);
+                setErrors(err.response.data.errors);
+            });
+    };
+
+    return (
+        <>
+            <form encType='multipart/form-data'>
+                <h1>Create Folder</h1>
+
+                {newImg ? (
+                    <img className="label-file-upload" src={URL.createObjectURL(newImg)} alt="Selected" />
+                ) : (
+                    <>
+                        <input type="file" id="input-file-upload" multiple={true} onChange={handleImg} />
+                        <label className="label-file-upload" htmlFor="input-file-upload">
+                            <div>
+                                <p>ICON</p>
+                                <p>Click to add an image</p>
+                            </div>
+                        </label>
+                    </>
+                )}
+
+                <p>Insert Folder Name</p>
+
+                <input type="text"
+                    className="textarea-width"
+                    label="folderTitle"
+                    name="folderTitle"
+                    onChange={handleForm}
+                    error={errors.folderTitle}
+                    helperText={errors.folderTitle?.message}
+                    value={form.folderTitle}
+                    fullWidth
+                />
+                <br />
+
+                <button onClick={submitForm}>Submit</button>
+            </form>
+
+        </>
+    );
+
+};
+
+export default CreateFolderComponent;
+
+/*
 import { useState } from 'react';
 import axios from '../../config/index';
 import { useNavigate } from 'react-router-dom';
@@ -84,7 +201,7 @@ const CreateFolderComponent = (props) => {
                     fullWidth
                 />
 
-                <input
+                <input className='dropzone-test'
                     type="file"
                     name="imgPath"
                     onChange={handleImg}
@@ -103,3 +220,6 @@ const CreateFolderComponent = (props) => {
 };
 
 export default CreateFolderComponent;
+
+
+*/

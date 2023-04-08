@@ -98,8 +98,37 @@ const OcrReader = () => {
 
             {/* Image Posting */}
             <Grid item xs={12}>
-               <input type="file" accept="image/*" onChange={(e) => loadFile(e.target.files[0])} />
-               {!!imageData && <img src={imageData} style={{ width: "100%" }} alt="Selected Image" />}
+
+               {imageData ? (
+                  <img className="label-file-upload" src={imageData} alt="Selected" />
+               ) : (
+                  <>
+                     <input type="file" multiple={true} id="input-file-upload" accept="image/*" onChange={(e) => loadFile(e.target.files[0])} />
+                     <label className="label-file-upload" htmlFor="input-file-upload">
+                        <div>
+                           <p>ICON</p>
+                           <p>Click to add an image</p>
+                        </div>
+                     </label>
+
+                     {!!imageData && <img src={imageData} alt="Selected " />}
+                  </>
+               )}
+               {/* {newImg ? (
+                    <img className="label-file-upload" src={URL.createObjectURL(newImg)} alt="Selected" />
+                ) : (
+                    <>
+                        <input type="file" id="input-file-upload" multiple={true} onChange={handleImg} />
+                        <label className="label-file-upload" htmlFor="input-file-upload">
+                            <div>
+                                <p>ICON</p>
+                                <p>Click to add an image</p>
+                            </div>
+                        </label>
+                    </>
+                )} */}
+
+
             </Grid>
 
             {/* Extraction*/}
