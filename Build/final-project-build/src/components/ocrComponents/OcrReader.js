@@ -93,12 +93,12 @@ const OcrReader = () => {
 
 
    return (
-      <Box sx={{ padding: "10px" }}>
-         <Grid container spacing={2}>
+      <Grid container md={12} justifyContent="center" >
 
-            {/* Image Posting */}
-            <Grid item xs={12}>
-
+         {/* Image Posting */}
+         <Grid >
+            <h1>OCR Reader!</h1>
+            <Grid >
                {imageData ? (
                   <img className="label-file-upload" src={imageData} alt="Selected" />
                ) : (
@@ -112,39 +112,37 @@ const OcrReader = () => {
                      </label>
 
                      {!!imageData && <img src={imageData} alt="Selected " />}
+
+
                   </>
                )}
-               {/* {newImg ? (
-                    <img className="label-file-upload" src={URL.createObjectURL(newImg)} alt="Selected" />
-                ) : (
-                    <>
-                        <input type="file" id="input-file-upload" multiple={true} onChange={handleImg} />
-                        <label className="label-file-upload" htmlFor="input-file-upload">
-                            <div>
-                                <p>ICON</p>
-                                <p>Click to add an image</p>
-                            </div>
-                        </label>
-                    </>
-                )} */}
-
-
-            </Grid>
-
-            {/* Extraction*/}
-            <Grid item xs={12}>
-               <Button disabled={!imageData || !workerRef.current} onClick={handleExtract} variant="contained">
-                  Extract
-               </Button>
 
                {/* Setting Progress */}
-               <Typography sx={{ marginTop: "10px", textTransform: "uppercase" }}>{progressLabel}</Typography>
-               <CircularProgress variant="determinate" value={progress * 100} />
+
             </Grid>
 
-            {/* Checking if there is a result and returning if one is available */}
-            {!!ocrResult && (
-               <Grid item xs={12}>
+
+            {/* Extraction*/}
+            <Grid container direction="column" justifyContent="space-evenly" alignItems="center">
+
+               <Grid >
+                  <button className="button-important" disabled={!imageData || !workerRef.current} onClick={handleExtract} >
+                     Extract
+                  </button>
+               </Grid>
+
+               <Grid >
+                  <Typography sx={{ marginTop: "10px", textTransform: "uppercase" }}>{progressLabel}</Typography>
+                  <CircularProgress variant="determinate" value={progress * 100} />
+               </Grid>
+
+            </Grid >
+         </Grid >
+
+         {/* Checking if there is a result and returning if one is available */}
+         {
+            !!ocrResult && (
+               <Grid item md={8}>
                   <Typography variant="h6">RESULT</Typography>
                   <Typography
                      variant="body1"
@@ -156,11 +154,12 @@ const OcrReader = () => {
                   >
                      {ocrResult}
                   </Typography>
+                  <button className="button-important" onClick={submitForm}>Save Result</button>
+
                </Grid>
-            )}
-            <button onClick={submitForm}>Save Result</button>
-         </Grid>
-      </Box>
+            )
+         }
+      </Grid >
    );
 };
 

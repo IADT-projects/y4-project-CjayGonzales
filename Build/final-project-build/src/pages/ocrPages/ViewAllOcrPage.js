@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import axios from '../../config/index';
 import OcrCard from '../../components/ocrComponents/ViewAllOcrCard';
 import ErrorBoundry from "../../components/ErrorBoundry"
+import Grid from '@mui/material/Grid';
 
 const OcrView = (props) => {
 
@@ -37,10 +38,12 @@ const OcrView = (props) => {
     return (
 
         <>
-            <h1>Display Ocr Files</h1>
+            <h1>OCR Files</h1>
             <ErrorBoundry>
+                <Grid container md={12}>
+                    {ocrsList}
 
-                {ocrsList}
+                </Grid>
 
             </ErrorBoundry>
         </>
