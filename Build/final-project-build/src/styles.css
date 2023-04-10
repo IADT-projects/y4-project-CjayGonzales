@@ -9,6 +9,25 @@ body {
     margin: 0;
 }
 
+a:link {
+    text-decoration: none;
+}
+
+
+a:visited {
+    text-decoration: none;
+}
+
+
+a:hover {
+    text-decoration: none;
+}
+
+
+a:active {
+    text-decoration: none;
+}
+
 button,
 input[type="submit"],
 input[type="reset"] {
@@ -167,8 +186,15 @@ input[type="reset"] {
     width: 327px;
     height: 342px;
     border-radius: 15px 15px 15px 15px;
-    filter: drop-shadow(0px 7px 15px rgba(0, 0, 0, 0.25));
     background-color: white;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    transition: transform ease .5s, box-shadow ease .5s;
+}
+
+.ocr-card:hover {
+    cursor: pointer;
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 20px 2px rgba(0, 0, 0, 0.25);
 }
 
 
@@ -178,5 +204,34 @@ input[type="reset"] {
     width: 327px;
     height: 192px;
     border-radius: 15px 15px 0px 0px;
+}
 
+/* OCR MODAL */
+
+.ocr-modal,
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+.overlay {
+    background: rgba(49, 49, 49, 0.8);
+}
+
+.modal-content {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    background: #f1f1f1;
+    padding: 14px 28px;
+    border-radius: 3px;
+    max-width: 600px;
+    min-width: 300px;
 }
