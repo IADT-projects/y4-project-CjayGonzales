@@ -208,7 +208,6 @@ input[type="reset"] {
 
 /* OCR MODAL */
 
-.ocr-modal,
 .overlay {
     width: 100vw;
     height: 100vh;
@@ -223,15 +222,20 @@ input[type="reset"] {
     background: rgba(49, 49, 49, 0.8);
 }
 
-.modal-content {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    line-height: 1.4;
-    background: #f1f1f1;
+.ocr-modal-image {
+    object-fit: cover;
+    width: 47vw;
+    height: 418px;
+    border-radius: 15px;
+}
+
+.ocr-modal-content {
+    background: #ffffff;
     padding: 14px 28px;
-    border-radius: 3px;
-    max-width: 600px;
-    min-width: 300px;
+    border-radius: 20px;
+    width: 63vw;
+}
+
+.ocr-modal-content-width {
+    width: 678px;
 }
