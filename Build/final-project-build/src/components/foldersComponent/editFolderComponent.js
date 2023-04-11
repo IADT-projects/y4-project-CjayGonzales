@@ -4,27 +4,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 const EditFolder = (props) => {
 
-    const modal = {
-        position: 'fixed',
-        left: '0',
-        top: '0',
-        right: '0',
-        bottom: '0',
-        backgroundColor: '0,0,0,1.0',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
-    }
-
-    const modalContent = {
-        width: '500px',
-        backgroundColor: '#fff'
-    }
-
-    const modalHeader = {
-        padding: "10px"
-    }
-
     const modalFooter = {
         padding: "10px"
     }
@@ -106,13 +85,15 @@ const EditFolder = (props) => {
 
     return (
         <>
-            <div className='modal' style={modal}>
-                <div className='modalContent' style={modalContent}>
-                    <div className='modalHeader' style={modalHeader}>
-                        <h4 className='modalTitle' style={modalTitle}>Edit Folder</h4>
+            <div className='edit-folder-modal' >
+                <div>
+                    <div className='edit-folder-modal-header' >
+                        <h4 className='modalTitle' style={modalTitle}>Edit Folder Name</h4>
                     </div>
                     <div className='modalBody' style={modalBody}>
-                        <textarea
+                        <input
+                            type='text'
+                            className='edit-folder-input'
                             label="folderTitle"
                             name="folderTitle"
                             onChange={handleForm}
@@ -129,6 +110,7 @@ const EditFolder = (props) => {
                                 submitForm();
                                 refresh();
                             }}>Submit</button>
+                            <button onClick={!props.show}>Close</button>
                         </div>
                     </div>
                 </div>

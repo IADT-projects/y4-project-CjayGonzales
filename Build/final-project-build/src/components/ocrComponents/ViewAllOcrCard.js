@@ -15,7 +15,6 @@ const OcrCard = (props) => {
 
     const toggleModal = () => {
         setShow(!show)
-
     }
 
     return (

@@ -94,12 +94,27 @@ input[type="reset"] {
     object-fit: cover;
 }
 
+.button-important,
+.button-add-new {
+    border-radius: 15px;
+    padding: 10px 20px 10px 20px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    transition: transform ease .5s, box-shadow ease .5s;
+}
+
 .button-important {
     background: #FF5757;
     color: #FFFAED;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
-    border-radius: 15px;
-    padding: 10px 20px 10px 20px;
+}
+
+.button-add-new {
+    background-color: white;
+}
+
+.button-important:hover,
+.button-add-new:hover {
+    box-shadow: 0px 10px 20px 2px rgba(0, 0, 0, 0.25);
+
 }
 
 .red {
@@ -128,32 +143,24 @@ input[type="reset"] {
     padding: 30px 117px 30px 117px;
 }
 
-.textarea-width {
-    width: 680px;
-    height: 45px;
+.textarea-width,
+.edit-folder-input {
     border-color: #D9D9D9;
     border: 1px solid #D9D9D9;
     border-radius: 5px;
 }
 
-/* FOLDERS AND DOCUMENTS PAGE */
-
-.folder-card {
-    background: #FFFFFF;
-    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.25);
-    width: 327px;
-    height: 248px;
+.textarea-width {
+    width: 680px;
+    height: 45px;
 }
 
-.card-image {
-    width: 327px;
-    height: 193px;
-    object-fit: cover;
+.edit-folder-input {
+    width: 200px;
+    height: 30px;
 }
 
-.card-title {
-    color: #323232;
-}
+/* FOLDERS PAGE */
 
 .single-folder-img {
     width: 100vw;
@@ -180,31 +187,44 @@ input[type="reset"] {
     object-fit: cover;
 }
 
-/* OCR CARDS */
+/* OCR AND FOLDER/DOCUMENT CARDS */
 
+.folder-card {
+    height: 248px;
+}
+
+.folder-card-image,
+.ocr-card-img {
+    width: 327px;
+    height: 193px;
+    object-fit: cover;
+    border-radius: 15px 15px 0px 0px;
+}
+
+.folder-card-title {
+    color: #323232;
+}
+
+.folder-card,
 .ocr-card {
     width: 327px;
-    height: 342px;
     border-radius: 15px 15px 15px 15px;
     background-color: white;
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
     transition: transform ease .5s, box-shadow ease .5s;
 }
 
-.ocr-card:hover {
+.ocr-card {
+    height: 342px;
+}
+
+.ocr-card:hover,
+.folder-card:hover {
     cursor: pointer;
     transform: translateY(-5px);
     box-shadow: 0px 10px 20px 2px rgba(0, 0, 0, 0.25);
 }
 
-
-.ocr-card-body {}
-
-.ocr-card-img {
-    width: 327px;
-    height: 192px;
-    border-radius: 15px 15px 0px 0px;
-}
 
 /* OCR MODAL */
 
@@ -238,4 +258,36 @@ input[type="reset"] {
 
 .ocr-modal-content-width {
     width: 678px;
+}
+
+/* Folders modal */
+
+.options-modal {
+    background-color: white;
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    top: -100px;
+    right: -150px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.edit-folder-modal {
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+}
+
+.edit-folder-modal-header {
+    padding: 10px;
 }

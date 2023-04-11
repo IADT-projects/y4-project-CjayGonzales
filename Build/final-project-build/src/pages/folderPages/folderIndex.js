@@ -43,13 +43,7 @@ const FolderIndexPage = (props) => {
     return (
 
         <>
-            <h1>Folders Page</h1>
-
-            <Link to={`/create_folder`}>
-                Create new Folder
-            </Link>
-
-            <h1>Display Folders</h1>
+            <h1>Folders Collection</h1>
             <ErrorBoundry>
                 <Grid
                     container
@@ -57,6 +51,13 @@ const FolderIndexPage = (props) => {
                     justifyContent="flex-start"
                     alignItems="center">
                     {foldersList}
+
+                    <Grid>
+                        <Link className='button-add-new' to={`/create_folder`}>
+                            +  Create new Folder
+                        </Link>
+                    </Grid>
+
                 </Grid>
 
             </ErrorBoundry>
