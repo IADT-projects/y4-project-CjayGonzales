@@ -44,11 +44,8 @@ const ViewSingleFolder = (props) => {
 
     return (
         <>
-            <img className='img-cover ' src={`${STATIC_FILES_URL}${imgPath}`} alt="Folder"></img>
-
-            <h1>Create Document</h1>
-            <Link to={`/create-document/${folderId}`}>Create Document</Link>
-            <h1>View {folderTitle}</h1>
+            <img className='img-cover view-all-documents-header-image ' src={`${STATIC_FILES_URL}${imgPath}`} alt="Folder"></img>
+            <h1>{folderTitle}</h1>
             <ErrorBoundry>
                 <Grid
                     container
@@ -56,6 +53,11 @@ const ViewSingleFolder = (props) => {
                     justifyContent="flex-start"
                     alignItems="center">
                     {documentsList}
+                    <Grid>
+                        <Link className='button-add-new' to={`/create-document/${folderId}`}>
+                            +  Create new Document
+                        </Link>
+                    </Grid>
                 </Grid>
             </ErrorBoundry>
 

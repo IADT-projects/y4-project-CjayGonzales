@@ -6,7 +6,6 @@ import { Grid } from "@mui/material";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons'
 
-
 const ViewFolderCard = (props) => {
 
     const folderId = props.folder._id;
@@ -55,10 +54,6 @@ const ViewFolderCard = (props) => {
                             </div>
                         </>
                     )}
-
-
-
-
 
                 </div>
                 <EditFolder onClose={() => setShow(false)} show={show} folderId={folderId} />

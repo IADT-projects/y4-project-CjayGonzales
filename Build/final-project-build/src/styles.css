@@ -311,3 +311,10 @@ input[type="reset"] {
 .edit-folder-modal-title {
     margin: 0;
 }
+
+/* VIEW ALL DOCUMENTS PAGE */
+
+.view-all-documents-header-image {
+    width: 100vw;
+    height: 350px;
+}
