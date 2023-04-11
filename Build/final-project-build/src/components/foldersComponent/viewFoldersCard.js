@@ -11,9 +11,6 @@ const ViewFolderCard = (props) => {
 
     const folderId = props.folder._id;
     const userId = localStorage.getItem('userID');
-
-    // console.log("FOLDER ID : " + folderId)
-    // console.log("USER ID: " + userId)
     let imgPath = props.folder.imgPath
 
     const STATIC_FILES_URL = 'https://final-project-bucket-v2.s3.eu-west-1.amazonaws.com/'
@@ -22,12 +19,9 @@ const ViewFolderCard = (props) => {
 
     const [show, setShow] = useState(false);
     const [optionsModal, setOptionsModal] = useState(false);
-
-
     const displayModal = () => {
         setOptionsModal(!optionsModal)
     };
-
 
     return (
         <>

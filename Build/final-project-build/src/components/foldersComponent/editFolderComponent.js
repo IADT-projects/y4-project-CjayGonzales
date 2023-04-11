@@ -4,13 +4,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 const EditFolder = (props) => {
 
-    const modalFooter = {
-        padding: "10px"
-    }
-
-    const modalTitle = {
-        margin: "0"
-    }
 
     const modalBody = {
         padding: "10px",
@@ -92,9 +85,9 @@ const EditFolder = (props) => {
                 <div className='edit-folder-modal-body' onClick={e => e.stopPropagation()}>
                     <div>
                         <div className='edit-folder-modal-header' >
-                            <h4 className='modalTitle' style={modalTitle}>Edit Folder Name</h4>
+                            <h4 className='edit-folder-modal-title'>Edit Folder Name</h4>
                         </div>
-                        <div className='modalBody' style={modalBody}>
+                        <div className='edit-folder-modal-body' >
                             <input
                                 type='text'
                                 className='edit-folder-input'
@@ -106,7 +99,7 @@ const EditFolder = (props) => {
                                 value={form.folderTitle}
                                 fullWidth
                             />
-                            <div className='modal-footer' style={modalFooter}>
+                            <div className='edit-folder-modal-footer' >
 
                                 {/* resource recieved from here */}
                                 {/* https://upmostly.com/tutorials/adding-multiple-functions-inside-a-single-onclick-event-handler#:~:text=The%20first%20solution%20to%20perform,function%20greeting()%20%7B%20console. */}

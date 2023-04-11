@@ -4,47 +4,11 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 const EditDocument = (props) => {
 
-    const modal = {
-        position: 'fixed',
-        left: '0',
-        top: '0',
-        right: '0',
-        bottom: '0',
-        backgroundColor: '0,0,0,1.0',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
-    }
-
-    const modalContent = {
-        width: '500px',
-        backgroundColor: '#fff'
-    }
-
-    const modalHeader = {
-        padding: "10px"
-    }
-
-    const modalFooter = {
-        padding: "10px"
-    }
-
-    const modalTitle = {
-        margin: "0"
-    }
-
-    const modalBody = {
-        padding: "10px",
-        borderTop: "1px solid #eee",
-        borderBottom: "1px solid #eee"
-    }
-
     const [form, setForm] = useState({});
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
     const documentID = props.documentID;
     const { folderId } = useParams();
-
 
     const handleForm = (e) => {
         let name = e.target.name;
@@ -107,29 +71,36 @@ const EditDocument = (props) => {
 
     return (
         <>
-            <div className='modal' style={modal}>
-                <div className='modalContent' style={modalContent}>
-                    <div className='modalHeader' style={modalHeader}>
-                        <h4 className='modalTitle' style={modalTitle}>Edit Document</h4>
-                    </div>
-                    <div className='modalBody' style={modalBody}>
-                        <textarea
-                            label="title"
-                            name="title"
-                            onChange={handleForm}
-                            error={errors.title}
-                            helperText={errors.title?.message}
-                            value={form.title}
-                            fullWidth
-                        />
-                        <div className='modal-footer' style={modalFooter}>
+            <div className='edit-folder-modal' onClick={props.onClose}>
+                <div className='edit-folder-modal-body' onClick={e => e.stopPropagation()}>
 
-                            {/* resource recieved from here */}
-                            {/* https://upmostly.com/tutorials/adding-multiple-functions-inside-a-single-onclick-event-handler#:~:text=The%20first%20solution%20to%20perform,function%20greeting()%20%7B%20console. */}
-                            <button onClick={() => {
-                                submitForm();
-                                refresh();
-                            }}>Submit</button>
+                    <div>
+                        <div className='edit-folder-modal-header' >
+                            <h4 className='edit-folder-modal-title' >Edit Document</h4>
+                        </div>
+                        <div className='edit-folder-modal-body' >
+                            <input
+                                type="text"
+                                className='edit-folder-input'
+                                label="title"
+                                name="title"
+                                onChange={handleForm}
+                                error={errors.title}
+                                helperText={errors.title?.message}
+                                value={form.title}
+                                fullWidth
+                            />
+                            <div className='edit-folder-modal-footer' >
+
+                                {/* resource recieved from here */}
+                                {/* https://upmostly.com/tutorials/adding-multiple-functions-inside-a-single-onclick-event-handler#:~:text=The%20first%20solution%20to%20perform,function%20greeting()%20%7B%20console. */}
+                                <button onClick={() => {
+                                    submitForm();
+                                    refresh();
+                                }}>Submit</button>
+                                <button onClick={props.onClose}>Close</button>
+
+                            </div>
                         </div>
                     </div>
                 </div>

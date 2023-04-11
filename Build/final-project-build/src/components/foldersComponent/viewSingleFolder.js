@@ -44,7 +44,7 @@ const ViewSingleFolder = (props) => {
 
     return (
         <>
-            <img className='img-cover single-folder-img' src={`${STATIC_FILES_URL}${imgPath}`} alt="Folder"></img>
+            <img className='img-cover ' src={`${STATIC_FILES_URL}${imgPath}`} alt="Folder"></img>
 
             <h1>Create Document</h1>
             <Link to={`/create-document/${folderId}`}>Create Document</Link>

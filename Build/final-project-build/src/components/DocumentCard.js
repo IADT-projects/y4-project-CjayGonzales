@@ -3,6 +3,9 @@ import { Link, useParams } from 'react-router-dom';
 import EditDocument from "./modals/documentModals/EditDocument";
 import DeleteBtn from "./modals/documentModals/DeleteDocument";
 import { Grid } from "@mui/material";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons'
+
 const DocumentCard = (props) => {
     const documentID = props.document._id
     const { userId, folderId } = useParams();
@@ -14,20 +17,46 @@ const DocumentCard = (props) => {
     let imgPath = props.document.imgPath
 
     const [show, setShow] = useState(false)
+    const [optionsModal, setOptionsModal] = useState(false);
+    const displayModal = () => {
+        setOptionsModal(!optionsModal)
+    };
+
 
     return (
         <>
             <Grid md={3}>
                 <div className="folder-card">
                     {/* <h5 >{ID}</h5> */}
-                    <img className="card-image" src={`${STATIC_FILES_URL}${imgPath}`} alt="Document" width="150" height="200"></img>
-                    <h5 >{title}</h5>
+                    <img className="folder-card-image" src={`${STATIC_FILES_URL}${imgPath}`} alt="Document" width="150" height="200"></img>
+                    <Grid md={12}
+                        container
+                        direction="row"
+                        justifyContent="space-between"
+                        alignItems="center"
+                    >
+                        <Grid>
+                            <h5 >{title}</h5>
 
-                    <button onClick={() => setShow(true)}>Edit</button>
-                    <EditDocument show={show} documentID={documentID} />
-                    <DeleteBtn id={props.document._id} resource={`document/`} callback={props.callback} />
+                        </Grid>
+
+                        <Grid md={3} justifyContent="center" container onClick={displayModal}>
+                            <FontAwesomeIcon icon={faEllipsisVertical} />
+                        </Grid>
+                    </Grid>
 
                 </div>
+
+                {optionsModal && (
+                    <>
+                        <div className="options-modal">
+                            <button onClick={() => { setShow(true); displayModal() }}>Edit</button>
+                            <DeleteBtn id={props.document._id} resource={`document/`} callback={props.callback} />
+                        </div>
+                    </>
+                )}
+                <EditDocument onClose={() => setShow(false)} show={show} documentID={documentID} />
+
             </Grid>
         </>
 

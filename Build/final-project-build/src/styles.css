@@ -263,7 +263,6 @@ input[type="reset"] {
 /* Folders modal */
 
 .options-modal {
-
     background-color: white;
     width: 100px;
     height: 100px;
@@ -296,9 +295,19 @@ input[type="reset"] {
     align-items: center;
     justify-content: center;
     width: 300px;
+    padding: 10px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
 }
-
 
 .edit-folder-modal-header {
     padding: 10px;
+}
+
+.edit-folder-modal-footer {
+    padding: 10px;
+}
+
+.edit-folder-modal-title {
+    margin: 0;
 }
