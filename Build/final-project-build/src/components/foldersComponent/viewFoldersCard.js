@@ -50,7 +50,6 @@ const ViewFolderCard = (props) => {
                         <Grid md={3} justifyContent="center" container onClick={displayModal}>
                             <FontAwesomeIcon icon={faEllipsisVertical} />
                         </Grid>
-                        <EditFolder show={show} folderId={folderId} />
 
                     </Grid>
 
@@ -68,6 +67,8 @@ const ViewFolderCard = (props) => {
 
 
                 </div>
+                <EditFolder onClose={() => setShow(false)} show={show} folderId={folderId} />
+
             </Grid>
 
         </>

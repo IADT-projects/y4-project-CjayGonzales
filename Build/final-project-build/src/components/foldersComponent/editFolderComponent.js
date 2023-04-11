@@ -22,7 +22,6 @@ const EditFolder = (props) => {
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
     const folderId = props.folderId;
-    const { folderID } = useParams();
 
 
     const handleForm = (e) => {
@@ -81,36 +80,43 @@ const EditFolder = (props) => {
         return null
     }
 
+
+
     const refresh = () => window.location.reload(true)
 
     return (
         <>
-            <div className='edit-folder-modal' >
-                <div>
-                    <div className='edit-folder-modal-header' >
-                        <h4 className='modalTitle' style={modalTitle}>Edit Folder Name</h4>
-                    </div>
-                    <div className='modalBody' style={modalBody}>
-                        <input
-                            type='text'
-                            className='edit-folder-input'
-                            label="folderTitle"
-                            name="folderTitle"
-                            onChange={handleForm}
-                            error={errors.folderTitle}
-                            helperText={errors.folderTitle?.message}
-                            value={form.folderTitle}
-                            fullWidth
-                        />
-                        <div className='modal-footer' style={modalFooter}>
+            {/* MODAL REFERENCE */}
+            {/* https://medium.com/tinyso/how-to-create-a-modal-component-in-react-from-basic-to-advanced-a3357a2a716a */}
+            <div className='edit-folder-modal' onClick={props.onClose}>
+                <div className='edit-folder-modal-body' onClick={e => e.stopPropagation()}>
+                    <div>
+                        <div className='edit-folder-modal-header' >
+                            <h4 className='modalTitle' style={modalTitle}>Edit Folder Name</h4>
+                        </div>
+                        <div className='modalBody' style={modalBody}>
+                            <input
+                                type='text'
+                                className='edit-folder-input'
+                                label="folderTitle"
+                                name="folderTitle"
+                                onChange={handleForm}
+                                error={errors.folderTitle}
+                                helperText={errors.folderTitle?.message}
+                                value={form.folderTitle}
+                                fullWidth
+                            />
+                            <div className='modal-footer' style={modalFooter}>
 
-                            {/* resource recieved from here */}
-                            {/* https://upmostly.com/tutorials/adding-multiple-functions-inside-a-single-onclick-event-handler#:~:text=The%20first%20solution%20to%20perform,function%20greeting()%20%7B%20console. */}
-                            <button onClick={() => {
-                                submitForm();
-                                refresh();
-                            }}>Submit</button>
-                            <button onClick={!props.show}>Close</button>
+                                {/* resource recieved from here */}
+                                {/* https://upmostly.com/tutorials/adding-multiple-functions-inside-a-single-onclick-event-handler#:~:text=The%20first%20solution%20to%20perform,function%20greeting()%20%7B%20console. */}
+                                <button onClick={() => {
+                                    submitForm();
+                                    refresh();
+                                }}>Submit</button>
+
+                                <button onClick={props.onClose}>Close</button>
+                            </div>
                         </div>
                     </div>
                 </div>
