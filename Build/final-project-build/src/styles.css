@@ -44,8 +44,9 @@ input[type="reset"] {
     width: 8.5in;
     min-height: 11in;
     padding: 1in;
-    margin: 1rem;
-    box-shadow: 0 0 5px rgba(0, 0, 0, .5);
+    margin: 2rem;
+    box-shadow: -5px 9px 25px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
     background-color: white;
 }
 
@@ -61,9 +62,9 @@ input[type="reset"] {
     position: sticky;
     top: 0;
     z-index: 1;
-    background-color: #f3f3f3;
+    background-color: white;
     border: none;
-    box-shadow: 0 0 5px rgba(0, 0, 0, .5);
+    box-shadow: -5px 9px 25px rgba(0, 0, 0, 0.25);
 }
 
 @page {
@@ -315,6 +316,18 @@ input[type="reset"] {
 /* VIEW ALL DOCUMENTS PAGE */
 
 .view-all-documents-header-image {
-    width: 100vw;
+    width: 98.9vw;
     height: 350px;
+}
+
+.doc-title {
+    font-family: 'Croissant One';
+    font-weight: 400;
+    font-size: 48px;
+    color: #FFFFFF;
+}
+
+.doc-title-background {
+    background: #2B2B2B;
+    margin-top: -4px;
 }

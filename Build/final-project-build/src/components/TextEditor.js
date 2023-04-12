@@ -4,6 +4,7 @@ import "quill/dist/quill.snow.css"                // import quill stylesheet
 import { io } from 'socket.io-client'             // import the client version of socket.io
 import { useParams } from 'react-router-dom';
 import axios from '../config/index';
+import { Grid } from '@mui/material';
 
 
 // These are all from Quill. It is the options for the text editor
@@ -42,8 +43,6 @@ export default function TextEditor(props) {
             });
     }, [userID]);
 
-
-
     useEffect(() => {
         const s = io("http://localhost:3001")      // the connection is established here
         setSocket(s)
@@ -73,7 +72,6 @@ export default function TextEditor(props) {
             clearInterval(interval)
         }
     }, [socket, quill])
-
 
     // this takes into account the changes that happen (UPDATES IT)
     useEffect(() => {
@@ -121,12 +119,17 @@ export default function TextEditor(props) {
 
     return (
         <>
-            <img src={`${STATIC_FILES_URL}${imgPath}`} alt="Folder" width="150" height="200"></img>
+            <img className='view-all-documents-header-image img-cover' src={`${STATIC_FILES_URL}${imgPath}`} alt="Document Page"></img>
 
-            <h1>{documentTitle}</h1>
+            <Grid container justifyContent="center" className="doc-title-background">
+                <h1 className='doc-title'>{documentTitle}</h1>
+
+            </Grid>
+
             <div className="container" ref={wrapperRef} >
 
             </div >
+
         </>
 
     )
