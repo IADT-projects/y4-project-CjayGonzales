@@ -11,8 +11,13 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import CameraAltIcon from '@mui/icons-material/CameraAlt';
+import CloudCircleIcon from '@mui/icons-material/CloudCircle';
+import HomeIcon from '@mui/icons-material/Home';
+import FolderIcon from '@mui/icons-material/Folder';
+import PersonIcon from '@mui/icons-material/Person';
+import LogoutIcon from '@mui/icons-material/Logout';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { Grid } from "@mui/material";
@@ -80,8 +85,9 @@ const Navbar = (props) => {
                     <ListItem key={text} disablePadding>
                         <ListItemButton>
                             <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                                {index % 6 === 0 ? <HomeIcon /> : index % 6 === 1 ? <CameraAltIcon /> : index % 6 === 2 ? <CloudCircleIcon /> : index % 6 === 3 ? <FolderIcon /> : index % 6 === 4 ? <PersonIcon /> : <LogoutIcon />}
                             </ListItemIcon>
+
                             <ListItemText primary={text} />
                         </ListItemButton>
                     </ListItem>
