@@ -13,6 +13,10 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { Grid } from "@mui/material";
+
 
 const Navbar = (props) => {
 
@@ -90,18 +94,33 @@ const Navbar = (props) => {
 
     return (
         <div>
-            <div>
+            <div className='nav-background nav-bar'>
                 {['left'].map((anchor) => (
-                    <React.Fragment key={anchor}>
-                        <Button onClick={toggleDrawer(anchor, true)}>LOGO</Button>
-                        <Drawer
-                            anchor={anchor}
-                            open={state[anchor]}
-                            onClose={toggleDrawer(anchor, false)}
-                        >
-                            {list(anchor)}
-                        </Drawer>
-                    </React.Fragment>
+
+                    <>
+                        <React.Fragment key={anchor}>
+
+                            <Grid className='nav-icon'
+                                container
+                                direction="row"
+                                justifyContent="flex-start"
+                                alignItems="center"
+                            >
+                                <button onClick={toggleDrawer(anchor, true)}>
+                                    <FontAwesomeIcon icon={faBars} size="lg" />
+                                </button>
+                            </Grid>
+
+                            <Drawer
+                                anchor={anchor}
+                                open={state[anchor]}
+                                onClose={toggleDrawer(anchor, false)}
+                            >
+                                {list(anchor)}
+                            </Drawer>
+                        </React.Fragment>
+                    </>
+
                 ))}
                 <EditUser show={show} userID={userID} />
             </div>
