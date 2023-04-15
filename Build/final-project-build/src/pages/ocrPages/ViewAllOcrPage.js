@@ -31,21 +31,25 @@ const OcrView = (props) => {
     };
 
     const ocrsList = ocrs.map((ocrs) => {
-        return <OcrCard key={ocrs._id} ocrs={ocrs} callback={deleteCallback} />;
+        return <Grid className="breathe-m"><OcrCard key={ocrs._id} ocrs={ocrs} callback={deleteCallback} /></Grid>;
     });
 
 
     return (
 
         <>
-            <h1>OCR Files</h1>
-            <ErrorBoundry>
-                <Grid container md={12}>
-                    {ocrsList}
+            <Grid container justifyContent="center">
+                <h1 className="breathe">OCR Files</h1>
 
-                </Grid>
+                <ErrorBoundry>
+                    <Grid className='breathe-m' justifyContent="space-between" container md={11.5}>
+                        {ocrsList}
 
-            </ErrorBoundry>
+                    </Grid>
+
+                </ErrorBoundry>
+            </Grid>
+
         </>
     );
 };

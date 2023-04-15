@@ -95,11 +95,10 @@ const OcrReader = () => {
 
 
    return (
-      <Grid container md={12} justifyContent="center" >
-
+      <Grid container md={12} justifyContent="center"  >
          {/* Image Posting */}
          <Grid >
-            <h1>OCR Reader!</h1>
+            <h1 >OCR Reader!</h1>
             <Grid >
                {imageData ? (
                   <img className="label-file-upload" src={imageData} alt="Selected" />

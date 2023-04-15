@@ -30,33 +30,40 @@ const OcrCard = (props) => {
 
             {show && (
 
-                <div className="overlay ">
-                    <Grid container direction="column"
-                        justifyContent="center"
-                        alignItems="center">
+                <Grid  >
 
-                        <div className="ocr-modal-content">
-                            <Grid container md={12} xs={12} >
-                                <Grid container justifyContent="center" >
-                                    <img src={`${STATIC_FILES_URL}${imgPath}`} className="ocr-modal-image" alt="Ocr" />
+                    <div className="overlay" onClick={toggleModal} >
 
-                                    <div className="ocr-modal-content-width">
-                                        <Grid md={12}
-                                            direction="column"
-                                            justifyContent="flex-start"
-                                            alignItems="flex-start">
+                        <Grid
+                            container
+                            justifyContent="center"
+                        >
 
-                                            <h1>Results</h1>
-                                            <h5>{modalResult}</h5>
-                                            <button onClick={toggleModal}>CLOSE</button>
-                                        </Grid>
-                                    </div>
+                            <div className="ocr-modal-content" onClick={e => e.stopPropagation()}>
+                                <Grid container md={12} xs={12} >
+                                    <Grid container justifyContent="center " >
+                                        <img src={`${STATIC_FILES_URL}${imgPath}`} className="ocr-modal-image  breathe-m" alt="Ocr" />
+
+                                        <div className="ocr-modal-content-width breathe-s">
+                                            <Grid md={12}
+                                                direction="column"
+                                                justifyContent="flex-start"
+                                                alignItems="flex-start">
+
+                                                <h1>Results</h1>
+                                                <h5>{modalResult}</h5>
+                                                <button className="button-discard underline" onClick={toggleModal}>CLOSE</button>
+                                            </Grid>
+                                        </div>
+                                    </Grid>
                                 </Grid>
-                            </Grid>
-                        </div>
-                    </Grid >
+                            </div>
 
-                </div >
+                        </Grid >
+
+                    </div >
+                </Grid>
+
 
 
             )}
