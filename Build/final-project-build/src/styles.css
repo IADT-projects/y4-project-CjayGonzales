@@ -139,7 +139,6 @@ input[type="reset"] {
     border-bottom: 1px solid #2B2B2B;
 }
 
-.margin-0 {}
 
 .button-important,
 .button-add-new {
@@ -245,6 +244,10 @@ input[type="reset"] {
     box-shadow: -3px 4px 20px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
     object-fit: cover;
+}
+
+.create-folder-input-width {
+    width: 912px;
 }
 
 /* OCR AND FOLDER/DOCUMENT CARDS */
@@ -430,6 +433,8 @@ input[type="reset"] {
 .view-all-documents-header-image {
     width: 98.9vw;
     height: 350px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+
 }
 
 .doc-title {

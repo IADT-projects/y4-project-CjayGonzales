@@ -95,7 +95,7 @@ const OcrReader = () => {
 
 
    return (
-      <Grid container md={12} justifyContent="center"  >
+      <Grid container md={12} justifyContent="center" className="breathe-m" >
          {/* Image Posting */}
          <Grid >
             <h1 >OCR Reader!</h1>
@@ -140,7 +140,6 @@ const OcrReader = () => {
                justifyContent="flex-start"
                alignItems="flex-start"
             >
-
                <Grid >
                   <button className="button-important breathe-m" disabled={!imageData || !workerRef.current} onClick={handleExtract} >
                      Extract

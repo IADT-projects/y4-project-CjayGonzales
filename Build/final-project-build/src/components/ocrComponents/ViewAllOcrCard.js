@@ -10,7 +10,6 @@ const OcrCard = (props) => {
     let modalResult = <p>{props.ocrs.result}</p>
     let imgPath = props.ocrs.imgPath
 
-
     const [show, setShow] = useState(false)
 
     const toggleModal = () => {

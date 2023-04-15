@@ -8,7 +8,6 @@ import Grid from '@mui/material/Grid';
 const OcrView = (props) => {
 
     const [ocrs, setOcrs] = useState(null);
-
     useEffect(() => {
         axios.get(`/ocr/${props.userID}`)
             // axios.get('/ocr')
@@ -34,9 +33,7 @@ const OcrView = (props) => {
         return <Grid className="breathe-m"><OcrCard key={ocrs._id} ocrs={ocrs} callback={deleteCallback} /></Grid>;
     });
 
-
     return (
-
         <>
             <Grid container justifyContent="center">
 
@@ -51,7 +48,6 @@ const OcrView = (props) => {
 
                 </ErrorBoundry>
             </Grid>
-
         </>
     );
 };

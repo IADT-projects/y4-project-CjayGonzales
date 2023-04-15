@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import axios from '../../../config';
+import Grid from '@mui/material/Grid';
 import { useNavigate, useParams } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFileArrowUp } from '@fortawesome/free-solid-svg-icons'
 
 
 const CreateDocument = (props) => {
@@ -82,39 +85,43 @@ const CreateDocument = (props) => {
 
     return (
         <>
-            <form encType='multipart/form-data'>
-                <h1>Create Document</h1>
+            <Grid container md={12} justifyContent="center" className="breathe-m" >
+                <Grid >
+                    <form encType='multipart/form-data'>
+                        <h1>Create Document</h1>
 
+                        {newImg ? (
+                            <img className="label-file-upload" src={URL.createObjectURL(newImg)} alt="Selected" />
+                        ) : (
+                            <>
+                                <input type="file" id="input-file-upload" multiple={true} onChange={handleImg} />
+                                <label className="label-file-upload" htmlFor="input-file-upload">
+                                    <div>
+                                        <FontAwesomeIcon icon={faFileArrowUp} className="faded ocr-page-upload-icon" />
+                                        <p className="faded">Click to add image</p>
+                                    </div>
+                                </label>
+                            </>
+                        )}
 
-                {newImg ? (
-                    <img className="label-file-upload" src={URL.createObjectURL(newImg)} alt="Selected" />
-                ) : (
-                    <>
-                        <input type="file" id="input-file-upload" multiple={true} onChange={handleImg} />
-                        <label className="label-file-upload" htmlFor="input-file-upload">
-                            <div>
-                                <p>ICON</p>
-                                <p>Click to add an image</p>
-                            </div>
-                        </label>
-                    </>
-                )}
+                        <h2 className=' breathe-m'>Insert Document Name</h2>
 
-                <p>Insert Document Name</p>
+                        <input type="text"
+                            className="textarea-width create-folder-input-width"
+                            name="title"
+                            onChange={handleForm}
+                            error={errors.title}
+                            helperText={errors.title?.message}
+                            value={form.title}
+                            fullWidth
+                        />
+                        <Grid md={12} container justifyContent="flex-end" >
+                            <button className="button-important breathe-s" onClick={submitForm}>Submit</button>
+                        </Grid>
 
-                <input type="text"
-                    className="textarea-width"
-                    name="title"
-                    onChange={handleForm}
-                    error={errors.title}
-                    helperText={errors.title?.message}
-                    value={form.title}
-                    fullWidth
-                />
-                <br />
-                <button onClick={submitForm}>Submit</button>
-            </form>
-
+                    </form>
+                </Grid>
+            </Grid>
         </>
     );
 
