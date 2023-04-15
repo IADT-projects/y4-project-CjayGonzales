@@ -1,5 +1,5 @@
 import LoginForm from "../components/LoginForm";
-
+import { Grid } from '@mui/material';
 const Login = (props) => {
     return (
         <>
@@ -10,7 +10,10 @@ const Login = (props) => {
                 // Passing onAuthenticated to Login Form 
                 < LoginForm onAuthenticated={props.onAuthenticated} />
             ) : (
-                <p>You are logged in</p>
+                <Grid container justifyContent="center">
+                    <p>You are logged in</p>
+
+                </Grid>
 
             )}
         </>

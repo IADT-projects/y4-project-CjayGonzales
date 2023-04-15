@@ -77,7 +77,7 @@ const RegisterForm = (props) => {
                         alignItems="center">
                         <h1 className="heading-2">Sign Up</h1>
                         <h2 className='heading-3 faded'>Already have an account?</h2>
-                        <Link to='/login'><p>Log In</p></Link>
+                        <Link to='/login'><p className='underline'>Log In</p></Link>
                     </Grid>
 
                     <Grid>

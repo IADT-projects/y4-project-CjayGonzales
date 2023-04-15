@@ -131,12 +131,21 @@ input[type="reset"] {
     margin-top: 25px;
 }
 
+.underline {
+    border-bottom: 1px solid #2B2B2B;
+}
+
 .button-important,
 .button-add-new {
     border-radius: 15px;
     padding: 10px 20px 10px 20px;
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
     transition: transform ease .5s, box-shadow ease .5s;
+    font-family: 'roboto';
+    font-style: normal;
+}
+
+.button-discard {
     font-family: 'roboto';
     font-style: normal;
 }

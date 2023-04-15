@@ -75,7 +75,7 @@ const LoginForm = (props) => {
 
                         <h1 >Log In</h1>
                         <h2 className='heading-3 faded'>Don't have an account?</h2>
-                        <Link to='/register'><p>Sign Up</p></Link>
+                        <Link to='/register'><p className='underline'>Sign Up</p></Link>
 
                     </Grid>
 

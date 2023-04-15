@@ -90,7 +90,7 @@ const EditUser = (props) => {
 
                             <Grid md={12}>
                                 <div className='edit-user-modal-body'>
-                                    <h3>Enter New Email</h3>
+                                    <p>Enter New Email</p>
                                     <input
                                         className='edit-user-input '
                                         label="email"
@@ -102,7 +102,7 @@ const EditUser = (props) => {
                                         fullWidth
                                     />
                                     <br />
-                                    <h3>Enter New Username</h3>
+                                    <p>Enter New Username</p>
                                     <input
                                         className='edit-user-input '
                                         label="name"
@@ -113,7 +113,7 @@ const EditUser = (props) => {
                                         value={form.name}
                                         fullWidth
                                     />
-                                    <h3>Enter New Password</h3>
+                                    <p>Enter New Password</p>
                                     <input
                                         className='edit-user-input '
                                         label="password"
@@ -128,11 +128,26 @@ const EditUser = (props) => {
 
                                         {/* resource recieved from here */}
                                         {/* https://upmostly.com/tutorials/adding-multiple-functions-inside-a-single-onclick-event-handler#:~:text=The%20first%20solution%20to%20perform,function%20greeting()%20%7B%20console. */}
-                                        <button className='button-important' onClick={() => {
-                                            submitForm();
-                                            refresh();
-                                        }}>Confirm</button>
-                                        <button onClick={() => { refresh() }}>Close</button>
+                                        <Grid
+                                            container
+                                            direction="row"
+                                            justifyContent="flex-end"
+                                            alignItems="center"
+                                            columnSpacing={{ md: 3 }}
+                                        >
+                                            <Grid item >
+                                                <button className='underline button-discard' onClick={() => { refresh() }}>Close</button>
+                                            </Grid>
+
+                                            <Grid item >
+                                                <button className='button-important' onClick={() => {
+                                                    submitForm();
+                                                    refresh();
+                                                }}>Confirm</button>
+                                            </Grid>
+
+
+                                        </Grid>
                                     </div>
                                 </div>
 
