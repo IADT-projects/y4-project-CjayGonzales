@@ -27,7 +27,7 @@ const OcrReader = () => {
 
    // progress and ocr result
    const [progress, setProgress] = useState(0);
-   const [progressLabel, setProgressLabel] = useState("idle");
+   const [progressLabel, setProgressLabel] = useState("No File Selected");
    const [ocrResult, setOcrResult] = useState("");
 
    const workerRef = useRef(null);

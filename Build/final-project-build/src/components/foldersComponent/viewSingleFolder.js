@@ -36,7 +36,7 @@ const ViewSingleFolder = (props) => {
     };
 
     const documentsList = documents.map((document) => {
-        return <DocumentCard key={document._id} document={document} callback={deleteCallback} />;
+        return <Grid className="breathe"><DocumentCard key={document._id} document={document} callback={deleteCallback} /></Grid>;
     });
 
     const folderTitle = folderData.folderTitle;
@@ -45,21 +45,25 @@ const ViewSingleFolder = (props) => {
     return (
         <>
             <img className='img-cover view-all-documents-header-image ' src={`${STATIC_FILES_URL}${imgPath}`} alt="Folder"></img>
-            <h1>{folderTitle.charAt(0).toUpperCase() + folderTitle.slice(1)}</h1>
-            <ErrorBoundry>
-                <Grid
-                    container
-                    direction="row"
-                    justifyContent="flex-start"
-                    alignItems="center">
-                    {documentsList}
-                    <Grid>
-                        <Link className='button-add-new' to={`/create-document/${folderId}`}>
-                            +  Create new Document
-                        </Link>
-                    </Grid>
-                </Grid>
-            </ErrorBoundry>
+
+            <Grid container justifyContent="center" className='breathe-m'>
+                <ErrorBoundry>
+                    <Grid justifyContent="space-around" container md={11.5}>
+                        <Grid md={12}>
+                            <h1>{folderTitle.charAt(0).toUpperCase() + folderTitle.slice(1)}</h1>
+                        </Grid>
+                        <Grid md={12} className=' breathe-s'>
+                            <Link className='button-add-new' to={`/create-document/${folderId}`}>
+                                +  Create new Document
+                            </Link>
+                        </Grid>
+                        {documentsList}
+
+                    </Grid >
+
+                </ErrorBoundry>
+            </Grid>
+
 
         </>
     );

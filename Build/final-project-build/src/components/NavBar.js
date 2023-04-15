@@ -31,6 +31,7 @@ const Navbar = (props) => {
 
     const logout = () => {
         props.onAuthenticated(false);
+        alert('You have sucessfully logged out');
         navigate('/');
     };
 
@@ -76,7 +77,7 @@ const Navbar = (props) => {
                 ),
                 (props.authenticated) ? (
                     <>
-                        <button onClick={logout}>Logout</button>
+                        <button onClick={logout}><Link to='/'>Logout</Link></button>
 
                     </>
                 ) : (
