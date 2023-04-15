@@ -14,7 +14,7 @@ const ViewFolderCard = (props) => {
 
     const STATIC_FILES_URL = 'https://final-project-bucket-v2.s3.eu-west-1.amazonaws.com/'
     // creating an ID and returning it as html. the user is able to access the file through an ID link
-    let title = <p><b></b><Link to={`/view_folder/${userId}/${folderId}`}>{props.folder.folderTitle.slice(0, 20)}</Link></p>
+    let title = <p><b></b><Link to={`/view_folder/${userId}/${folderId}`}>{props.folder.folderTitle.charAt(0).toUpperCase() + props.folder.folderTitle.slice(1, 20)}</Link></p>
 
     const [show, setShow] = useState(false);
     const [optionsModal, setOptionsModal] = useState(false);

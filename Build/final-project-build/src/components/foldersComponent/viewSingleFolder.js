@@ -45,7 +45,7 @@ const ViewSingleFolder = (props) => {
     return (
         <>
             <img className='img-cover view-all-documents-header-image ' src={`${STATIC_FILES_URL}${imgPath}`} alt="Folder"></img>
-            <h1>{folderTitle}</h1>
+            <h1>{folderTitle.charAt(0).toUpperCase() + folderTitle.slice(1)}</h1>
             <ErrorBoundry>
                 <Grid
                     container

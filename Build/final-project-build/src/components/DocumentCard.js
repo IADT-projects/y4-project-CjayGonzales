@@ -9,11 +9,12 @@ import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons'
 const DocumentCard = (props) => {
     const documentID = props.document._id
     const { userId, folderId } = useParams();
+    const docTitle = props.document.title;
 
     const STATIC_FILES_URL = 'https://final-project-bucket-v2.s3.eu-west-1.amazonaws.com/'
     // creating an ID and returning it as html. the user is able to access the file through an ID link
     // let ID = <p><b></b><Link to={`/documents/${props.document._id}`}>{props.document._id}</Link></p>
-    let title = <p><b>Title: </b><Link to={`/documents/${folderId}/${documentID}`}>{props.document.title}</Link></p>
+    let title = <p><b></b><Link to={`/documents/${folderId}/${documentID}`}>{docTitle.charAt(0).toUpperCase() + docTitle.slice(1, 20)}</Link></p>
     let imgPath = props.document.imgPath
 
     const [show, setShow] = useState(false)
@@ -27,7 +28,6 @@ const DocumentCard = (props) => {
         <>
             <Grid md={3}>
                 <div className="folder-card">
-                    {/* <h5 >{ID}</h5> */}
                     <Link to={`/documents/${folderId}/${documentID}`}>
                         <img className="folder-card-image" src={`${STATIC_FILES_URL}${imgPath}`} alt="Document" width="150" height="200"></img>
                     </Link>
@@ -38,7 +38,7 @@ const DocumentCard = (props) => {
                         alignItems="center"
                     >
                         <Grid>
-                            <h5 >{title}</h5>
+                            <h5 className="folder-card-title" >{title}</h5>
 
                         </Grid>
 
