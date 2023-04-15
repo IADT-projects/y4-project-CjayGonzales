@@ -27,7 +27,9 @@ const ViewFolderCard = (props) => {
 
             <Grid md={3}>
                 <div className="folder-card">
-                    <img className="folder-card-image" src={`${STATIC_FILES_URL}${imgPath}`} alt="Folder"></img>
+                    <Link to={`/view_folder/${userId}/${folderId}`}>
+                        <img className="folder-card-image" src={`${STATIC_FILES_URL}${imgPath}`} alt="Folder"></img>
+                    </Link>
 
                     <Grid md={12}
                         container
@@ -43,7 +45,6 @@ const ViewFolderCard = (props) => {
                         <Grid md={3} justifyContent="center" container onClick={displayModal}>
                             <FontAwesomeIcon icon={faEllipsisVertical} />
                         </Grid>
-
                     </Grid>
 
                     {optionsModal && (
@@ -57,7 +58,6 @@ const ViewFolderCard = (props) => {
 
                 </div>
                 <EditFolder onClose={() => setShow(false)} show={show} folderId={folderId} />
-
             </Grid>
 
         </>

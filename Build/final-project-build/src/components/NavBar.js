@@ -42,6 +42,10 @@ const Navbar = (props) => {
         right: false,
     });
 
+    const toggleModal = () => {
+        setShow(!show)
+    }
+
     const toggleDrawer = (anchor, open) => (event) => {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
             return;
@@ -63,8 +67,7 @@ const Navbar = (props) => {
                 <Link to={`/folder/${userID}`}>Select Folder</Link>,
                 (props.authenticated) ? (
                     <>
-                        <button onClick={() => setShow(true)}>Edit User</button>
-
+                        <button onClick={toggleModal}>Edit User</button>
                     </>
                 ) : (
                     <>

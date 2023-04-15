@@ -28,7 +28,9 @@ const DocumentCard = (props) => {
             <Grid md={3}>
                 <div className="folder-card">
                     {/* <h5 >{ID}</h5> */}
-                    <img className="folder-card-image" src={`${STATIC_FILES_URL}${imgPath}`} alt="Document" width="150" height="200"></img>
+                    <Link to={`/documents/${folderId}/${documentID}`}>
+                        <img className="folder-card-image" src={`${STATIC_FILES_URL}${imgPath}`} alt="Document" width="150" height="200"></img>
+                    </Link>
                     <Grid md={12}
                         container
                         direction="row"

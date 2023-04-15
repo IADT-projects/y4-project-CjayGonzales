@@ -30,16 +30,14 @@ const OcrCard = (props) => {
 
             {show && (
 
-
-
                 <div className="overlay ">
                     <Grid container direction="column"
                         justifyContent="center"
                         alignItems="center">
 
                         <div className="ocr-modal-content">
-                            <Grid container md={12} xs={12}  >
-                                <Grid container justifyContent="center"  >
+                            <Grid container md={12} xs={12} >
+                                <Grid container justifyContent="center" >
                                     <img src={`${STATIC_FILES_URL}${imgPath}`} className="ocr-modal-image" alt="Ocr" />
 
                                     <div className="ocr-modal-content-width">
@@ -56,7 +54,6 @@ const OcrCard = (props) => {
                                 </Grid>
                             </Grid>
                         </div>
-
                     </Grid >
 
                 </div >

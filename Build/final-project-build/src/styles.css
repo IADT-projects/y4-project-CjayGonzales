@@ -95,6 +95,10 @@ input[type="reset"] {
     object-fit: cover;
 }
 
+.breathe {
+    margin-top: 30px;
+}
+
 .button-important,
 .button-add-new {
     border-radius: 15px;
@@ -129,8 +133,8 @@ input[type="reset"] {
 /* HOMEPAGE */
 
 .homepage-image {
-    height: 37.5rem;
-    width: 42.5rem;
+    height: 36.5rem;
+    width: 40.5rem;
     box-shadow: -12px 12px 17px rgba(0, 0, 0, 0.15);
     border-radius: 15px;
 }
@@ -145,10 +149,16 @@ input[type="reset"] {
 }
 
 .textarea-width,
-.edit-folder-input {
+.edit-folder-,
+.edit-user-input {
     border-color: #D9D9D9;
     border: 1px solid #D9D9D9;
     border-radius: 5px;
+}
+
+.edit-user-input {
+    width: 350px;
+    height: 45px;
 }
 
 .textarea-width {
@@ -276,7 +286,8 @@ input[type="reset"] {
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
-.edit-folder-modal {
+.edit-folder-modal,
+.edit-user-modal {
     position: fixed;
     left: 0;
     right: 0;
@@ -286,6 +297,17 @@ input[type="reset"] {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.edit-user-modal-content {
+    width: 600px;
+    background-color: white;
+    border-radius: 25px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.edit-user-modal-body {
+    padding: 10px;
 }
 
 .edit-folder-modal-body {
@@ -303,7 +325,8 @@ input[type="reset"] {
     padding: 10px;
 }
 
-.edit-folder-modal-footer {
+.edit-folder-modal-footer,
+.edit-user-modal-footer {
     padding: 10px;
 }
 
