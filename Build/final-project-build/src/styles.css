@@ -139,6 +139,8 @@ input[type="reset"] {
     border-bottom: 1px solid #2B2B2B;
 }
 
+.margin-0 {}
+
 .button-important,
 .button-add-new {
     border-radius: 15px;
@@ -274,6 +276,7 @@ input[type="reset"] {
 
 .folder-card-title {
     color: #323232;
+    padding-left: 10px
 }
 
 .folder-card,

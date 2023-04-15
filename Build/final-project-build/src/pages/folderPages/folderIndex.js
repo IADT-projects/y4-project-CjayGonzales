@@ -35,7 +35,7 @@ const FolderIndexPage = (props) => {
 
     // maps the folders list for each folder card
     const foldersList = folders.map((folder) => {
-        return <FolderCard key={folder._id} folder={folder} callback={deleteCallback} />;
+        return <Grid className="breathe"><FolderCard key={folder._id} folder={folder} callback={deleteCallback} /></Grid>;
 
     });
 
@@ -43,25 +43,23 @@ const FolderIndexPage = (props) => {
     return (
 
         <>
-            <h1>Folders Collection</h1>
-            <ErrorBoundry>
-                <Grid
-                    container
-                    direction="row"
-                    justifyContent="flex-start"
-                    alignItems="center">
+            <Grid container justifyContent="center">
+                <ErrorBoundry>
+                    <Grid justifyContent="space-around" container md={11.5}>
+                        <Grid md={12}>
+                            <h1 className="breathe ma">Folders Collection</h1>
+                        </Grid>
 
-                    {foldersList}
+                        <Grid md={12} className=' breathe-s'>
+                            <Link className='button-add-new  ' to={`/create_folder`}>
+                                +  Create new Folder
+                            </Link>
+                        </Grid>
 
-                    <Grid>
-                        <Link className='button-add-new' to={`/create_folder`}>
-                            +  Create new Folder
-                        </Link>
+                        {foldersList}
                     </Grid>
-
-                </Grid>
-
-            </ErrorBoundry>
+                </ErrorBoundry >
+            </Grid>
         </>
     );
 };

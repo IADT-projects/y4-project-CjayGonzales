@@ -41,7 +41,7 @@ const OcrView = (props) => {
             <Grid container justifyContent="center">
 
                 <ErrorBoundry>
-                    <Grid justifyContent="space-between" container md={11.5}>
+                    <Grid container justifyContent="space-around" md={11.5}>
                         <Grid md={12}>
                             <h1 className="breathe">OCR Files</h1>
                         </Grid>

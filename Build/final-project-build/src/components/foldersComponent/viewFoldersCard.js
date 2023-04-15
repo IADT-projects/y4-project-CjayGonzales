@@ -39,7 +39,7 @@ const ViewFolderCard = (props) => {
                     >
 
                         <Grid md={9}>
-                            <h5 >{title}</h5>
+                            <h5 className="folder-card-title">{title}</h5>
 
                         </Grid>
                         <Grid md={3} justifyContent="center" container onClick={displayModal}>
