@@ -131,6 +131,10 @@ input[type="reset"] {
     margin-top: 25px;
 }
 
+.breathe-s {
+    margin-top: 10px;
+}
+
 .underline {
     border-bottom: 1px solid #2B2B2B;
 }
@@ -242,6 +246,19 @@ input[type="reset"] {
 }
 
 /* OCR AND FOLDER/DOCUMENT CARDS */
+
+.ocr-page-upload-icon {
+    width: 130px;
+    height: 100px;
+}
+
+.results-body {
+    background: white;
+    padding: 50px;
+    box-shadow: -3px 4px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+
+}
 
 .folder-card {
     height: 248px;

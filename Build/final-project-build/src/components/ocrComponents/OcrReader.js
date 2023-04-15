@@ -3,6 +3,8 @@ import { Box, Button, CircularProgress, Grid, TextField, Typography } from "@mui
 import { createWorker } from "tesseract.js";
 import axios from '../../config/index';
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFileArrowUp } from '@fortawesome/free-solid-svg-icons'
 
 const OcrReader = () => {
    const [imageData, setImageData] = useState(null);
@@ -105,10 +107,20 @@ const OcrReader = () => {
                   <>
                      <input type="file" multiple={true} id="input-file-upload" accept="image/*" onChange={(e) => loadFile(e.target.files[0])} />
                      <label className="label-file-upload" htmlFor="input-file-upload">
-                        <div>
-                           <p>ICON</p>
-                           <p>Click to add an image</p>
-                        </div>
+
+                        <Grid
+                           container
+                           direction="column"
+                           justifyContent="flex-end"
+                           alignItems="center"
+                        >
+                           <div>
+                              <FontAwesomeIcon icon={faFileArrowUp} className="faded ocr-page-upload-icon" />
+                              <p className="faded">Click to add image</p>
+                           </div>
+
+                        </Grid>
+
                      </label>
 
                      {!!imageData && <img src={imageData} alt="Selected " />}
@@ -123,15 +135,20 @@ const OcrReader = () => {
 
 
             {/* Extraction*/}
-            <Grid container direction="column" justifyContent="space-evenly" alignItems="center">
+            <Grid
+               container
+               direction="column"
+               justifyContent="flex-start"
+               alignItems="flex-start"
+            >
 
                <Grid >
-                  <button className="button-important" disabled={!imageData || !workerRef.current} onClick={handleExtract} >
+                  <button className="button-important breathe-m" disabled={!imageData || !workerRef.current} onClick={handleExtract} >
                      Extract
                   </button>
                </Grid>
 
-               <Grid >
+               <Grid className="breathe-s">
                   <Typography sx={{ marginTop: "10px", textTransform: "uppercase" }}>{progressLabel}</Typography>
                   <CircularProgress variant="determinate" value={progress * 100} />
                </Grid>
@@ -142,19 +159,16 @@ const OcrReader = () => {
          {/* Checking if there is a result and returning if one is available */}
          {
             !!ocrResult && (
-               <Grid item md={8}>
-                  <Typography variant="h6">RESULT</Typography>
-                  <Typography
-                     variant="body1"
-                     sx={{
-                        fontFamily: "monospace",
-                        background: "white",
-                        padding: "10px",
-                     }}
-                  >
-                     {ocrResult}
-                  </Typography>
-                  <button className="button-important" onClick={submitForm}>Save Result</button>
+               <Grid item md={8}  >
+                  <div className="results-body breathe-m">
+                     <h1>Results</h1>
+                     <p>
+                        {ocrResult}
+                     </p>
+                     <button className="button-important breathe-s" onClick={submitForm}>Save Result</button>
+
+                  </div>
+
 
                </Grid>
             )
