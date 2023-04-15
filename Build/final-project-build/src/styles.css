@@ -9,6 +9,34 @@ body {
     margin: 0;
 }
 
+.faded {
+    color: #919191;
+}
+
+h1 {
+    font-family: 'Croissant One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    margin: 0;
+}
+
+h2 {
+    font-family: 'Croissant One';
+    font-style: normal;
+    font-weight: 400;
+    margin: 0;
+}
+
+p {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+}
+
+
+
 a:link {
     text-decoration: none;
 }
@@ -96,7 +124,11 @@ input[type="reset"] {
 }
 
 .breathe {
-    margin-top: 30px;
+    margin-top: 50px;
+}
+
+.breathe-m {
+    margin-top: 25px;
 }
 
 .button-important,
@@ -105,6 +137,8 @@ input[type="reset"] {
     padding: 10px 20px 10px 20px;
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
     transition: transform ease .5s, box-shadow ease .5s;
+    font-family: 'roboto';
+    font-style: normal;
 }
 
 .button-important {
@@ -133,8 +167,8 @@ input[type="reset"] {
 /* HOMEPAGE */
 
 .homepage-image {
-    height: 36.5rem;
-    width: 40.5rem;
+    height: 35.5rem;
+    width: 38.5rem;
     box-shadow: -12px 12px 17px rgba(0, 0, 0, 0.15);
     border-radius: 15px;
 }

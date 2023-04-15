@@ -23,7 +23,6 @@ const LoginForm = (props) => {
 
     };
 
-
     const isRequired = (fields) => {
         let error = false;
         fields.forEach(field => {
@@ -40,7 +39,6 @@ const LoginForm = (props) => {
 
         return error;
     };
-
 
     const submitForm = () => {
         if (!isRequired(['email', 'password'])) {
@@ -66,17 +64,18 @@ const LoginForm = (props) => {
 
     return (
         <>
+            <div className='breathe' />
             <Grid container md={12} justifyContent="center">
                 <div className='register-background' md={8}>
 
-                    <Grid container justifyContent="center">
+                    <Grid container
+                        direction="column"
+                        justifyContent="center"
+                        alignItems="center">
 
-                        <div justifyContent="center">
-                            <h1 justifyContent="center">Log In</h1>
-                            <p justifyContent="center">Don't have an account?</p>
-                            <Link justifyContent="center" to='/register'>Sign Up</Link>
-                        </div>
-
+                        <h1 >Log In</h1>
+                        <h2 className='heading-3 faded'>Don't have an account?</h2>
+                        <Link to='/register'><p>Sign Up</p></Link>
 
                     </Grid>
 
@@ -113,13 +112,20 @@ const LoginForm = (props) => {
                         />
                     </Grid>
 
-                    <button className="button-important" variant="outlined" onClick={submitForm}>Submit</button>
+                    <Grid container
+                        direction="row"
+                        justifyContent="flex-end"
+                        alignItems="flex-end"
+                    >
+                        <button className="button-important breathe-m" variant="outlined" onClick={submitForm}>Submit</button>
+
+                    </Grid>
 
                     <br />
 
                     <p >{errorMessage}</p>
-                </div>
-            </Grid>
+                </div >
+            </Grid >
         </>
     );
 

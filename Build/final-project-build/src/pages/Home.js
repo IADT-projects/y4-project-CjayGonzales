@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 const Home = () => {
     return (
         <>
+            <div className='breathe' />
             <Grid container spacing={12} direction="row"
                 justifyContent="flex-end">
 

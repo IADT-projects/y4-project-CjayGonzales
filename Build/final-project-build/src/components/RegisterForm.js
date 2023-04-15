@@ -67,13 +67,17 @@ const RegisterForm = (props) => {
 
     return (
         <>
+            <div className='breathe' />
             <Grid container md={12} justifyContent="center">
 
                 <div className='register-background' md={8}>
-                    <Grid>
-                        <h1>Sign Up</h1>
-                        <p>Already have an account?</p>
-                        <Link to='/login'>Log In</Link>
+                    <Grid container
+                        direction="column"
+                        justifyContent="center"
+                        alignItems="center">
+                        <h1 className="heading-2">Sign Up</h1>
+                        <h2 className='heading-3 faded'>Already have an account?</h2>
+                        <Link to='/login'><p>Log In</p></Link>
                     </Grid>
 
                     <Grid>
@@ -132,8 +136,13 @@ const RegisterForm = (props) => {
                     </Grid>
 
 
-
-                    <button className="button-important" variant="outlined" onClick={submitForm}>Submit</button>
+                    <Grid container
+                        direction="row"
+                        justifyContent="flex-end"
+                        alignItems="flex-end"
+                    >
+                        <button className="button-important breathe-m" variant="outlined" onClick={submitForm}>Submit</button>
+                    </Grid>
                     <p>{errorMessage}</p>
                 </div>
 
