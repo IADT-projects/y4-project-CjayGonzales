@@ -50,6 +50,7 @@ const FolderIndexPage = (props) => {
                     direction="row"
                     justifyContent="flex-start"
                     alignItems="center">
+
                     {foldersList}
 
                     <Grid>

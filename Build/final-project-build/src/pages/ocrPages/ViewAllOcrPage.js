@@ -39,10 +39,12 @@ const OcrView = (props) => {
 
         <>
             <Grid container justifyContent="center">
-                <h1 className="breathe">OCR Files</h1>
 
                 <ErrorBoundry>
-                    <Grid className='breathe-m' justifyContent="space-between" container md={11.5}>
+                    <Grid justifyContent="space-between" container md={11.5}>
+                        <Grid md={12}>
+                            <h1 className="breathe">OCR Files</h1>
+                        </Grid>
                         {ocrsList}
 
                     </Grid>
