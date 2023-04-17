@@ -63,6 +63,7 @@ const OcrReader = () => {
       console.log(response.data);
    };
 
+   // submitting the form for the backend
    const submitForm = (e) => {
       let token = localStorage.getItem('token');
       let userID = localStorage.getItem('userID');
@@ -91,8 +92,6 @@ const OcrReader = () => {
             console.log(err.response.data);
          });
    };
-
-
 
    return (
       <Grid container md={12} justifyContent="center" className="breathe-m" >
