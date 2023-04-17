@@ -72,7 +72,6 @@ const createData = (req, res) => {
 };
 
 const updateData = (req, res) => {
-
     let id = req.params.id;
     let body = req.body;
 
@@ -108,7 +107,6 @@ const updateData = (req, res) => {
                 res.status(500);
             }
         });
-
 };
 
 const deleteData = (req, res) => {

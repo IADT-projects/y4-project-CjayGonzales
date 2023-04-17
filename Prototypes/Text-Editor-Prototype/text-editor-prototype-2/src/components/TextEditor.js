@@ -94,7 +94,7 @@ export default function TextEditor() {
         wrapper.innerHTML = ""                          // sets inner HTML to an empty string
         const editor = document.createElement('div')    // creates "div"
         wrapper.append(editor)
-        const q = new Quill(editor, { theme: 'snow', modules: { toolbar: TOOLBAR_OPTIONS } })            // quill takes in an ID and a theme, and modules for the toolbar
+        const q = new Quill(editor, { theme: 'snow', modules: { toolbar: TOOLBAR_OPTIONS } }) // quill takes in an ID and a theme, and modules for the toolbar
         q.disable()
         q.setText("Loading...")
         setQuill(q)
