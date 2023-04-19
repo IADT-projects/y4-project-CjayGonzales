@@ -293,6 +293,9 @@ function thresholdFilter(data, thresholdValue) {
     }
 }
 
+// Place this into the testing. "some further research was conducted. The code from this can be found in the appendix and the reults show"
+// Use an example to show 
+
 function preprocessImage(canvas) {
     const ctx = canvas.getContext('2d');                                  // gets the context of the canvas
     const image = ctx.getImageData(0, 0, canvas.width, canvas.height);    // image data from the canvas is retrieved, x and y start at 0,0 and the width and height = canvas w/h 
