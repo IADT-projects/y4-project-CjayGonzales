@@ -50,6 +50,7 @@ const Home = () => {
 
   return (
     <>
+      <h1>OCR Reader!</h1>
       <Group align="initial" style={{ padding: "10px" }}>
         <Stack style={{ flex: "1" }}>
           <Dropzone
