@@ -52,7 +52,7 @@ const DocumentCard = (props) => {
                 {optionsModal && (
                     <>
                         <div className="options-modal">
-                            <button onClick={() => { setShow(true); displayModal() }}>Edit</button>
+                            <button className="options-modal-edit" onClick={() => { setShow(true); displayModal() }}>Edit</button>
                             <DeleteBtn id={props.document._id} resource={`document/`} callback={props.callback} />
                         </div>
                     </>

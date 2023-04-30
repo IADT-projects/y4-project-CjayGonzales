@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import axios from '../config';
 import { Link } from 'react-router-dom';
 import { Grid } from '@mui/material';
@@ -58,6 +58,24 @@ const LoginForm = (props) => {
                 });
         }
     };
+
+    useEffect(() => {
+
+        const keyDownHandler = event => {
+            console.log("testing");
+
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                submitForm();
+            }
+        };
+        document.addEventListener('keydown', keyDownHandler);
+
+        return () => {
+            document.removeEventListener('keydown', keyDownHandler);
+        };
+    }, []);
+
 
 
     // if (authenticated) return "You are logged in";

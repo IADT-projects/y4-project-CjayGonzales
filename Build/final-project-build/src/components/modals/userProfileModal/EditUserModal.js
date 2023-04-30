@@ -115,6 +115,7 @@ const EditUser = (props) => {
                                     />
                                     <p>Enter New Password</p>
                                     <input
+                                        type='password'
                                         className='edit-user-input '
                                         label="password"
                                         name="password"

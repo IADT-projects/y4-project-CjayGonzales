@@ -50,8 +50,9 @@ const ViewFolderCard = (props) => {
                     {optionsModal && (
                         <>
                             <div className="options-modal">
-                                <button onClick={() => { setShow(true); displayModal() }}>Edit</button>
-                                <DeleteFolder className="options-modal-delete" id={props.folder._id} callback={props.callback} />
+                                <button className="options-modal-edit" onClick={() => { setShow(true); displayModal() }}>Edit</button>
+                                <div className="border-below"></div>
+                                <DeleteFolder id={props.folder._id} callback={props.callback} />
                             </div>
                         </>
                     )}

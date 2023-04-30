@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from '../config';
 import { Grid } from '@mui/material';
 import { Link } from 'react-router-dom';
@@ -65,6 +65,21 @@ const RegisterForm = (props) => {
 
     };
 
+    useEffect(() => {
+        console.log("testing")
+        const keyDownHandler = event => {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                submitForm();
+            }
+        };
+        document.addEventListener('keydown', keyDownHandler);
+
+        return () => {
+            document.removeEventListener('keydown', keyDownHandler);
+        };
+    }, []);
+
     return (
         <>
             <div className='breathe' />
@@ -97,10 +112,7 @@ const RegisterForm = (props) => {
 
                     </Grid>
 
-
-
                     <Grid>
-
                         <p>Email</p>
                         <input type="text"
                             className="textarea-width"
@@ -117,7 +129,6 @@ const RegisterForm = (props) => {
 
                     </Grid>
 
-
                     <Grid>
                         <p>Password</p>
                         <input type="password"
@@ -132,7 +143,6 @@ const RegisterForm = (props) => {
                             value={form.password}
                             fullWidth
                         />
-
                     </Grid>
 
 

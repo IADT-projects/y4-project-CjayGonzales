@@ -39,6 +39,12 @@ const OcrReader = () => {
             if ("progress" in message) {
                setProgress(message.progress);
                setProgressLabel(message.progress === 1 ? "Done" : message.status);
+
+
+            }
+            if (message === "Done") {
+               alert("Reading Complete! Scroll down to view result!")
+
             }
          },
       });
@@ -61,6 +67,14 @@ const OcrReader = () => {
       const response = await worker.recognize(imageData);
       setOcrResult(response.data.text);
       console.log(response.data);
+   };
+
+   const handleClickScroll = () => {
+      const element = document.getElementById('result');
+      if (element) {
+         // 👇 Will scroll smoothly to the top of the next section
+         element.scrollIntoView({ behavior: 'smooth' });
+      }
    };
 
    // submitting the form for the backend
@@ -135,20 +149,33 @@ const OcrReader = () => {
             {/* Extraction*/}
             <Grid
                container
-               direction="column"
-               justifyContent="flex-start"
-               alignItems="flex-start"
+               direction="row"
+               justifyContent="space-between"
+               alignItems="center"
             >
-               <Grid >
+               <Grid
+                  container
+                  direction="row"
+                  justifyContent="space-between"
+                  alignItems="center"
+               >
                   <button className="button-important breathe-m" disabled={!imageData || !workerRef.current} onClick={handleExtract} >
                      Extract
                   </button>
+                  {
+                     !!ocrResult && (
+                        <button className="button-important breathe-m" onClick={handleClickScroll}>Scroll to view result</button>
+                     )
+                  }
                </Grid>
+
 
                <Grid className="breathe-s">
                   <Typography sx={{ marginTop: "10px", textTransform: "uppercase" }}>{progressLabel}</Typography>
                   <CircularProgress variant="determinate" value={progress * 100} />
                </Grid>
+
+
 
             </Grid >
          </Grid >
@@ -157,7 +184,7 @@ const OcrReader = () => {
          {
             !!ocrResult && (
                <Grid item md={8}  >
-                  <div className="results-body breathe-m">
+                  <div className="results-body breathe-m" id="result">
                      <h1>Results</h1>
                      <p>
                         {ocrResult}

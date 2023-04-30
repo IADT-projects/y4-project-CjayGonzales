@@ -25,9 +25,7 @@ const DeleteFolder = (props) => {
     };
 
     return (
-        <button
-            variant='outlined'
-            color='error'
+        <button className="options-modal-delete"
 
             // this delete button is gunna expect a function
             onClick={onDelete}

@@ -26,9 +26,7 @@ const DeleteBtn = (props) => {
 
     return (
         <button
-            variant='outlined'
-            color='error'
-
+            className="options-modal-delete"
             // this delete button is gunna expect a function
             onClick={onDelete}
         >Delete</button>
