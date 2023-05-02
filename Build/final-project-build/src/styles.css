@@ -139,6 +139,14 @@ input[type="reset"] {
     border-bottom: 1px solid #2B2B2B;
 }
 
+.error-message {
+    color: #FF5757;
+}
+
+.my-placeholder::placeholder {
+    color: #ff7171;
+}
+
 
 .button-important,
 .button-add-new {
@@ -280,9 +288,13 @@ input[type="reset"] {
     border-radius: 15px 15px 0px 0px;
 }
 
+.ocr-card-results {
+    padding: 0px 0px 0px 10px;
+}
+
 .folder-card-title {
     color: #323232;
-    padding-left: 10px
+    padding-left: 10px;
 }
 
 .folder-card,

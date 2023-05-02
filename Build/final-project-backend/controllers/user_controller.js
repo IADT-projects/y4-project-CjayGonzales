@@ -12,7 +12,7 @@ const register = (req, res) => {
     newUser.save((err, user) => {
         if (err) {
             return res.status(400).json({
-                msg: err
+                msg: "Invalid Details. Email is already in use!"
             });
         }
         else {

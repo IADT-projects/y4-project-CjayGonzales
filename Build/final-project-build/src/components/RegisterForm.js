@@ -28,14 +28,14 @@ const RegisterForm = (props) => {
 
     const isRequired = (fields) => {
         let error = false;
-
+        console.log("running")
         fields.forEach(field => {
             if (!form[field]) {
                 error = true;
                 setErrors(prevState => ({
                     ...prevState,
                     [field]: {
-                        message: `${field} is required!!!`
+                        message: `${field} is required!`
                     }
                 }));
             }
@@ -59,7 +59,7 @@ const RegisterForm = (props) => {
                 .catch((err) => {
                     console.error(err);
                     console.log(err.response.data)
-                    setErrorMessage(err.response.data.message)
+                    setErrorMessage(err.response.data.msg)
                 });
         }
 
@@ -95,10 +95,11 @@ const RegisterForm = (props) => {
                         <Link to='/login'><p className='underline'>Log In</p></Link>
                     </Grid>
 
+
                     <Grid>
                         <p>Name</p>
                         <input type="text"
-                            className="textarea-width"
+                            className="textarea-width my-placeholder"
                             id="outlined-basic"
                             label="Name"
                             name="name"
@@ -107,23 +108,24 @@ const RegisterForm = (props) => {
                             error={errors.name}
                             helperText={errors.name?.message}
                             value={form.name}
+                            placeholder={errors.name?.message.toUpperCase()}
                             fullWidth
                         />
-
                     </Grid>
+
 
                     <Grid>
                         <p>Email</p>
                         <input type="text"
-                            className="textarea-width"
+                            className="textarea-width my-placeholder"
                             id="outlined-basic"
                             label="Email"
                             name="email"
                             onChange={handleForm}
                             variant="outlined"
                             error={errors.email}
-                            helperText={errors.email?.message}
                             value={form.email}
+                            placeholder={errors.email?.message.toUpperCase()}
                             fullWidth
                         />
 
@@ -132,18 +134,19 @@ const RegisterForm = (props) => {
                     <Grid>
                         <p>Password</p>
                         <input type="password"
-                            className="textarea-width"
+                            className="textarea-width my-placeholder"
                             id="outlined-basic"
                             label="Password"
                             name="password"
                             onChange={handleForm}
                             variant="outlined"
                             error={errors.password}
-                            helperText={errors.password?.message}
+                            placeholder={errors.password?.message.toUpperCase()}
                             value={form.password}
                             fullWidth
                         />
                     </Grid>
+                    <p className='error-message'>{errorMessage}</p>
 
 
                     <Grid container
@@ -153,7 +156,6 @@ const RegisterForm = (props) => {
                     >
                         <button className="button-important breathe-m" variant="outlined" onClick={submitForm}>Submit</button>
                     </Grid>
-                    <p>{errorMessage}</p>
                 </div>
 
             </Grid>

@@ -26,12 +26,15 @@ const LoginForm = (props) => {
     const isRequired = (fields) => {
         let error = false;
         fields.forEach(field => {
+            console.log("running")
             if (!form[field]) {
                 error = true;
+
                 setErrors(prevState => ({
                     ...prevState,
                     [field]: {
-                        message: `${field} is incorrect!!!`
+
+                        message: `${field} is required!`
                     }
                 }));
             }
@@ -50,11 +53,12 @@ const LoginForm = (props) => {
                     console.log(response.data);
                     setErrorMessage("");
                     props.onAuthenticated(true, response.data.token, response.data._id);
+
                 })
                 .catch((err) => {
                     console.error(err);
                     console.log(err.response.data)
-                    setErrorMessage(err.response.data.message)
+                    setErrorMessage(err.response.data.msg)
                 });
         }
     };
@@ -100,7 +104,7 @@ const LoginForm = (props) => {
                     <Grid>
                         <p>Email</p>
                         <input type="text"
-                            className='textarea-width'
+                            className='textarea-width my-placeholder'
                             id="outlined-basic"
                             label="Email"
                             name="email"
@@ -108,7 +112,8 @@ const LoginForm = (props) => {
                             variant="outlined"
                             error={errors.email}
                             // ternary operator
-                            helperText={errors.email?.message}
+                            placeholder={errors.email?.message.toUpperCase()}
+
                             value={form.email}
                             fullWidth
                         />
@@ -117,18 +122,20 @@ const LoginForm = (props) => {
                     <Grid>
                         <p>Password</p>
                         <input type="password"
-                            className='textarea-width'
+                            className='textarea-width my-placeholder'
                             id="outlined-basic"
                             label="Password"
                             name="password"
                             onChange={handleForm}
                             variant="outlined"
                             error={errors.password}
-                            helperText={errors.password?.message}
+                            placeholder={errors.password?.message.toUpperCase()}
                             value={form.password}
                             fullWidth
                         />
+
                     </Grid>
+                    <p className='error-message'>{errorMessage}</p>
 
                     <Grid container
                         direction="row"
@@ -141,7 +148,6 @@ const LoginForm = (props) => {
 
                     <br />
 
-                    <p >{errorMessage}</p>
                 </div >
             </Grid >
         </>
