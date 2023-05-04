@@ -1,0 +1,507 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f3f3f3;
+    margin: 0;
+}
+
+.faded {
+    color: #919191;
+}
+
+h1 {
+    font-family: 'Croissant One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    margin: 0;
+}
+
+h2 {
+    font-family: 'Croissant One';
+    font-style: normal;
+    font-weight: 400;
+    margin: 0;
+}
+
+p {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+}
+
+
+
+a:link {
+    text-decoration: none;
+}
+
+
+a:visited {
+    text-decoration: none;
+}
+
+
+a:hover {
+    text-decoration: none;
+}
+
+
+a:active {
+    text-decoration: none;
+}
+
+button,
+input[type="submit"],
+input[type="reset"] {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+.container .ql-editor {
+    width: 8.5in;
+    min-height: 11in;
+    padding: 1in;
+    margin: 2rem;
+    box-shadow: -5px 9px 25px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+    background-color: white;
+}
+
+.container .ql-container.ql-snow {
+    border: none;
+    display: flex;
+    justify-content: center;
+}
+
+.container .ql-toolbar.ql-snow {
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: white;
+    border: none;
+    box-shadow: -5px 9px 25px rgba(0, 0, 0, 0.25);
+}
+
+@page {
+    margin: 1in;
+}
+
+@media print {
+    body {
+        background: none;
+    }
+
+    .container .ql-editor {
+        width: 6.5in;
+        height: 9in;
+        padding: 0;
+        margin: 0;
+        box-shadow: none;
+        align-self: flex-start;
+    }
+
+    .container .ql-toolbar.ql-snow {
+        display: none;
+    }
+}
+
+/* UTILITIES */
+.img-cover {
+    object-fit: cover;
+}
+
+.breathe {
+    margin-top: 50px;
+}
+
+.breathe-m {
+    margin-top: 25px;
+}
+
+.breathe-s {
+    margin-top: 10px;
+}
+
+.underline {
+    border-bottom: 1px solid #2B2B2B;
+}
+
+.error-message {
+    color: #FF5757;
+}
+
+.my-placeholder::placeholder {
+    color: #ff7171;
+}
+
+
+.button-important,
+.button-add-new {
+    border-radius: 15px;
+    padding: 10px 20px 10px 20px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    transition: transform ease .5s, box-shadow ease .5s;
+    font-family: 'roboto';
+    font-style: normal;
+}
+
+.button-discard {
+    font-family: 'roboto';
+    font-style: normal;
+}
+
+.button-important {
+    background: #FF5757;
+    color: #FFFAED;
+}
+
+.button-add-new {
+    background-color: white;
+}
+
+.button-important:hover,
+.button-add-new:hover {
+    box-shadow: 0px 10px 20px 2px rgba(0, 0, 0, 0.25);
+}
+
+.pad-right {
+    padding-right: 20px;
+}
+
+.red {
+    background-color: red;
+}
+
+.blue {
+    background-color: blue;
+}
+
+/* HOMEPAGE */
+
+.homepage-image {
+    height: 35.5rem;
+    width: 38.5rem;
+    box-shadow: -12px 12px 17px rgba(0, 0, 0, 0.15);
+    border-radius: 15px;
+}
+
+/* REGISTER PAGE AND LOGIN */
+
+.register-background {
+    background: #FFFFFF;
+    box-shadow: -10px 7px 25px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    padding: 30px 117px 30px 117px;
+}
+
+.textarea-width,
+.edit-folder-,
+.edit-user-input {
+    border-color: #D9D9D9;
+    border: 1px solid #D9D9D9;
+    border-radius: 5px;
+}
+
+.edit-user-input {
+    width: 350px;
+    height: 45px;
+}
+
+.textarea-width {
+    width: 680px;
+    height: 45px;
+}
+
+.edit-folder-input {
+    width: 200px;
+    height: 30px;
+}
+
+/* FOLDERS PAGE */
+
+.single-folder-img {
+    width: 100vw;
+    height: 500px;
+}
+
+
+/* INPUT FILE */
+
+#input-file-upload {
+    display: none;
+}
+
+.label-file-upload {
+    width: 912px;
+    height: 438px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-width: 2px;
+    background: #FFFFFF;
+    box-shadow: -3px 4px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    object-fit: cover;
+}
+
+.create-folder-input-width {
+    width: 912px;
+}
+
+/* OCR AND FOLDER/DOCUMENT CARDS */
+
+.ocr-page-upload-icon {
+    width: 130px;
+    height: 100px;
+}
+
+.results-body {
+    background: white;
+    padding: 50px;
+    box-shadow: -3px 4px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+
+}
+
+.folder-card {
+    height: 248px;
+}
+
+.folder-card-image,
+.ocr-card-img {
+    width: 327px;
+    height: 193px;
+    object-fit: cover;
+    border-radius: 15px 15px 0px 0px;
+}
+
+.ocr-card-results {
+    padding: 0px 0px 0px 10px;
+}
+
+.folder-card-title {
+    color: #323232;
+    padding-left: 10px;
+}
+
+.folder-card,
+.ocr-card {
+    width: 327px;
+    border-radius: 15px 15px 15px 15px;
+    background-color: white;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    transition: transform ease .5s, box-shadow ease .5s;
+}
+
+.ocr-card {
+    height: 342px;
+}
+
+.ocr-card:hover,
+.folder-card:hover {
+    cursor: pointer;
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 20px 2px rgba(0, 0, 0, 0.25);
+}
+
+/* Options Modal */
+.options-modal-delete,
+.options-modal-edit {
+    font-family: 'Croissant One';
+    font-size: 20px;
+
+}
+
+.options-modal-delete {
+    color: #FF5757;
+}
+
+.options-modal-edit {
+    border-bottom: 1px solid #000000;
+
+}
+
+
+/* OCR MODAL */
+
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+.overlay {
+    background: rgba(49, 49, 49, 0.8);
+}
+
+.ocr-modal-image {
+    object-fit: cover;
+    width: 47vw;
+    height: 418px;
+    box-shadow: 0px 10px 20px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+}
+
+.ocr-modal-content {
+    background: #ffffff;
+    padding: 14px 28px;
+    border-radius: 20px 5px 5px 20px;
+    width: 63vw;
+    height: 100vh;
+    overflow-y: auto !important;
+    display: block !important;
+}
+
+.ocr-modal-content-width {
+    width: 678px;
+}
+
+.ocr-modal-content::-webkit-scrollbar {
+    width: 10px;
+    /* Set the width of the scrollbar */
+}
+
+.ocr-modal-content::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 5px;
+
+    /* Set the background color of the track */
+}
+
+.ocr-modal-content::-webkit-scrollbar-thumb {
+    background-color: #888;
+    /* Set the color of the scrollbar thumb */
+    border-radius: 5px;
+    /* Round the edges of the scrollbar thumb */
+}
+
+.ocr-modal-content::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+    /* Set the color of the scrollbar thumb on hover */
+}
+
+/* Folders modal */
+
+.options-modal {
+    background-color: white;
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    top: -100px;
+    right: -150px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.edit-folder-modal,
+.edit-user-modal {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-user-modal-content {
+    width: 600px;
+    background-color: white;
+    border-radius: 25px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.edit-folder-doc-modal {
+    background: #FFFFFF;
+    box-shadow: -10px 7px 25px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    width: 914px;
+    height: 300px;
+}
+
+.edit-user-modal-body {
+    padding: 10px;
+}
+
+.edit-folder-modal-body {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    padding: 10px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.edit-folder-modal-header {
+    padding: 10px;
+}
+
+.edit-folder-modal-footer,
+.edit-user-modal-footer {
+    padding: 10px;
+}
+
+.edit-folder-modal-title {
+    margin: 0;
+}
+
+/* VIEW ALL DOCUMENTS PAGE */
+
+.view-all-documents-header-image {
+    width: 98.9vw;
+    height: 350px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+
+}
+
+.doc-title {
+    font-family: 'Croissant One';
+    font-weight: 400;
+    font-size: 48px;
+    color: #FFFFFF;
+}
+
+.doc-title-background {
+    background: #2B2B2B;
+    margin-top: -4px;
+}
+
+/* NAVBAR */
+
+.nav-bar {
+    height: 60px;
+}
+
+.nav-icon {
+    font-size: 25px;
+    color: white;
+    padding: 10px;
+}
+
+.nav-background {
+    background: #2B2B2B;
+}
